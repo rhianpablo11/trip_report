@@ -4,6 +4,9 @@ body{
 }
 .primary{
     background: url("img/site_em_obras.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     filter: blur(5px);
     height: 100%;
 
