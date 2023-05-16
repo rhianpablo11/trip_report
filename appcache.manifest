@@ -3,6 +3,10 @@ CACHE MANIFEST
 CACHE:
 index.html
 style.css
+js/script.js
 img/icon.png
-img/site_em_obras.png
-
+font/carnas/CarnasRegular.otf
+font/oceanwide/oceanwide_semibold.otf
+font/wavehaus/Wavehaus-42Light.otf
+font/wavehaus/Wavehaus-95SemiBold.otf
+font/wavehaus/Wavehaus-128Bold.otf
