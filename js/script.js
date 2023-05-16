@@ -1,0 +1,48 @@
+function stringTratament(){
+    let listaTransporte = document.getElementById("input_list").value.toLowerCase()
+    
+    let ida =0;
+    let volta =0;
+    let vespertino = 0;
+    let idaVoltaAbsoluto =0;
+    let idaVoltaVespertinoAbsoluto=0;
+
+    listaTratada= listaTransporte.replace(/[^\w\s]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
+    
+    for(let i=0; i<listaTratada.length; i++){
+        if(listaTratada[i]=="ida" || listaTratada[i] =="idaa" || listaTratada[i] == "vai"){
+            ida++;
+        }
+        else if(listaTratada[i]=="volta"){
+            volta++;document.getElementById("value_ida").innerHTML = volta
+        }
+        else if(listaTratada[i]=="vespertino" || listaTratada[i] =="vesp"){
+            vespertino++;
+        }
+        if(listaTratada[i]=="volta" && (listaTratada[i-2]=="ida" || listaTratada[i-1]=="ida" || listaTratada[i-2]=="vai" || listaTratada[i-1]=="vai") ){
+            if((i+1)<=listaTratada.length && (listaTratada[i+1]=="vespertino" || listaTratada[i+1]=="vesp")){
+                idaVoltaVespertinoAbsoluto ++;
+            }
+            else if((i+1)<=listaTratada.length && (listaTratada[i+1]!="vespertino" || listaTratada[i+1]!="vesp")){
+                idaVoltaAbsoluto ++;
+            }
+        }
+        
+    }
+    volta -= vespertino;
+    document.getElementById("value_ida").innerHTML = ida;
+    document.getElementById("value_volta").innerHTML = volta;
+    document.getElementById("value_vespertino").innerHTML = vespertino;
+    //alert("Idas: "+ ida + "\nVolta: " + volta + "\nVolta Vespertino: "+vespertino);
+
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+    let conteudo = "\nIdas: "+ document.getElementById("value_ida").innerText + "\n"+"Volta: " + document.getElementById("value_volta").innerText + "\n"+ "Volta Vespertino: "+document.getElementById("value_ida").innerText;
+    conteudo = window.encodeURIComponent(conteudo);
+    document.getElementById("share_information").href = "https://api.whatsapp.com/send?text=" +"Dados da lista: "+ conteudo;
+}, false);
+
+function development_function(){
+    alert("Função ainda em desenvolvimento!\nBreve em funcionamento :D")
+}
