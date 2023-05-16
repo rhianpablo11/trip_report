@@ -33,16 +33,19 @@ function stringTratament(){
     document.getElementById("value_ida").innerHTML = ida;
     document.getElementById("value_volta").innerHTML = volta;
     document.getElementById("value_vespertino").innerHTML = vespertino;
+    let conteudo = "\nIdas: "+ ida + "\n"+"Volta: " + volta + "\n"+ "Volta Vespertino: "+ vespertino;
+    conteudo = window.encodeURIComponent(conteudo);
+    document.getElementById("share_information").href = "https://api.whatsapp.com/send?text=" +"Dados da lista: "+ conteudo;
     //alert("Idas: "+ ida + "\nVolta: " + volta + "\nVolta Vespertino: "+vespertino);
 
 }
-
-document.addEventListener("DOMContentLoaded", function(){
+/*
+document.addEventListener("DOMContentLoaded", function compartilhar(){
     let conteudo = "\nIdas: "+ document.getElementById("value_ida").innerText + "\n"+"Volta: " + document.getElementById("value_volta").innerText + "\n"+ "Volta Vespertino: "+document.getElementById("value_ida").innerText;
     conteudo = window.encodeURIComponent(conteudo);
     document.getElementById("share_information").href = "https://api.whatsapp.com/send?text=" +"Dados da lista: "+ conteudo;
 }, false);
-
+*/
 function development_function(){
     alert("Função ainda em desenvolvimento!\nBreve em funcionamento :D")
 }
