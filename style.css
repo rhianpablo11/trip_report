@@ -113,7 +113,7 @@ bloco da tela inicial do site acima
     padding: 20px 30px 20px 10px;
     
     border-radius: 25px;
-    background: #e0e0e0;
+    background: #fffefe;
     box-shadow:  17px 17px 45px #8f8f8f,
                 -17px -17px 45px #ffffff;
 }
@@ -159,7 +159,7 @@ bloco da tela inicial do site acima
     padding:15px;
     margin: auto;
     border: none;
-    background: #e0e0e0;
+    background: #ffffff;
     box-shadow:  9px 9px 18px #a8a8a8,
                 -9px -9px 18px #ffffff;
     -webkit-transition: 0.2s;
