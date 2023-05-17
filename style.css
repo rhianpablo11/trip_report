@@ -9,7 +9,10 @@ body{
     width: 100%;
     margin: 0;
     padding: 0;
+    position: relative;
+    height: 100%;
 }
+
 
 a{
     text-decoration-line: none;
@@ -241,13 +244,15 @@ bloco da tela inicial do site acima
     background-color: #04aa57;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     text-align: center;
     padding: 15px 0px 10px 0px;
     margin: 0px;
     font-family: wavehaus_light, Arial, Helvetica, sans-serif;
     font-weight: 650;
+
+
 }
 
 #rodape a{
