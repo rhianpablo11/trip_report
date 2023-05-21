@@ -6,7 +6,7 @@ function stringTratament(){
     let vespertino = 0;
     let idaVoltaAbsoluto =0;
     let idaVoltaVespertinoAbsoluto=0;
-
+    
     listaTratada= listaTransporte.replace(/[^\w\s]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
     
     for(let i=0; i<listaTratada.length; i++){
@@ -39,13 +39,50 @@ function stringTratament(){
     //alert("Idas: "+ ida + "\nVolta: " + volta + "\nVolta Vespertino: "+vespertino);
 
 }
-/*
-document.addEventListener("DOMContentLoaded", function compartilhar(){
-    let conteudo = "\nIdas: "+ document.getElementById("value_ida").innerText + "\n"+"Volta: " + document.getElementById("value_volta").innerText + "\n"+ "Volta Vespertino: "+document.getElementById("value_ida").innerText;
-    conteudo = window.encodeURIComponent(conteudo);
-    document.getElementById("share_information").href = "https://api.whatsapp.com/send?text=" +"Dados da lista: "+ conteudo;
-}, false);
-*/
+
 function development_function(){
     alert("Função ainda em desenvolvimento!\nBreve em funcionamento :D")
+}
+
+function edit_list_matutino(){
+    let lista = document.getElementById("input_list").value.toLowerCase();
+    lista = lista.replace("   ", "\n").split("\n");
+    
+    //console.log(lista)
+    let listaFinal = "";
+    listaFinal += lista[0];
+    for(let i=1; i<lista.length; i ++){
+        if((lista[i].includes("volta") && !lista[i].includes("vespertino")) || lista[i].includes("uefs") || lista[i].includes("unex") || lista[i].includes("unef") || lista[i].includes("ufrb") || lista[i].includes("unifan") || lista[i].includes("acesso") || lista[i].includes("unifacs")){
+            console.log("ola");
+            listaFinal += "\n"+lista[i]
+        }
+        //console.log();
+    }
+    var textArea = document.createElement("textarea")
+    textArea.value = listaFinal;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy")
+    document.body.removeChild(textArea);
+    console.log(listaFinal)
+}
+
+function edit_list_vespertino(){
+    let lista = document.getElementById("input_list").value.toLowerCase();
+    lista = lista.split("\n");
+    let listaFinal = "";
+    listaFinal += lista[0];
+    for(let i=1; i<lista.length; i ++){
+        if((lista[i].includes("volta") && lista[i].includes("vespertino")) || lista[i].includes("uefs") || lista[i].includes("unex") || lista[i].includes("unef") || lista[i].includes("ufrb") || lista[i].includes("unifan") || lista[i].includes("acesso") || lista[i].includes("unifacs")){
+            console.log("ola");
+            listaFinal += "\n"+lista[i]
+        }
+    }
+    var textArea = document.createElement("textarea")
+    textArea.value = listaFinal;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy")
+    document.body.removeChild(textArea);
+    console.log(listaFinal)
 }
