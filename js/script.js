@@ -64,7 +64,8 @@ function edit_list_matutino(){
     textArea.select();
     document.execCommand("copy")
     document.body.removeChild(textArea);
-    console.log(listaFinal)
+    //console.log(listaFinal)
+    alert("Lista copiada com sucesso!")
 }
 
 function edit_list_vespertino(){
@@ -84,5 +85,5 @@ function edit_list_vespertino(){
     textArea.select();
     document.execCommand("copy")
     document.body.removeChild(textArea);
-    console.log(listaFinal)
+    alert("Lista copiada com sucesso!")
 }
