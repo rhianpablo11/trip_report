@@ -47,14 +47,26 @@ function development_function(){
 function edit_list_matutino(){
     let lista = document.getElementById("input_list").value.toLowerCase();
     lista = lista.replace("   ", "\n").split("\n");
-    
-    //console.log(lista)
+    let cont =0;
+    let aux;
     let listaFinal = "";
     listaFinal += lista[0];
     for(let i=1; i<lista.length; i ++){
-        if((lista[i].includes("volta") && !lista[i].includes("vespertino")) || lista[i].includes("uefs") || lista[i].includes("unex") || lista[i].includes("unef") || lista[i].includes("ufrb") || lista[i].includes("unifan") || lista[i].includes("acesso") || lista[i].includes("unifacs")){
-            console.log("ola");
-            listaFinal += "\n"+lista[i]
+        if(lista[i].includes("uefs") || lista[i].includes("unex") || lista[i].includes("unef") || lista[i].includes("ufrb") || lista[i].includes("unifan") || lista[i].includes("acesso") || lista[i].includes("unifacs") || lista[i].includes("pitagoras") || lista[i].includes("fan") || lista[i].includes("nais") || lista[i].includes("anhanguera") || lista[i].includes("unopar") || lista[i].includes("uniasselvi")){
+            listaFinal += "\n\n"+lista[i];
+            cont =0;
+        }
+        else if((lista[i].includes("volta") && !lista[i].includes("vespertino"))){
+            cont ++;
+            aux = lista[i]
+            if(!isNaN(aux[0])){
+                aux = cont + aux.substring(2, aux.length);
+            }
+            else{
+                aux = cont + " " + aux;
+            }
+            console.log(aux)
+            listaFinal += "\n"+aux
         }
         //console.log();
     }
@@ -68,16 +80,52 @@ function edit_list_matutino(){
     alert("Lista copiada com sucesso!")
 }
 
+
+/* Lista das faculdades que estão funcionando e cadastradas
+uefs - V
+unex - V
+unef - V
+ufrb - V
+unifan - V
+acesso - V
+unifacs - V
+pitagoras - V
+fan - V
+nais - V
+estacio - V
+anhanguera - V
+unopar - V
+uniasselvi - V
+*/
+
+
+/**
+ * 
+ */
 function edit_list_vespertino(){
     let lista = document.getElementById("input_list").value.toLowerCase();
-    lista = lista.split("\n");
+    lista = lista.replace("   ", "\n").split("\n");
     let listaFinal = "";
     listaFinal += lista[0];
+    let cont =0;
+    let aux;
     for(let i=1; i<lista.length; i ++){
-        if((lista[i].includes("volta") && lista[i].includes("vespertino")) || lista[i].includes("uefs") || lista[i].includes("unex") || lista[i].includes("unef") || lista[i].includes("ufrb") || lista[i].includes("unifan") || lista[i].includes("acesso") || lista[i].includes("unifacs")){
-            console.log("ola");
-            listaFinal += "\n"+lista[i]
+        if(lista[i].includes("uefs") || lista[i].includes("unex") || lista[i].includes("unef") || lista[i].includes("ufrb") || lista[i].includes("unifan") || lista[i].includes("acesso") || lista[i].includes("unifacs") || lista[i].includes("pitagoras") || lista[i].includes("fan") || lista[i].includes("nais") || lista[i].includes("anhanguera") || lista[i].includes("unopar") || lista[i].includes("uniasselvi")){
+            listaFinal += "\n\n"+lista[i];
+            cont =0;
         }
+        else if((lista[i].includes("volta") && lista[i].includes("vespertino"))){
+            cont ++;
+            aux = lista[i]
+            if(!isNaN(aux[0])){
+                aux = cont + aux.substring(2, aux.length);
+            }
+            else{
+                aux = cont + " " + aux;
+            }
+            listaFinal += "\n"+aux
+        }
+        
     }
     var textArea = document.createElement("textarea")
     textArea.value = listaFinal;
