@@ -50,6 +50,7 @@ function edit_list_matutino(){
     let cont =0;
     let aux;
     let listaFinal = "";
+    let conteudo;
     listaFinal += lista[0];
     for(let i=1; i<lista.length; i ++){
         if(lista[i].includes("uefs") || lista[i].includes("unex") || lista[i].includes("unef") || lista[i].includes("ufrb") || lista[i].includes("unifan") || lista[i].includes("acesso") || lista[i].includes("unifacs") || lista[i].includes("pitagoras") || lista[i].includes("fan") || lista[i].includes("nais") || lista[i].includes("anhanguera") || lista[i].includes("unopar") || lista[i].includes("uniasselvi")){
@@ -77,7 +78,12 @@ function edit_list_matutino(){
     document.execCommand("copy")
     document.body.removeChild(textArea);
     //console.log(listaFinal)
-    alert("Lista copiada com sucesso!")
+    conteudo = window.encodeURIComponent(listaFinal);
+    let url = "https://api.whatsapp.com/send?text= "+conteudo;
+    var win = window.open(url, '_blank');
+    win.focus();
+    
+    //alert("Lista copiada com sucesso!")
 }
 
 
@@ -105,7 +111,7 @@ uniasselvi - V
 function edit_list_vespertino(){
     let lista = document.getElementById("input_list").value.toLowerCase();
     lista = lista.replace("   ", "\n").split("\n");
-    let listaFinal = "";
+    let listaFinal = " ";
     listaFinal += lista[0];
     let cont =0;
     let aux;
@@ -133,5 +139,9 @@ function edit_list_vespertino(){
     textArea.select();
     document.execCommand("copy")
     document.body.removeChild(textArea);
-    alert("Lista copiada com sucesso!")
+    conteudo = window.encodeURIComponent(listaFinal);
+    let url = "https://api.whatsapp.com/send?text= "+conteudo;
+    var win = window.open(url, '_blank');
+    win.focus();
+    //alert("Lista copiada com sucesso!")
 }
