@@ -13,7 +13,7 @@ function stringTratament(){
         if(listaTratada[i]=="ida" || listaTratada[i] =="idaa" || listaTratada[i] == "vai"){
             ida++;
         }
-        else if(listaTratada[i]=="volta"){
+        else if(listaTratada[i]=="volta" || listaTratada[i] == "voltando" || listaTratada[i] == "volt"){
             volta++;document.getElementById("value_ida").innerHTML = volta
         }
         else if(listaTratada[i]=="vespertino" || listaTratada[i] =="vesp"){
@@ -45,19 +45,21 @@ function development_function(){
 }
 
 function edit_list_matutino(){
-    let lista = document.getElementById("input_list").value.toLowerCase();
+    let lista = document.getElementById("input_list").value;
     lista = lista.replace("   ", "\n").split("\n");
     let cont =0;
     let aux;
+    let aux2;
     let listaFinal = "";
     let conteudo;
     listaFinal += lista[0];
     for(let i=1; i<lista.length; i ++){
-        if(lista[i].includes("uefs") || lista[i].includes("unex") || lista[i].includes("unef") || lista[i].includes("ufrb") || lista[i].includes("unifan") || lista[i].includes("acesso") || lista[i].includes("unifacs") || lista[i].includes("pitagoras") || lista[i].includes("fan") || lista[i].includes("nais") || lista[i].includes("anhanguera") || lista[i].includes("unopar") || lista[i].includes("uniasselvi")){
-            listaFinal += "\n\n"+lista[i];
+        aux2 = lista[i].toLowerCase();
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi")){
+            listaFinal += "\n\n"+"*"+lista[i]+"*";
             cont =0;
         }
-        else if((lista[i].includes("volta") && !lista[i].includes("vespertino"))){
+        else if(((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (!aux2.includes("vespertino") || !aux2.includes("vesp")))){
             cont ++;
             aux = lista[i]
             if(!isNaN(aux[0])){
@@ -109,18 +111,19 @@ uniasselvi - V
  * 
  */
 function edit_list_vespertino(){
-    let lista = document.getElementById("input_list").value.toLowerCase();
+    let lista = document.getElementById("input_list").value;
     lista = lista.replace("   ", "\n").split("\n");
     let listaFinal = " ";
     listaFinal += lista[0];
     let cont =0;
     let aux;
     for(let i=1; i<lista.length; i ++){
-        if(lista[i].includes("uefs") || lista[i].includes("unex") || lista[i].includes("unef") || lista[i].includes("ufrb") || lista[i].includes("unifan") || lista[i].includes("acesso") || lista[i].includes("unifacs") || lista[i].includes("pitagoras") || lista[i].includes("fan") || lista[i].includes("nais") || lista[i].includes("anhanguera") || lista[i].includes("unopar") || lista[i].includes("uniasselvi")){
-            listaFinal += "\n\n"+lista[i];
+        aux2 = lista[i].toLowerCase();
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi")){
+            listaFinal += "\n\n"+"*"+lista[i]+"*";
             cont =0;
         }
-        else if((lista[i].includes("volta") && lista[i].includes("vespertino"))){
+        else if(((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (aux2.includes("vespertino") || aux2.includes("vesp")))){
             cont ++;
             aux = lista[i]
             if(!isNaN(aux[0])){
@@ -129,6 +132,7 @@ function edit_list_vespertino(){
             else{
                 aux = cont + " " + aux;
             }
+            
             listaFinal += "\n"+aux
         }
         
