@@ -56,7 +56,7 @@ function edit_list_matutino(){
     for(let i=1; i<lista.length; i ++){
         aux2 = lista[i].toLowerCase();
         if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi")){
-            listaFinal += "\n\n"+"*"+lista[i]+"*";
+            listaFinal += "\n\n"+lista[i];
             cont =0;
         }
         else if(((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (!aux2.includes("vespertino") || !aux2.includes("vesp")))){
@@ -117,10 +117,11 @@ function edit_list_vespertino(){
     listaFinal += lista[0];
     let cont =0;
     let aux;
+    let aux2;
     for(let i=1; i<lista.length; i ++){
         aux2 = lista[i].toLowerCase();
         if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi")){
-            listaFinal += "\n\n"+"*"+lista[i]+"*";
+            listaFinal += "\n\n"+lista[i];
             cont =0;
         }
         else if(((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (aux2.includes("vespertino") || aux2.includes("vesp")))){
