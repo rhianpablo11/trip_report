@@ -12,49 +12,6 @@
         <script src="https://kit.fontawesome.com/7dac0a7844.js" crossorigin="anonymous"></script>
         <script src="js/script.js"></script>
     </head>
-   <!--
-   <script>
-        
-        function stringTratament(){
-            let listaTransporte = String(prompt("Digite a lista do dia: ")).toLowerCase()
-            
-            let ida =0;
-            let volta =0;
-            let vespertino = 0;
-            let idaVoltaAbsoluto =0;
-            let idaVoltaVespertinoAbsoluto=0;
- 
-            listaTratada= listaTransporte.replace(/[^\w\s]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
-            
-            for(let i=0; i<listaTratada.length; i++){
-                if(listaTratada[i]=="ida" || listaTratada[i] =="idaa" || listaTratada[i] == "vai"){
-                    ida++;
-                }
-                else if(listaTratada[i]=="volta"){
-                    volta++;
-                }
-                else if(listaTratada[i]=="vespertino" || listaTratada[i] =="vesp"){
-                    vespertino++;
-                }
-                if(listaTratada[i]=="volta" && (listaTratada[i-2]=="ida" || listaTratada[i-1]=="ida" || listaTratada[i-2]=="vai" || listaTratada[i-1]=="vai") ){
-                    if((i+1)<=listaTratada.length && (listaTratada[i+1]=="vespertino" || listaTratada[i+1]=="vesp")){
-                        idaVoltaVespertinoAbsoluto ++;
-                    }
-                    else if((i+1)<=listaTratada.length && (listaTratada[i+1]!="vespertino" || listaTratada[i+1]!="vesp")){
-                        idaVoltaAbsoluto ++;
-                    }
-                }
-                
-            }
-            volta -= vespertino;
-            
-            alert("Idas: "+ ida + "\nVolta: " + volta + "\nVolta Vespertino: "+vespertino);
-            
-            return listaTransporte;
-        }
-        stringTratament();
-    </script>
-    -->
     <body >
         <nav class="navbar navbar-expand-md navbar_background">
             <div class="container-fluid navbar_background">
@@ -64,7 +21,7 @@
                     </a>
                 </h3>
                 <button id="botao_navbar" >
-                    <h3 style="padding: 0;margin: 0;">
+                    <h3 style="padding: 0;margin: 0;color: white;">
                         <i class="fa-solid fa-bars"></i>
                     </h3>
                 </button>
@@ -76,13 +33,13 @@
                     <div class="col-11">
                         <h4>Quantidade:</h4>
                         <p>
-                            Ida: <span id="value_ida">0</span>
+                            <span id="value_ida">Ida: 0</span>
                         </p>
                         <p>
-                            Volta matutino: <span id="value_volta">0</span>
+                            <span id="value_volta">Volta matutino: 0</span>
                         </p>
                         <p>
-                            Volta vespertino: <span id="value_vespertino">0</span>
+                            <span id="value_vespertino">Volta vespertino: 0</span>
                         </p> 
                     </div>
                     <div class="col-1" id="compartilhar">
@@ -100,7 +57,7 @@
                 </div>
                 <div class="fuction_buttons">
                     <button class="" id="detalhed_button" onclick="development_function()">
-                        Calculo completo
+                        Veículos
                     </button>
                     <button class="" id="simple_button" onclick="stringTratament()">
                         Calculo simples

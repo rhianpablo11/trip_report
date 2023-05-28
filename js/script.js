@@ -1,6 +1,6 @@
+
 function stringTratament(){
     let listaTransporte = document.getElementById("input_list").value.toLowerCase()
-    
     let ida =0;
     let volta =0;
     let vespertino = 0;
@@ -30,18 +30,37 @@ function stringTratament(){
         
     }
     volta -= vespertino;
-    document.getElementById("value_ida").innerHTML = ida;
-    document.getElementById("value_volta").innerHTML = volta;
-    document.getElementById("value_vespertino").innerHTML = vespertino;
+    document.getElementById("value_ida").innerHTML = "Ida: " + ida;
+    document.getElementById("value_volta").innerHTML = "Volta matutino: "+volta;
+    document.getElementById("value_vespertino").innerHTML = "Volta vespertino: "+vespertino;
     let conteudo = "\nIdas: "+ ida + "\n"+"Volta: " + volta + "\n"+ "Volta Vespertino: "+ vespertino;
     conteudo = window.encodeURIComponent(conteudo);
     document.getElementById("share_information").href = "https://api.whatsapp.com/send?text=" +"Dados da lista: "+ conteudo;
     //alert("Idas: "+ ida + "\nVolta: " + volta + "\nVolta Vespertino: "+vespertino);
-
+    return [ida, volta, vespertino];
 }
 
 function development_function(){
+    let qtd = [0,0,0];
+    qtd=  stringTratament();
+    let qtdIda = qtd[0]
+    let qtdVolta=qtd[1];
+    let qtdVespertino = qtd[2];
+    let idaOnibus=0;
+    let idaVan =0;
+    idaOnibus = parseInt(qtdIda/27);
+    
+    if(((qtdIda-(idaOnibus*27))>15)){
+        idaOnibus++;
+    }
+    else if(qtdIda-(idaOnibus*27)<=15){
+        idaVan++;
+    }
+    
     alert("Função ainda em desenvolvimento!\nBreve em funcionamento :D")
+    /*document.getElementById("value_ida").innerHTML = "05h: "+idaOnibus+" onibus 1 master";
+    document.getElementById("value_volta").innerHTML = "12h: 4 onibus 1 master";
+    document.getElementById("value_vespertino").innerHTML = "18h: 6 master";*/
 }
 
 function edit_list_matutino(){
@@ -55,7 +74,7 @@ function edit_list_matutino(){
     listaFinal += lista[0];
     for(let i=1; i<lista.length; i ++){
         aux2 = lista[i].toLowerCase();
-        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi")){
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
             listaFinal += "\n\n"+lista[i];
             cont =0;
         }
@@ -104,6 +123,7 @@ estacio - V
 anhanguera - V
 unopar - V
 uniasselvi - V
+fat - V
 */
 
 
@@ -120,7 +140,7 @@ function edit_list_vespertino(){
     let aux2;
     for(let i=1; i<lista.length; i ++){
         aux2 = lista[i].toLowerCase();
-        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi")){
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
             listaFinal += "\n\n"+lista[i];
             cont =0;
         }
@@ -150,3 +170,4 @@ function edit_list_vespertino(){
     win.focus();
     //alert("Lista copiada com sucesso!")
 }
+
