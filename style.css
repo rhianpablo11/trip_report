@@ -253,6 +253,12 @@ bloco da tela inicial do site acima
     margin-top: 5px;
 }
 
+.fuction_buttons #editList_ida{
+    width:95%;
+    
+    margin-top: 5px;
+}
+
 #rodape{
     background-color: #04aa57;
     display: flex;
