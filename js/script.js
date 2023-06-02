@@ -56,7 +56,7 @@ function amount_cars(quant_passageiros){
 
 function development_function(){
     let qtd = [0,0,0];
-    qtd=  stringTratament();
+    //qtd=  stringTratament();
     let qtdsIda= [0,0];
     let qtdsVolta = [0,0];
     let qtdsVespertino = [0,0];
@@ -83,7 +83,7 @@ function development_function(){
     qtdsVespertino = amount_cars(qtdVespertino);
     vespertinoOnibus = qtdsVespertino[0];
     vespertinoVan = qtdsVespertino[1];
-    
+    /*
     if((idaOnibus*27 + idaVan*15)>(voltaOnibus*27+voltaVan*15)){
         document.getElementById("value_volta").innerHTML = "12h: "+idaOnibus+" onibus "+idaVan+" master";
     }
@@ -93,11 +93,12 @@ function development_function(){
 
     
     alert("Função ainda em desenvolvimento!\nBreve em funcionamento :D")
-    /*
+    
     document.getElementById("value_ida").innerHTML = "05h: "+idaOnibus+" onibus "+idaVan+" master";
     //document.getElementById("value_volta").innerHTML = "12h: "+voltaOnibus+" onibus "+voltaVan+" master";
     document.getElementById("value_vespertino").innerHTML = "18h: "+vespertinoOnibus+" onibus "+vespertinoVan+" master";
     */
+    alert("Função ainda em desenvolvimento!\nBreve em funcionamento :D")
 }
 
 function edit_list_matutino(){
