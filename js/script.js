@@ -292,16 +292,16 @@ function sendList(){
     } else if(nameToday =="wed"){
         nameTodayPt = "Quinta";
     } else if(nameToday == "thu"){
-        nameTodayPt= "Sexta;"
+        nameTodayPt= "Sexta";
     } else if(nameToday == "fri"){
         nameTodayPt = "Sabado";
     } else if(nameToday == "sat"){
-        nameTodayPt = "Domingo"
+        nameTodayPt = "Domingo";
     } else if(nameToday == "sun"){
         nameTodayPt = "Segunda";
     }
 
-     let  lista_format = "Lista - "+ nameTodayPt+" - Feira "+day+"/"+month+"\n\n*UEFS*\n1. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*NPJ - UNEX*\n1. \n\n*UNIFACS* *(santa mônica)*\n1. \n\n*UFRB*\n1. \n\n*ACESSO*\n1. \n\n*FAN*\n1. \n\n*UNEF*\n1. \n\n*PITAGORAS*\n1. \n\n*ESTACIO* *(getúlio)*\n1. \n\n";
+     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*NPJ - UNEX*\n1. \n\n*UNIFACS* *(santa mônica)*\n1. \n\n*UFRB*\n1. \n\n*ACESSO*\n1. \n\n*FAN*\n1. \n\n*UNEF*\n1. \n\n*PITAGORAS*\n1. \n\n*ESTACIO* *(getúlio)*\n1. ";
      conteudo = window.encodeURIComponent(lista_format);
      let url = "https://api.whatsapp.com/send?text= "+conteudo;
      var win = window.open(url, '_blank');
