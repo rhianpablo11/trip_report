@@ -275,7 +275,7 @@ function edit_list_ida(){
 
 function sendList(){
     const currentDate = new Date;
-    let day = currentDate.getDate();
+    let day = currentDate.getDate()+1;
     let month = currentDate.getMonth() +1;
     let nameToday = currentDate.toUTCString().substring(0, 3).toLowerCase();
     if(day<10){
@@ -286,22 +286,25 @@ function sendList(){
     }
     let nameTodayPt = "";
     if(nameToday.toLowerCase() == "mon"){
-        nameTodayPt = "Segunda";
-    } else if(nameToday == "tue"){
         nameTodayPt ="Terça";
-    } else if(nameToday =="wed"){
+    } else if(nameToday == "tue"){
         nameTodayPt = "Quarta";
-    } else if(nameToday == "thu"){
+    } else if(nameToday =="wed"){
         nameTodayPt = "Quinta";
-    } else if(nameToday == "fri"){
+    } else if(nameToday == "thu"){
         nameTodayPt= "Sexta;"
-    } else if(nameToday == "sat"){
+    } else if(nameToday == "fri"){
         nameTodayPt = "Sabado";
-    } else if(nameToday == "sun"){
+    } else if(nameToday == "sat"){
         nameTodayPt = "Domingo"
+    } else if(nameToday == "sun"){
+        nameTodayPt = "Segunda";
     }
 
      let  lista_format = "Lista - "+ nameTodayPt+" - Feira "+day+"/"+month+"\n\n*UEFS*\n1. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*NPJ - UNEX*\n1. \n\n*UNIFACS* *(santa mônica)*\n1. \n\n*UFRB*\n1. \n\n*ACESSO*\n1. \n\n*FAN*\n1. \n\n*UNEF*\n1. \n\n*PITAGORAS*\n1. \n\n*ESTACIO* *(getúlio)*\n1. \n\n";
-
-    console.log(lista_format);
+     conteudo = window.encodeURIComponent(lista_format);
+     let url = "https://api.whatsapp.com/send?text= "+conteudo;
+     var win = window.open(url, '_blank');
+     win.focus();
+    
 }
