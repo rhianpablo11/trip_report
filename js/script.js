@@ -6,9 +6,17 @@ function stringTratament(){
     let vespertino = 0;
     let idaVoltaAbsoluto =0;
     let idaVoltaVespertinoAbsoluto=0;
-    
     listaTratada= listaTransporte.replace(/[^\w\s]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
     
+    const currentDate = new Date;
+    console.log(currentDate.getDate())
+    console.log(currentDate.getMonth())
+    console.log(currentDate.toUTCString())
+    console.log(currentDate.toUTCString().substring(0, 3))
+
+
+
+
     for(let i=0; i<listaTratada.length; i++){
         if(listaTratada[i]=="ida" || listaTratada[i] =="idaa" || listaTratada[i] == "vai"){
             ida++;
@@ -69,6 +77,7 @@ function development_function(){
     let voltaVan =0;
     let vespertinoOnibus =0;
     let vespertinoVan =0;
+    
     /*PARTE DE QUANTOS CARROS VÃO DE MANHA*/
     qtdsIda = amount_cars(qtdIda);
     idaOnibus = qtdsIda[0];
@@ -261,4 +270,38 @@ function edit_list_ida(){
     win.focus();
     
     //alert("Lista copiada com sucesso!")
+}
+
+
+function sendList(){
+    const currentDate = new Date;
+    let day = currentDate.getDate();
+    let month = currentDate.getMonth() +1;
+    let nameToday = currentDate.toUTCString().substring(0, 3).toLowerCase();
+    if(day<10){
+        day= "0"+day;
+    }
+    if(month<10){
+        month="0"+month;
+    }
+    let nameTodayPt = "";
+    if(nameToday.toLowerCase() == "mon"){
+        nameTodayPt = "Segunda";
+    } else if(nameToday == "tue"){
+        nameTodayPt ="Terça";
+    } else if(nameToday =="wed"){
+        nameTodayPt = "Quarta";
+    } else if(nameToday == "thu"){
+        nameTodayPt = "Quinta";
+    } else if(nameToday == "fri"){
+        nameTodayPt= "Sexta;"
+    } else if(nameToday == "sat"){
+        nameTodayPt = "Sabado";
+    } else if(nameToday == "sun"){
+        nameTodayPt = "Domingo"
+    }
+
+     let  lista_format = "Lista - "+ nameTodayPt+" - Feira "+day+"/"+month+"\n\n*UEFS*\n1. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*NPJ - UNEX*\n1. \n\n*UNIFACS* *(santa mônica)*\n1. \n\n*UFRB*\n1. \n\n*ACESSO*\n1. \n\n*FAN*\n1. \n\n*UNEF*\n1. \n\n*PITAGORAS*\n1. \n\n*ESTACIO* *(getúlio)*\n1. \n\n";
+
+    console.log(lista_format);
 }
