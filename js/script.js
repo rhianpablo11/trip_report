@@ -1,3 +1,7 @@
+function development_function(){
+    alert("Função ainda em desenvolvimento!\nBreve em funcionamento :D")
+}
+
 
 function stringTratament(){
     let listaTransporte = document.getElementById("input_list").value.toLowerCase()
@@ -9,10 +13,7 @@ function stringTratament(){
     listaTratada= listaTransporte.replace(/[^\w\s]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
     
     const currentDate = new Date;
-    console.log(currentDate.getDate())
-    console.log(currentDate.getMonth())
-    console.log(currentDate.toUTCString())
-    console.log(currentDate.toUTCString().substring(0, 3))
+
 
 
 
@@ -62,52 +63,73 @@ function amount_cars(quant_passageiros){
     return [onibus, van];
 }
 
-function development_function(){
-    let qtd = [0,0,0];
-    //qtd=  stringTratament();
-    let qtdsIda= [0,0];
-    let qtdsVolta = [0,0];
-    let qtdsVespertino = [0,0];
-    let qtdIda = qtd[0]
-    let qtdVolta=qtd[1];
-    let qtdVespertino = qtd[2];
-    let idaOnibus=0;
-    let idaVan =0;
-    let voltaOnibus = 0;
-    let voltaVan =0;
-    let vespertinoOnibus =0;
-    let vespertinoVan =0;
-    
-    /*PARTE DE QUANTOS CARROS VÃO DE MANHA*/
-    qtdsIda = amount_cars(qtdIda);
-    idaOnibus = qtdsIda[0];
-    idaVan = qtdsIda[1];
+function how_many_cars(){
+    let password = prompt("Função em desenvolvimento, digite a palavra passe para acesso:")
+    if(password == "testRP"){
+        let qtd = [0,0,0];
+        qtd=  stringTratament();
+        let qtdsIda= [0,0];
+        let qtdsVolta = [0,0];
+        let qtdsVespertino = [0,0];
+        let qtdIda = qtd[0]
+        let qtdVolta=qtd[1];
+        let qtdVespertino = qtd[2];
+        let idaOnibus=0;
+        let idaVan =0;
+        let voltaOnibus = 0;
+        let voltaVan =0;
+        let vespertinoOnibus =0;
+        let vespertinoVan =0;
+        
+        /*PARTE DE QUANTOS CARROS VÃO DE MANHA*/
+        qtdsIda = amount_cars(qtdIda);
+        idaOnibus = qtdsIda[0];
+        idaVan = qtdsIda[1];
 
-    /*PARTE DE QUANTOS CARROS VOLTAM MEIO DIA */
-    qtdsVolta = amount_cars(qtdVolta);
-    voltaOnibus = qtdsVolta[0];
-    voltaVan = qtdsVolta[1];
-    
-    /*PARTE DE QUANTOS CARROS VOLTAM VESPERTINO */
-    qtdsVespertino = amount_cars(qtdVespertino);
-    vespertinoOnibus = qtdsVespertino[0];
-    vespertinoVan = qtdsVespertino[1];
-    /*
-    if((idaOnibus*27 + idaVan*15)>(voltaOnibus*27+voltaVan*15)){
-        document.getElementById("value_volta").innerHTML = "12h: "+idaOnibus+" onibus "+idaVan+" master";
-    }
-    else if((idaOnibus == 1 && idaVan==0) || (idaVan == 1 && idaOnibus==0)){
-        document.getElementById("value_volta").innerHTML = "12h: "+voltaOnibus+" onibus "+voltaVan+" master";
-    }
+        /*PARTE DE QUANTOS CARROS VOLTAM MEIO DIA */
+        qtdsVolta = amount_cars(qtdVolta);
+        voltaOnibus = qtdsVolta[0];
+        voltaVan = qtdsVolta[1];
+        
+        /*PARTE DE QUANTOS CARROS VOLTAM VESPERTINO */
+        qtdsVespertino = amount_cars(qtdVespertino);
+        vespertinoOnibus = qtdsVespertino[0];
+        vespertinoVan = qtdsVespertino[1];
 
+
+        // if((vespertinoOnibus<=1 || vespertinoVan==1) ){
+        //     document.getElementById("value_vespertino").innerHTML = "18h: "+vespertinoOnibus+" onibus "+vespertinoVan+" master";
+        // } 
+        console.log(idaOnibus)
+        console.log(idaVan)
+        console.log(voltaOnibus)
+        console.log(voltaVan)
+        console.log(vespertinoOnibus)
+        console.log(vespertinoVan   )
+        if((idaOnibus*27 + idaVan*15)>(voltaOnibus*27+voltaVan*15)){
+            document.getElementById("value_volta").innerHTML = "12h: "+idaOnibus+" onibus "+idaVan+" master";
+        }
+        else if((idaOnibus == 1 && idaVan==0) || (idaVan == 1 && idaOnibus==1)){
+            document.getElementById("value_volta").innerHTML = "12h: "+voltaOnibus+" onibus "+voltaVan+" master";
+        } else{
+            document.getElementById("value_volta").innerHTML = "12h: "+voltaOnibus+" onibus "+voltaVan+" master";
+        }
+        if((idaOnibus >=1 && idaVan>=1) && (voltaOnibus>idaOnibus) ){
+            document.getElementById("value_ida").innerHTML = "05h: "+voltaOnibus+" onibus "+voltaVan+" master";
+        } else {
+            document.getElementById("value_ida").innerHTML = "05h: "+idaOnibus+" onibus "+idaVan+" master";
+        }
+        
+        //alert("Função ainda em desenvolvimento!\nBreve em funcionamento :D")
+        
+        
+        //document.getElementById("value_volta").innerHTML = "12h: "+voltaOnibus+" onibus "+voltaVan+" master";
+        document.getElementById("value_vespertino").innerHTML = "18h: "+vespertinoOnibus+" onibus "+vespertinoVan+" master";
     
-    alert("Função ainda em desenvolvimento!\nBreve em funcionamento :D")
-    
-    document.getElementById("value_ida").innerHTML = "05h: "+idaOnibus+" onibus "+idaVan+" master";
-    //document.getElementById("value_volta").innerHTML = "12h: "+voltaOnibus+" onibus "+voltaVan+" master";
-    document.getElementById("value_vespertino").innerHTML = "18h: "+vespertinoOnibus+" onibus "+vespertinoVan+" master";
-    */
-    alert("Função ainda em desenvolvimento!\nBreve em funcionamento :D")
+        //alert("Função ainda em desenvolvimento!\nBreve em funcionamento :D")
+    } else{
+        alert("palavra-chave incorreta...Boa tentativa ;)");
+    }
 }
 
 function edit_list_matutino(){
@@ -147,7 +169,7 @@ function edit_list_matutino(){
     document.body.removeChild(textArea);
     //console.log(listaFinal)
     conteudo = window.encodeURIComponent(listaFinal);
-    let url = "https://api.whatsapp.com/send?text= "+conteudo;
+    let url = "https://api.whatsapp.com/send?text="+conteudo;
     var win = window.open(url, '_blank');
     win.focus();
     
@@ -180,7 +202,7 @@ fat - V
 function edit_list_vespertino(){
     let lista = document.getElementById("input_list").value;
     lista = lista.replace("   ", "\n").split("\n");
-    
+    lista[lista.length] = " "
     let listaFinal = " ";
     listaFinal += lista[0];
     let cont =0;
@@ -188,9 +210,14 @@ function edit_list_vespertino(){
     let aux2;
     for(let i=1; i<lista.length; i ++){
         aux2 = lista[i].toLowerCase();
+
         if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
-            listaFinal += "\n\n"+lista[i];
-            cont =0;
+
+                listaFinal += "\n\n"+lista[i];
+                cont =0;
+            
+                
+            
         }
         else if(((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (aux2.includes("vespertino") || aux2.includes("vesp")))){
             cont ++;
@@ -214,7 +241,7 @@ function edit_list_vespertino(){
     document.execCommand("copy")
     document.body.removeChild(textArea);
     conteudo = window.encodeURIComponent(listaFinal);
-    let url = "https://api.whatsapp.com/send?text= "+conteudo;
+    let url = "https://api.whatsapp.com/send?text="+conteudo;
     var win = window.open(url, '_blank');
     win.focus();
     //alert("Lista copiada com sucesso!")
@@ -265,7 +292,7 @@ function edit_list_ida(){
     document.body.removeChild(textArea);
     //console.log(listaFinal)
     conteudo = window.encodeURIComponent(listaFinal);
-    let url = "https://api.whatsapp.com/send?text= "+conteudo;
+    let url = "https://api.whatsapp.com/send?text="+conteudo;
     var win = window.open(url, '_blank');
     win.focus();
     
@@ -303,8 +330,15 @@ function sendList(){
 
      let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*NPJ - UNEX*\n1. \n\n*UNIFACS* *(santa mônica)*\n1. \n\n*UFRB*\n1. \n\n*ACESSO*\n1. \n\n*FAN*\n1. \n\n*UNEF*\n1. \n\n*PITAGORAS*\n1. \n\n*ESTACIO* *(getúlio)*\n1. ";
      conteudo = window.encodeURIComponent(lista_format);
-     let url = "https://api.whatsapp.com/send?text= "+conteudo;
+     let url = "https://api.whatsapp.com/send?text="+conteudo;
      var win = window.open(url, '_blank');
      win.focus();
     
+}
+
+function errorReport(){
+
+    let url = "https://wa.me/5575992658169?text=Erro encontrado em: ";
+     var win = window.open(url, '_blank');
+     win.focus();
 }

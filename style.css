@@ -82,9 +82,9 @@ bloco da tela inicial do site acima
 }
 
 
-.navbar_background{
+nav.navbar_background{
     background-color: #04aa57;
-    padding: 9px 0px 2px 0px;
+    padding: 15px 0px 10px 0px;
     width: 100%;
     font-family: Helvetica,'Arial Narrow Bold', sans-serif;
 }
@@ -100,8 +100,74 @@ bloco da tela inicial do site acima
     background: none;
     border: none;
 }
+#botao_navbar.dropdown-toggle{
+    background: none;
+    border: none;
+    font-size: 0;
+}
+
 #botao_navbar a:hover{
     color: white;
+}
+
+#div_options #botao_options{
+    display: flex;
+    position:fixed;
+    left: 80%;
+    bottom: 5%;
+    color:#04aa57;
+}
+
+#botao_options.dropdown-toggle :hover{
+    color: #046c38;
+}
+
+
+
+#botao_options.dropdown-toggle{
+    background: none;
+    border: none;
+    font-size: 0;
+}
+
+
+button.dropdown-item{
+    color:white;
+    padding: 10px 10px 10px 10px;
+    margin: 7px;
+    background: none;
+    border-style: solid;
+    border-radius: 18px;
+    border-color: #046c38;
+    background-color: #04aa57;
+    
+}
+button.dropdown-item:hover{
+    color: white;
+    transform: scale(1.03);
+    background-color: #046c38;
+}
+
+
+
+ul.dropdown-menu{
+    background:rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+    padding: 7px 15px 5px 1px;
+    z-index: 0;
+    border: none;
+    border-radius: 20px;
+    margin-right: 5px;
+    
+}
+
+
+.list_buttons_dropdown{
+    font-family: wavehaus_semibold;
+    font-size: 1em;
+    font-weight: 400;
+    border-style: dashed;
+    color:white;
 }
 
 #bloco_resultado{
@@ -150,6 +216,18 @@ bloco da tela inicial do site acima
     
 }
 
+#input_block p{
+    padding: 10px;
+    text-align: justify;
+    font-family: Verdana,Helvetica, sans-serif;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.697);
+}
+#input_block p b{
+    text-align: center;
+    justify-content: center;
+    font-weight: 600;
+}
 #input_list{
     border-radius: 18px;
     display: flex;
@@ -170,8 +248,6 @@ bloco da tela inicial do site acima
 #input_list:focus{
     border: solid #04aa57;
     outline: none;
-
-    
 }
 
 #input_list::placeholder{
@@ -195,7 +271,7 @@ bloco da tela inicial do site acima
     border: none;
     background-color: #04aa57;
     padding: 10px 20px;
-    margin: 15px 20px 0px 15px;
+    margin: 17px 0px 0px 0px;
     color:white;
     font-style: bold;
     font-size: 18px;
@@ -238,20 +314,22 @@ bloco da tela inicial do site acima
 }
 
 .fuction_buttons #simple_button{
-    width: 50%;
-    margin-left: 4px;
+    width: 45%;
+    text-align: center;
+    justify-items: center;
+    padding: 10px;
+    margin-right: 10px;
 }
 
 .fuction_buttons #editList_matutino{
-    width: 50%;
-    margin-left: 4px;
-    margin-top: 5px;
+    width: 30%;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .fuction_buttons #editList_vespertino{
-    width: 50%;
-    margin-right: 4px;
-    margin-top: 5px;
+    width: 30%;
+    margin-left: 10px;
 }
 
 .fuction_buttons #editList_ida{
