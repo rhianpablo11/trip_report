@@ -171,7 +171,7 @@ ul.dropdown-menu{
 }
 
 #bloco_resultado{
-    padding: 20px 40px;
+    padding: 20px 20px;
     margin: auto;
     
 }
@@ -314,7 +314,7 @@ ul.dropdown-menu{
 }
 
 .fuction_buttons #simple_button{
-    width: 45%;
+    width: 40%;
     text-align: center;
     justify-items: center;
     padding: 10px;
