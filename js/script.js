@@ -4,6 +4,22 @@ function development_function(){
 
 
 function stringTratament(){
+    let quants = [0,0,0]
+    quants = quant_peoples();
+    let ida = quants[0];
+    let volta = quants[1];
+    let vespertino = quants[2];
+    document.getElementById("value_ida").innerHTML = "Ida: " + ida;
+    document.getElementById("value_volta").innerHTML = "Volta matutino: "+volta;
+    document.getElementById("value_vespertino").innerHTML = "Volta vespertino: "+vespertino;
+    let conteudo = "\nIdas: "+ ida + "\n"+"Volta: " + volta + "\n"+ "Volta Vespertino: "+ vespertino;
+    conteudo = window.encodeURIComponent(conteudo);
+    document.getElementById("share_information").href = "https://api.whatsapp.com/send?text=" +"Dados da lista: "+ conteudo;
+    //alert("Idas: "+ ida + "\nVolta: " + volta + "\nVolta Vespertino: "+vespertino);
+    
+}
+
+function quant_peoples(){
     let listaTransporte = document.getElementById("input_list").value.toLowerCase()
     let ida =0;
     let volta =0;
@@ -12,12 +28,6 @@ function stringTratament(){
     let idaVoltaVespertinoAbsoluto=0;
     listaTratada= listaTransporte.replace(/[^\w\s]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
     
-    const currentDate = new Date;
-
-
-
-
-
     for(let i=0; i<listaTratada.length; i++){
         if(listaTratada[i]=="ida" || listaTratada[i] =="idaa" || listaTratada[i] == "vai"){
             ida++;
@@ -39,15 +49,9 @@ function stringTratament(){
         
     }
     volta -= vespertino;
-    document.getElementById("value_ida").innerHTML = "Ida: " + ida;
-    document.getElementById("value_volta").innerHTML = "Volta matutino: "+volta;
-    document.getElementById("value_vespertino").innerHTML = "Volta vespertino: "+vespertino;
-    let conteudo = "\nIdas: "+ ida + "\n"+"Volta: " + volta + "\n"+ "Volta Vespertino: "+ vespertino;
-    conteudo = window.encodeURIComponent(conteudo);
-    document.getElementById("share_information").href = "https://api.whatsapp.com/send?text=" +"Dados da lista: "+ conteudo;
-    //alert("Idas: "+ ida + "\nVolta: " + volta + "\nVolta Vespertino: "+vespertino);
     return [ida, volta, vespertino];
 }
+
 
 function amount_cars(quant_passageiros){
     let onibus=0;
@@ -67,7 +71,7 @@ function how_many_cars(){
     let password = prompt("Função em desenvolvimento, digite a palavra passe para acesso:")
     if(password == "testRP"){
         let qtd = [0,0,0];
-        qtd=  stringTratament();
+        qtd=  quant_peoples();
         let qtdsIda= [0,0];
         let qtdsVolta = [0,0];
         let qtdsVespertino = [0,0];
