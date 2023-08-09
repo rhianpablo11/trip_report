@@ -308,7 +308,7 @@ function sendList(){
     const currentDate = new Date;
     let day = currentDate.getDate()+1;
     let month = currentDate.getMonth() +1;
-    let nameToday = currentDate.toUTCString().substring(0, 3).toLowerCase();
+    let nameToday = currentDate.toString().substring(0, 3).toLowerCase();
     if(day<10){
         day= "0"+day;
     }
@@ -345,4 +345,44 @@ function errorReport(){
     let url = "https://wa.me/5575992658169?text=Erro encontrado em: ";
      var win = window.open(url, '_blank');
      win.focus();
+}
+
+function sendListLikeBoss(){
+    const currentDate = new Date;
+    let day = currentDate.getDate()+1;
+    let month = currentDate.getMonth() +1;
+    let nameToday = currentDate.toString().substring(0, 3).toLowerCase();
+    console.log(typeof currentDate.toString())
+    console.log(day)
+    console.log(month)
+    console.log(nameToday)
+    if(day<10){
+        day= "0"+day;
+    }
+    if(month<10){
+        month="0"+month;
+    }
+    let nameTodayPt = "";
+    if(nameToday.toLowerCase() == "mon"){
+        nameTodayPt ="Terça";
+    } else if(nameToday == "tue"){
+        nameTodayPt = "Quarta";
+    } else if(nameToday =="wed"){
+        nameTodayPt = "Quinta";
+    } else if(nameToday == "thu"){
+        nameTodayPt= "Sexta";
+    } else if(nameToday == "fri"){
+        nameTodayPt = "Sabado";
+    } else if(nameToday == "sat"){
+        nameTodayPt = "Domingo";
+    } else if(nameToday == "sun"){
+        nameTodayPt = "Segunda";
+    }
+
+     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. Rhian(ida e volta vespertino)\n2. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*NPJ - UNEX*\n1. \n\n*UNIFACS* *(santa mônica)*\n1. \n\n*UFRB*\n1. \n\n*ACESSO*\n1. \n\n*FAN*\n1. \n\n*UNEF*\n1. \n\n*PITAGORAS*\n1. \n\n*ESTACIO* *(getúlio)*\n1. ";
+     conteudo = window.encodeURIComponent(lista_format);
+     let url = "https://api.whatsapp.com/send?text="+conteudo;
+     var win = window.open(url, '_blank');
+     win.focus();
+    
 }
