@@ -349,6 +349,7 @@ function errorReport(){
 
 function sendListLikeBoss(){
     const currentDate = new Date;
+    //erro nessa parte da data
     let day = currentDate.getDate()+1;
     let month = currentDate.getMonth() +1;
     let nameToday = currentDate.toString().substring(0, 3).toLowerCase();
@@ -379,10 +380,36 @@ function sendListLikeBoss(){
         nameTodayPt = "Segunda";
     }
 
-     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. Rhian(ida e volta vespertino)\n2. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*NPJ - UNEX*\n1. \n\n*UNIFACS* *(santa mônica)*\n1. \n\n*UFRB*\n1. \n\n*ACESSO*\n1. \n\n*FAN*\n1. \n\n*UNEF*\n1. \n\n*PITAGORAS*\n1. \n\n*ESTACIO* *(getúlio)*\n1. ";
+     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. Rhian(ida e volta vespertino)\n2. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*NPJ - UNEX*\n1. \n\n*UNIFACS* *(santa mônica)*\n1. \n\n*UFRB*\n1. \n\n*ACESSO*\n1. \n\n*FAN*\n1. \n\n*UNEF*\n1. \n\n";
      conteudo = window.encodeURIComponent(lista_format);
      let url = "https://api.whatsapp.com/send?text="+conteudo;
      var win = window.open(url, '_blank');
      win.focus();
     
 }
+
+/*
+
+MUDANÇA DE COR DE ACORDO COM O TEMA DO APARELHO
+
+const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Altera o tema
+function changeTheme(event) {
+    
+  if( event.matches ) {
+    // O tema é o dark
+    let aux = document.getElementById("Information_block");
+    aux.style.background = "#000000"
+  } else {
+    // O tema é o light
+    console.log("oi")
+  }
+}
+
+// Escuta a mudança de tema no sistema
+prefersColorScheme.addListener(changeTheme);
+
+// Altera o tema conforme o tema do usuário
+changeTheme(prefersColorScheme);
+*/
