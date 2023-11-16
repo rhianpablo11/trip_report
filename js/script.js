@@ -2,7 +2,7 @@ function development_function(){
     alert("Função ainda em desenvolvimento!\nBreve em funcionamento :D")
 }
 
-
+var listaTransporte = document.getElementById("input_list").value.toLowerCase()
 function stringTratament(){
     let quants = [0,0,0]
     quants = quant_peoples();
@@ -20,7 +20,7 @@ function stringTratament(){
 }
 
 function quant_peoples(){
-    let listaTransporte = document.getElementById("input_list").value.toLowerCase()
+    listaTransporte = document.getElementById("input_list").value.toLowerCase()
     let ida =0;
     let volta =0;
     let vespertino = 0;
@@ -137,6 +137,7 @@ function how_many_cars(){
 }
 
 function edit_list_matutino(){
+    listaMatutino()
     let lista = document.getElementById("input_list").value;
     lista = lista.replace("   ", "\n").split("\n");
     let cont =0;
@@ -176,7 +177,8 @@ function edit_list_matutino(){
     let url = "https://api.whatsapp.com/send?text="+conteudo;
     var win = window.open(url, '_blank');
     win.focus();
-    
+    sessionStorage.setItem('valueText', vespertinoList)
+    window.location.href = 'listaEditada.html'
     //alert("Lista copiada com sucesso!")
 }
 
@@ -203,11 +205,12 @@ fat - V
 /**
  * 
  */
+var listaFinal ='';
 function edit_list_vespertino(){
     let lista = document.getElementById("input_list").value;
     lista = lista.replace("   ", "\n").split("\n");
     lista[lista.length] = " "
-    let listaFinal = " ";
+    listaFinal = " ";
     listaFinal += lista[0];
     let cont =0;
     let aux;
@@ -238,6 +241,7 @@ function edit_list_vespertino(){
         }
         
     }
+    
     var textArea = document.createElement("textarea")
     textArea.value = listaFinal;
     document.body.appendChild(textArea);
@@ -249,6 +253,10 @@ function edit_list_vespertino(){
     var win = window.open(url, '_blank');
     win.focus();
     //alert("Lista copiada com sucesso!")
+    
+    var vespertinoList = listaFinal;
+    sessionStorage.setItem('valueText', vespertinoList)
+    window.location.href = 'listaEditada.html'
 }
 
 function edit_list_ida(){
@@ -388,6 +396,23 @@ function sendListLikeBoss(){
     
 }
 
+function listaMatutino(){
+    document.getElementById("titulo_edit").innerHTML = "Lista matutino"
+    document.getElementById("lista_mat").innerHTML = sessionStorage.getItem('valueText')
+    console.log(sessionStorage.getItem('valueText'))
+}
+
+function listaVespertino(){
+    document.getElementById("titulo_edit").innerHTML = "Lista Vespertino"
+    
+    document.getElementById("lista_mat").innerHTML = sessionStorage.getItem('valueText')
+    
+}
+
+function homePage(){
+
+    window.location.href = 'index.html'
+}
 /*
 
 MUDANÇA DE COR DE ACORDO COM O TEMA DO APARELHO

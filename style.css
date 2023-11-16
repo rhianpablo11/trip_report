@@ -228,6 +228,7 @@ ul.dropdown-menu{
     justify-content: center;
     font-weight: 600;
 }
+
 #input_list{
     border-radius: 18px;
     display: flex;
@@ -366,4 +367,89 @@ ul.dropdown-menu{
 #rodape p{
     padding: 0px;
     margin: 0px;
+}
+
+.infos_base{
+    padding: 20px 30px 20px 10px;
+    
+    border-radius: 25px;
+    background: #fffefe;
+    box-shadow:  17px 17px 45px #8f8f8f,
+                -17px -17px 45px #ffffff;
+
+    margin-bottom: 5px;
+    font-family: wavehaus_bold ,Arial, Helvetica, sans-serif;
+    font-weight: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.infos_base p{
+    text-indent: 30px;
+    padding: 0px;
+    margin: 0px;
+    font-size: 17px;
+    font-family: wavehaus_semibold, Arial, Helvetica, sans-serif;
+}
+
+#bloco_infoBase{
+    padding: 10px 20px;
+    margin: auto;
+    
+}
+
+#see_list{
+    margin: auto;
+    height: 100%;
+}
+
+#see_list p{
+    padding: 10px;
+    text-align: justify;
+    font-family: Verdana,Helvetica, sans-serif;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.697);
+}
+#see_list p b{
+    text-align: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+#list_text{
+    border-radius: 18px;
+    display: flex;
+    resize: none;
+    overflow-y:scroll;
+    width: 95%;
+    height: 50vh;
+    padding:15px;
+    margin: auto;
+    border: none;
+    background: #ffffff;
+    box-shadow:  9px 9px 18px #a8a8a8,
+                -9px -9px 18px #ffffff;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+
+#list_text:focus{
+    border: solid #04aa57;
+    outline: none;
+}
+
+#list_text::placeholder{
+    text-align:left;
+    padding:10px;
+    margin: 0px;
+}
+
+#home_button{
+    width: 15%;
+    text-align: center;
+    justify-items: center;
+    padding: 10px;
+    margin-right: 0px;
+    margin-left: 4px;
 }
