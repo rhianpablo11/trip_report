@@ -339,6 +339,10 @@ ul.dropdown-menu{
     margin-top: 5px;
 }
 
+.whatsappButton{
+    text-align: center;
+}
+
 #rodape{
     background-color: #04aa57;
     display: flex;
@@ -452,4 +456,94 @@ ul.dropdown-menu{
     padding: 10px;
     margin-right: 0px;
     margin-left: 4px;
+}
+
+.fuction_buttons1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    margin: 0;
+    border-radius: 30px;
+    font-family: wavehaus_semibold, Arial, Helvetica, sans-serif;
+}
+
+.fuction_buttons1 button{
+    border-radius: 12px;
+    border: none;
+    background-color: #04aa57;
+    padding: 10px 15px;
+    margin: 17px 5px 0px 0px;
+    color:white;
+    font-style: bold;
+    font-size: 18px;
+    transition: all 500ms;
+    font-size: 15px;
+    position: relative;
+    overflow: hidden;
+    outline: 0px solid #046c38;
+}
+
+
+.fuction_buttons1 button:hover {
+    color: #ffffff;
+    transform: scale(1.02);
+    outline: 2px solid #046c38;
+    box-shadow: 4px 5px 17px -4px #046c38;
+  }
+  
+.fuction_buttons1 button::before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #046c38;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 500ms;
+}
+
+.fuction_buttons1 button:hover::before {
+    width: 250%;
+}
+
+
+.fuction_buttons1 #detalhed_button1{
+    width: 50%;
+    margin-right: 0px;
+}
+
+.fuction_buttons1 #simple_button1{
+    width: 30%;
+    text-align: center;
+    justify-items: center;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.fuction_buttons1 #editList_matutino1{
+    width: 30%;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.fuction_buttons1 #editList_vespertino1{
+    width: 30%;
+    margin-left: 10px;
+    margin-right: 0px;
+}
+
+.fuction_buttons1 #editList_ida1{
+    width:95%;
+    margin-top: 5px;
+}
+
+.fuction_buttons1 .whatsappButton1{
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    margin-left: 5px;
 }

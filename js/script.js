@@ -137,7 +137,7 @@ function how_many_cars(){
 }
 
 function edit_list_matutino(){
-    listaMatutino()
+    //listaMatutino()
     let lista = document.getElementById("input_list").value;
     lista = lista.replace("   ", "\n").split("\n");
     let cont =0;
@@ -177,12 +177,95 @@ function edit_list_matutino(){
     let url = "https://api.whatsapp.com/send?text="+conteudo;
     var win = window.open(url, '_blank');
     win.focus();
-    sessionStorage.setItem('valueText', vespertinoList)
-    window.location.href = 'listaEditada.html'
+    //sessionStorage.setItem('valueText', vespertinoList)
+    //window.location.href = 'listaEditada.html'
     //alert("Lista copiada com sucesso!")
 }
 
+function listaEditadaMatino(){
+    let lista = document.getElementById("input_list").value;
+    lista = lista.replace("   ", "\n").split("\n");
+    let cont =0;
+    let aux;
+    let aux2;
+    let listaFinal = "";
+    let conteudo;
+    listaFinal += lista[0];
+    for(let i=1; i<lista.length; i ++){
+        aux2 = lista[i].toLowerCase();
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
+            listaFinal += "\n\n"+lista[i];
+            cont =0;
+        }
+        else if(((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (!aux2.includes("vespertino") || !aux2.includes("vesp")))){
+            cont ++;
+            aux = lista[i]
+            if(!isNaN(aux[0])){
+                aux = cont + aux.substring(2, aux.length);
+            }
+            else{
+                aux = cont + " " + aux;
+            }
+            console.log(aux)
+            listaFinal += "\n"+aux
+        }
+        //console.log();
+    }
+    return listaFinal;
+}
 
+function listaEditadaVespertino(){
+    let lista = document.getElementById("input_list").value;
+    lista = lista.replace("   ", "\n").split("\n");
+    lista[lista.length] = " "
+    listaFinal = " ";
+    listaFinal += lista[0];
+    let cont =0;
+    let aux;
+    let aux2;
+    for(let i=1; i<lista.length; i ++){
+        aux2 = lista[i].toLowerCase();
+
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
+
+                listaFinal += "\n\n"+lista[i];
+                cont =0;
+            
+                
+            
+        }
+        else if(((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (aux2.includes("vespertino") || aux2.includes("vesp")))){
+            cont ++;
+            aux = lista[i]
+            if(!isNaN(aux[0]) ){
+                aux = cont + aux.substring(2, aux.length);
+                
+            }
+            else{
+                aux = cont + " " + aux;
+            }
+            
+            listaFinal += "\n"+aux
+        }
+        
+    }
+    return listaFinal;
+}
+
+function sendWhatsapp(texto){
+    conteudo = window.encodeURIComponent(texto);
+    let url = "https://api.whatsapp.com/send?text="+conteudo;
+    var win = window.open(url, '_blank');
+    win.focus();
+}
+
+function sendListVespertino(){
+    sendWhatsapp(listaEditadaVespertino())
+}
+
+function sendListMatutino(){
+    sendWhatsapp(listaEditadaMatino())
+}
 /* Lista das faculdades que estão funcionando e cadastradas
 uefs - V
 unex - V
@@ -254,9 +337,9 @@ function edit_list_vespertino(){
     win.focus();
     //alert("Lista copiada com sucesso!")
     
-    var vespertinoList = listaFinal;
-    sessionStorage.setItem('valueText', vespertinoList)
-    window.location.href = 'listaEditada.html'
+
+    //sessionStorage.setItem('valueText', listaFinal)
+    //window.location.href = 'listaEditada.html'
 }
 
 function edit_list_ida(){
@@ -398,21 +481,30 @@ function sendListLikeBoss(){
 
 function listaMatutino(){
     document.getElementById("titulo_edit").innerHTML = "Lista matutino"
-    document.getElementById("lista_mat").innerHTML = sessionStorage.getItem('valueText')
-    console.log(sessionStorage.getItem('valueText'))
+    document.getElementById("list_text").innerHTML = sessionStorage.getItem('value')
+    console.log(sessionStorage.getItem('value'))
 }
 
 function listaVespertino(){
     document.getElementById("titulo_edit").innerHTML = "Lista Vespertino"
-    
-    document.getElementById("lista_mat").innerHTML = sessionStorage.getItem('valueText')
-    
+    document.getElementById("list_text").innerHTML = sessionStorage.getItem('value')
 }
 
 function homePage(){
-
     window.location.href = 'index.html'
 }
+
+function seeListVespertino(){
+    sessionStorage.setItem('value', listaEditadaVespertino())
+    window.location.href = 'listaEditada.html?' + 'vespertino'
+}
+
+function seeListMatutino(){
+    sessionStorage.setItem('value', listaEditadaMatino())
+    window.location.href = 'listaEditada.html?' + 'matutino'
+}
+
+
 /*
 
 MUDANÇA DE COR DE ACORDO COM O TEMA DO APARELHO

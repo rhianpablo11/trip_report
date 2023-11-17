@@ -2,7 +2,7 @@
 <html lang="pt-br" manifest="manifest.appcache">
     <head>
         <title>
-            Lista editada - 
+            Lista editada - Beta
         </title>
         <link rel="icon" href="img/icon.png">
         <link rel="stylesheet" type="text/css" href="style.css">
@@ -22,7 +22,7 @@
             <div class="container-fluid">
                 <h3 style="padding: 0; margin-bottom: 0;">
                     <a href="#" class="navbar-brand" style="padding:0px; color: white;">
-                        Relatório de Viagem
+                        Relatório de Viagem - Beta
                     </a>
                 </h3>
                 <div class="dropdown">
@@ -78,8 +78,8 @@
         </section>
         <section id="see_list"  >
             <div>
-                <div id="list_text">
-                    <span id="lista_mat">
+                
+                    <textarea id="list_text" disabled>
                         <h6>Lista Segunda-Feira 29/02</h6>
                         UEFS<br>
                         1.<br>
@@ -91,8 +91,8 @@
                         2.<br>
                         3.<br> 
                         
-                    </span>
-                </div>
+                    </textarea>
+                
             </div>
             <div class="fuction_buttons">
                 <button class="" id="editList_matutino" onclick="edit_list_matutino()">
@@ -124,6 +124,15 @@
     <script src="https://kit.fontawesome.com/7dac0a7844.js" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
     <script>
-        window.on('load', listaMatutino())
+        window.onload = function(){
+            var horario = window.location.search
+            horario = horario.replace('?', '')
+            if(horario =='matutino'){
+                listaMatutino()
+            } else{
+                listaVespertino()
+            }
+            
+        }
     </script>
 </html>
