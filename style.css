@@ -473,7 +473,7 @@ ul.dropdown-menu{
     border: none;
     background-color: #04aa57;
     padding: 10px 15px;
-    margin: 17px 5px 0px 0px;
+    margin: 10px 5px 0px 0px;
     color:white;
     font-style: bold;
     font-size: 18px;
@@ -516,21 +516,25 @@ ul.dropdown-menu{
 }
 
 .fuction_buttons1 #simple_button1{
-    width: 30%;
+    width: 90%;
+    height: 100px;
     text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
     justify-items: center;
     padding: 10px;
-    margin-right: 10px;
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
 .fuction_buttons1 #editList_matutino1{
-    width: 30%;
-    margin-left: 0px;
+    width: 70%;
+    margin-left: 10px;
     margin-right: 0px;
 }
 
 .fuction_buttons1 #editList_vespertino1{
-    width: 30%;
+    width: 70%;
     margin-left: 10px;
     margin-right: 0px;
 }
@@ -545,5 +549,13 @@ ul.dropdown-menu{
     font-size: 16px;
     font-weight: bold;
     color: #fff;
-    margin-left: 5px;
+    margin-left: 0px;
+}
+
+#quantidadeButton{
+    width: 40%;
+}
+
+#selecionarHorario{
+    width: 55%;
 }
