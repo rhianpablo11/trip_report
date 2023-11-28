@@ -479,20 +479,9 @@ function sendListLikeBoss(){
     
 }
 
-function listaMatutino(){
-    document.getElementById("titulo_edit").innerHTML = "Lista matutino"
-    document.getElementById("list_text").innerHTML = sessionStorage.getItem('value')
-    console.log(sessionStorage.getItem('value'))
-}
 
-function listaVespertino(){
-    document.getElementById("titulo_edit").innerHTML = "Lista Vespertino"
-    document.getElementById("list_text").innerHTML = sessionStorage.getItem('value')
-}
 
-function homePage(){
-    window.location.href = 'index.html'
-}
+
 
 function seeListVespertino(){
     sessionStorage.setItem('value', listaEditadaVespertino())
@@ -530,3 +519,187 @@ prefersColorScheme.addListener(changeTheme);
 // Altera o tema conforme o tema do usuário
 changeTheme(prefersColorScheme);
 */
+
+
+
+//PARTE NOVA
+
+function homePage(){
+    window.location.href = 'index_beta.html'
+}
+
+function salvarLista(){
+    let listaTransporte = document.getElementById("input_list").value
+    sessionStorage.setItem('lista_completa', listaTransporte)
+    console.log(sessionStorage.getItem('lista_completa'))
+}
+
+function tratamentoLista(){
+    let listaBruta = sessionStorage.getItem('lista_completa').toLowerCase()
+    return listaTratada= listaBruta.replace(/[^\w\s]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
+}
+
+function quantidadePessoas(){
+    let ida = volta = vespertino = idaVoltaVespertinoAbsoluto = idaVoltaAbsoluto = 0;
+    let lista = tratamentoLista();
+    for(let i=0; i<lista.length; i++){
+        if(lista[i]=="ida" || lista[i] =="idaa" || lista[i] == "vai"){
+            ida++;
+        }
+        else if(lista[i]=="volta" || lista[i] == "voltando" || lista[i] == "volt"){
+            volta++;
+        }
+        else if(lista[i]=="vespertino" || lista[i] =="vesp"){
+            vespertino++;
+        }
+        if(lista[i]=="volta" && (lista[i-2]=="ida" || lista[i-1]=="ida" || lista[i-2]=="vai" || lista[i-1]=="vai") ){
+            if((i+1)<=lista.length && (lista[i+1]=="vespertino" || lista[i+1]=="vesp")){
+                idaVoltaVespertinoAbsoluto ++;
+            }
+            else if((i+1)<=lista.length && (lista[i+1]!="vespertino" || lista[i+1]!="vesp")){
+                idaVoltaAbsoluto ++;
+            }
+        }
+        
+    }
+    volta -= vespertino;
+    return [ida, volta, vespertino];
+}
+
+function preencherQuantidadeHome(){
+    let ida = volta = vespertino = 0;
+    let geral = [0,0,0];
+    geral = quantidadePessoas();
+    ida = geral[0]
+    volta = geral[1]
+    vespertino = geral[2]
+    document.getElementById("value_ida").innerHTML = "Ida: " + ida;
+    document.getElementById("value_volta").innerHTML = "Volta matutino: "+volta;
+    document.getElementById("value_vespertino").innerHTML = "Volta vespertino: "+vespertino;
+    let conteudo = "\nIdas: "+ ida + "\n"+"Volta: " + volta + "\n"+ "Volta Vespertino: "+ vespertino;
+    conteudo = window.encodeURIComponent(conteudo);
+    document.getElementById("share_information").href = "https://api.whatsapp.com/send?text=" +"Dados da lista: "+ conteudo;
+}
+
+function preencherQuantidadeMatutino(){
+    let ida = volta = 0;
+    let geral = [0,0,0];
+    geral = quantidadePessoas();
+    ida = geral[0]
+    volta = geral[1]
+    document.getElementById("value_ida_pg2").innerHTML = "Ida: " + ida;
+    document.getElementById("value_volta_pg2").innerHTML = "Volta: "+volta;
+    let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_matutino'));
+    document.getElementById("share_information_pg2").href = "https://api.whatsapp.com/send?text=" +"Dados da lista matutino: "+ conteudo;
+}
+
+function preencherQuantidadeVespertino(){
+    let ida = volta = 0;
+    let geral = [0,0,0];
+    geral = quantidadePessoas();
+    ida = geral[0]
+    volta = geral[2]
+    document.getElementById("value_ida_pg2").innerHTML = "Ida: " + ida;
+    document.getElementById("value_volta_pg2").innerHTML = "Volta: "+volta;
+    let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_vespertino'));
+    document.getElementById("share_information_pg2").href = "https://api.whatsapp.com/send?text=" +"Dados da lista vespertino: "+ conteudo;
+}
+
+function editaListaMatutino(){
+    let lista = sessionStorage.getItem('lista_completa');
+    lista = lista.replace("   ", "\n").split("\n");
+    let cont =0;
+    let aux;
+    let aux2;
+    let listaFinal = "";
+    let conteudo;
+    listaFinal += lista[0];
+    for(let i=1; i<lista.length; i ++){
+        aux2 = lista[i].toLowerCase();
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
+            listaFinal += "\n\n"+lista[i];
+            cont =0;
+        }
+        else if(((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (!aux2.includes("vespertino") || !aux2.includes("vesp")))){
+            cont ++;
+            aux = lista[i]
+            if(!isNaN(aux[0])){
+                aux = cont + aux.substring(2, aux.length);
+            }
+            else{
+                aux = cont + " " + aux;
+            }
+            listaFinal += "\n"+aux
+        }    
+    }
+    sessionStorage.setItem('lista_matutino', listaFinal)
+}
+
+function editaListaVespertino(){
+    let lista = sessionStorage.getItem('lista_completa');
+    lista = lista.replace("   ", "\n").split("\n");
+    lista[lista.length] = " "
+    let listaFinal = " ";
+    listaFinal += lista[0];
+    let cont =0;
+    let aux;
+    let aux2;
+    for(let i=1; i<lista.length; i ++){
+        aux2 = lista[i].toLowerCase();
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
+                listaFinal += "\n\n"+lista[i];
+                cont =0;
+        }
+        else if(((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (aux2.includes("vespertino") || aux2.includes("vesp")))){
+            cont ++;
+            aux = lista[i]
+            if(!isNaN(aux[0]) ){
+                aux = cont + aux.substring(2, aux.length);   
+            }
+            else{
+                aux = cont + " " + aux;
+            }            
+            listaFinal += "\n"+aux
+        }        
+    }
+    sessionStorage.setItem('lista_vespertino', listaFinal)
+}
+
+function enviarListaMatutino(){
+    editaListaMatutino()
+    let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_matutino'));
+    let url = "https://api.whatsapp.com/send?text="+conteudo;
+    var win = window.open(url, '_blank');
+    win.focus();
+}
+
+function enviarListaVespertino(){
+    editaListaVespertino()
+    let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_vespertino'));
+    let url = "https://api.whatsapp.com/send?text="+conteudo;
+    var win = window.open(url, '_blank');
+    win.focus();
+}
+
+function verListaVespertino(){
+    editaListaVespertino()
+    window.location.href = 'listaEditada.html?' + 'vespertino'
+}
+
+function verListaMatutino(){
+    editaListaMatutino()
+    window.location.href = 'listaEditada.html?' + 'matutino'
+}
+
+function listaMatutino(){
+    document.getElementById("titulo_edit").innerHTML = "Lista matutino"
+    preencherQuantidadeMatutino()
+    document.getElementById("list_text").innerHTML = sessionStorage.getItem('lista_matutino')
+
+}
+
+function listaVespertino(){
+    document.getElementById("titulo_edit").innerHTML = "Lista Vespertino"
+    preencherQuantidadeVespertino()
+    document.getElementById("list_text").innerHTML = sessionStorage.getItem('lista_vespertino')
+}

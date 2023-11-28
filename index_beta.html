@@ -85,25 +85,31 @@
                 </div>
                 <div class="fuction_buttons1">
                     <div id="selecionarHorario">
-                        <button class="" id="editList_vespertino1" onclick="seeListVespertino()">
+                        <button class="" id="editList_vespertino1" onclick="salvarLista(), verListaVespertino()">
                             Lista 17h
                         </button>
-                        <button class="whatsappButton1" onclick="sendListVespertino()">
+                        <button class="whatsappButton1" onclick="salvarLista(), enviarListaVespertino()">
                             <i class="fa-brands fa-whatsapp" ></i>
                         </button>
-                        <button class="" id="editList_matutino1" onclick="seeListMatutino()">
+                        <button class="" id="editList_matutino1" onclick="salvarLista(), verListaMatutino()">
                             Lista 12h
                         </button>
-                        <button class="whatsappButton1" onclick="sendListMatutino()">
+                        <button class="whatsappButton1" onclick="salvarLista(), enviarListaMatutino()">
                             <i class="fa-brands fa-whatsapp"></i>
                         </button>
                     </div>
                     <div id="quantidadeButton">
-                        <button class="" id="simple_button1" onclick="stringTratament()">
+                        <button class="" id="simple_button1" onclick="salvarLista(), preencherQuantidadeHome()">
                             Quant
                         </button>
                     </div>
+                    
                    
+                </div>
+                <div class="fuction_buttons" onclick="window.location.href = 'index.html'">
+                    <button>
+                        Versão oficial
+                    </button>
                 </div>
                 
                 <!--
