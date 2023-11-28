@@ -2,10 +2,14 @@ CACHE MANIFEST
 
 CACHE:
 index.html
+index_beta.html
+listaEditada.html
 style.css
 js/script.js
 
 FALLBACK:
 index.html
+index_beta.html
+listaEditada.html
 style.css
 js/script.js

@@ -590,7 +590,7 @@ function preencherQuantidadeMatutino(){
     document.getElementById("value_ida_pg2").innerHTML = "Ida: " + ida;
     document.getElementById("value_volta_pg2").innerHTML = "Volta: "+volta;
     let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_matutino'));
-    document.getElementById("share_information_pg2").href = "https://api.whatsapp.com/send?text=" +"Dados da lista matutino: "+ conteudo;
+    document.getElementById("share_information_pg2").href = "https://api.whatsapp.com/send?text=" + conteudo;
 }
 
 function preencherQuantidadeVespertino(){
@@ -602,7 +602,7 @@ function preencherQuantidadeVespertino(){
     document.getElementById("value_ida_pg2").innerHTML = "Ida: " + ida;
     document.getElementById("value_volta_pg2").innerHTML = "Volta: "+volta;
     let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_vespertino'));
-    document.getElementById("share_information_pg2").href = "https://api.whatsapp.com/send?text=" +"Dados da lista vespertino: "+ conteudo;
+    document.getElementById("share_information_pg2").href = "https://api.whatsapp.com/send?text=" + conteudo;
 }
 
 function editaListaMatutino(){
@@ -650,7 +650,7 @@ function editaListaVespertino(){
                 listaFinal += "\n\n"+lista[i];
                 cont =0;
         }
-        else if(((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (aux2.includes("vespertino") || aux2.includes("vesp")))){
+        else if((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (aux2.includes("vespertino") || aux2.includes("vesp"))){
             cont ++;
             aux = lista[i]
             if(!isNaN(aux[0]) ){
