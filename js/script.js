@@ -694,6 +694,7 @@ function verListaMatutino(){
 function listaMatutino(){
     document.getElementById("titulo_edit").innerHTML = "Lista matutino"
     preencherQuantidadeMatutino()
+    editaListaMatutino()
     document.getElementById("list_text").innerHTML = sessionStorage.getItem('lista_matutino')
 
 }
@@ -701,5 +702,6 @@ function listaMatutino(){
 function listaVespertino(){
     document.getElementById("titulo_edit").innerHTML = "Lista Vespertino"
     preencherQuantidadeVespertino()
+    editaListaVespertino()
     document.getElementById("list_text").innerHTML = sessionStorage.getItem('lista_vespertino')
 }
