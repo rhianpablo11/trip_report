@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br" manifest="manifest.appcache">
     <head>
-        <title>Relatorio de Viagem - Beta</title>
+        <title>Relatorio de Viagem</title>
         <link rel="icon" href="img/icon.png">
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" href="bootstrap4/css/bootstrap.css">
@@ -20,7 +20,7 @@
             <div class="container-fluid">
                 <h3 style="padding: 0; margin-bottom: 0;">
                     <a href="#" class="navbar-brand" style="padding:0px; color: white;">
-                        Relatório de Viagem - Beta
+                        Relatório de Viagem
                     </a>
                 </h3>
                 <div class="dropdown">
@@ -83,32 +83,20 @@
                 <div>
                     <textarea id="input_list" placeholder="Digite a lista aqui..."></textarea>
                 </div>
-                <div class="fuction_buttons1">
-                    <div id="selecionarHorario">
-                        <button class="" id="editList_vespertino1" onclick="salvarLista(), verListaVespertino()">
-                            Lista 17h
-                        </button>
-                        <button class="whatsappButton1" onclick="salvarLista(), enviarListaVespertino()">
-                            <i class="fa-brands fa-whatsapp" ></i>
-                        </button>
-                        <button class="" id="editList_matutino1" onclick="salvarLista(), verListaMatutino()">
-                            Lista 12h
-                        </button>
-                        <button class="whatsappButton1" onclick="salvarLista(), enviarListaMatutino()">
-                            <i class="fa-brands fa-whatsapp"></i>
-                        </button>
-                    </div>
-                    <div id="quantidadeButton">
-                        <button class="" id="simple_button1" onclick="salvarLista(), preencherQuantidadeHome()">
-                            Quant
-                        </button>
-                    </div>
-                    
-                   
+                <div class="fuction_buttons">
+                    <button class="" id="editList_vespertino" onclick="edit_list_vespertino()">
+                        Lista 17h
+                    </button>
+                    <button class="" id="editList_matutino" onclick="edit_list_matutino()">
+                        Lista 12h
+                    </button>
+                    <button class="" id="simple_button" onclick="stringTratament()">
+                        Quantidades
+                    </button>
                 </div>
                 <div class="fuction_buttons" onclick="window.location.href = 'index.html'">
                     <button>
-                        Versão oficial
+                        Versão nova
                     </button>
                 </div>
                 
@@ -178,6 +166,12 @@
                         Like a Boss
                     </button>
                 </li>
+                <!--
+                <li class="">
+                    <button class="dropdown-item"  type="button" onclick="window.location.href = 'index_beta.html'">
+                        Beta Site
+                    </button>
+                </li>-->
                 <li class="">
                     <button class="dropdown-item"  type="button" onclick="errorReport()">
                         <i class="fa-brands fa-whatsapp" style="color:white;font-size: 1.3rem;"></i>

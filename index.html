@@ -83,20 +83,32 @@
                 <div>
                     <textarea id="input_list" placeholder="Digite a lista aqui..."></textarea>
                 </div>
-                <div class="fuction_buttons">
-                    <button class="" id="editList_vespertino" onclick="edit_list_vespertino()">
-                        Lista 17h
-                    </button>
-                    <button class="" id="editList_matutino" onclick="edit_list_matutino()">
-                        Lista 12h
-                    </button>
-                    <button class="" id="simple_button" onclick="stringTratament()">
-                        Quantidades
-                    </button>
+                <div class="fuction_buttons1">
+                    <div id="selecionarHorario">
+                        <button class="" id="editList_vespertino1" onclick="salvarLista(), verListaVespertino()">
+                            Lista 17h
+                        </button>
+                        <button class="whatsappButton1" onclick="salvarLista(), enviarListaVespertino()">
+                            <i class="fa-brands fa-whatsapp" ></i>
+                        </button>
+                        <button class="" id="editList_matutino1" onclick="salvarLista(), verListaMatutino()">
+                            Lista 12h
+                        </button>
+                        <button class="whatsappButton1" onclick="salvarLista(), enviarListaMatutino()">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </button>
+                    </div>
+                    <div id="quantidadeButton">
+                        <button class="" id="simple_button1" onclick="salvarLista(), preencherQuantidadeHome()">
+                            Quant
+                        </button>
+                    </div>
+                    
+                   
                 </div>
-                <div class="fuction_buttons" onclick="window.location.href = 'index_beta.html'">
+                <div class="fuction_buttons" onclick="window.location.href = 'index2.html'">
                     <button>
-                        Versão beta - teste
+                        Versão antiga
                     </button>
                 </div>
                 
@@ -151,6 +163,7 @@
                         Enviar lista
                     </button>
                 </li>
+                <!--
                 <li class="">
                     <button class="dropdown-item"  type="button" onclick="how_many_cars()">
                         Veiculos
@@ -160,15 +173,10 @@
                     <button class="dropdown-item"  type="button" onclick="development_function()">
                         Calculo detalhado
                     </button>
-                </li>
+                </li>-->
                 <li class="">
                     <button class="dropdown-item"  type="button" onclick="sendListLikeBoss()">
                         Like a Boss
-                    </button>
-                </li>
-                <li class="">
-                    <button class="dropdown-item"  type="button" onclick="window.location.href = 'index_beta.html'">
-                        Beta Site
                     </button>
                 </li>
                 <li class="">

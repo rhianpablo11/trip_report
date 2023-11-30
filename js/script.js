@@ -525,7 +525,7 @@ changeTheme(prefersColorScheme);
 //PARTE NOVA
 
 function homePage(){
-    window.location.href = 'index_beta.html'
+    window.location.href = 'index.html'
 }
 
 function salvarLista(){
