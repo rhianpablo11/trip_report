@@ -494,9 +494,9 @@ function seeListMatutino(){
 }
 
 
-/*
 
-MUDANÇA DE COR DE ACORDO COM O TEMA DO APARELHO
+
+//MUDANÇA DE COR DE ACORDO COM O TEMA DO APARELHO
 
 const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -504,13 +504,60 @@ const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
 function changeTheme(event) {
     
   if( event.matches ) {
-    // O tema é o dark
-    let aux = document.getElementById("Information_block");
-    aux.style.background = "#000000"
-  } else {
+    // Se o tema for dark vai entrar nessa parte do codigo
+    //aqui faz as chamadas dos elementos para poder mudar de cor
+    var body_parte = document.getElementById("corpo")
+    body_parte.className = "background_dark"
+
+    var navBar = document.getElementById("NavBar")
+    navBar.className = "navbar navbar-expand-lg navbar_background_dark navbar_background_font"
+
+    var bloco_value = document.getElementById("info_quantidades")
+    bloco_value.className = "Information_block row blocos_sombra_dark"
+
+    var input_value = document.getElementById("input_list")
+    input_value.className = "blocos_sombra_dark"
+
+    var botoes_part = document.getElementById("parte_botoes")
+    botoes_part.className = "fuction_buttons2 secondary_background_dark"
+
+    var rodape_parte = document.getElementById("rodape")
+    rodape_parte.className = "container-fluid rodape_dark"
+ 
+    var button_options = document.getElementById("botao_options")
+    button_options.className = "dropdown-toggle secondary_background_dark"
+
+    var button_options2 = document.getElementById("version_antiga")
+    button_options2.className = "fuction_buttons2 secondary_background_dark"
+
+} else {
     // O tema é o light
-    console.log("oi")
-  }
+    //dentro dessa parte tem q fazer as chamadas para mudança de cor
+    var body_parte = document.getElementById("corpo")
+    body_parte.className = "background_light"
+
+    var navBar = document.getElementById("NavBar")
+    navBar.className = "navbar navbar-expand-lg navbar_background_light navbar_background_font"
+
+    var bloco_value = document.getElementById("info_quantidades")
+    bloco_value.className = "Information_block row blocos_sombra_light"
+
+    var input_value = document.getElementById("input_list")
+    input_value.className = "blocos_sombra_light"
+
+    var botoes_part = document.getElementById("parte_botoes")
+    botoes_part.className = "fuction_buttons2 secondary_background_light"
+
+    var rodape_parte = document.getElementById("rodape")
+    rodape_parte.className = "container-fluid rodape_light"
+ 
+    var button_options = document.getElementById("botao_options")
+    button_options.className = "dropdown-toggle secondary_background_light"
+    
+    var button_options2 = document.getElementById("version_antiga")
+    button_options2.className = "fuction_buttons2 secondary_background_light"
+
+    }
 }
 
 // Escuta a mudança de tema no sistema
@@ -518,7 +565,6 @@ prefersColorScheme.addListener(changeTheme);
 
 // Altera o tema conforme o tema do usuário
 changeTheme(prefersColorScheme);
-*/
 
 
 
@@ -526,6 +572,7 @@ changeTheme(prefersColorScheme);
 
 function homePage(){
     window.location.href = 'index.html'
+    Storage.clear()
 }
 
 function salvarLista(){
@@ -648,11 +695,13 @@ function editaListaVespertino(){
         aux2 = lista[i].toLowerCase();
         if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
                 listaFinal += "\n\n"+lista[i];
+                console.log(lista[i])
                 cont =0;
         }
         else if((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (aux2.includes("vespertino") || aux2.includes("vesp"))){
             cont ++;
             aux = lista[i]
+            
             if(!isNaN(aux[0]) ){
                 aux = cont + aux.substring(2, aux.length);   
             }

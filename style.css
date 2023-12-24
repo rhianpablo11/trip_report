@@ -115,12 +115,10 @@ nav.navbar_background{
     position:fixed;
     left: 80%;
     bottom: 5%;
-    color:#04aa57;
+    
 }
 
-#botao_options.dropdown-toggle :hover{
-    color: #046c38;
-}
+
 
 
 
@@ -179,9 +177,7 @@ ul.dropdown-menu{
     padding: 20px 30px 20px 10px;
     
     border-radius: 25px;
-    background: #fffefe;
-    box-shadow:  17px 17px 45px #8f8f8f,
-                -17px -17px 45px #ffffff;
+
 }
 
 .Information_block h4{
@@ -221,7 +217,7 @@ ul.dropdown-menu{
     text-align: justify;
     font-family: Verdana,Helvetica, sans-serif;
     font-size: 0.9rem;
-    color: rgba(0, 0, 0, 0.697);
+
 }
 #input_block p b{
     text-align: center;
@@ -239,17 +235,12 @@ ul.dropdown-menu{
     padding:15px;
     margin: auto;
     border: none;
-    background: #ffffff;
-    box-shadow:  9px 9px 18px #a8a8a8,
-                -9px -9px 18px #ffffff;
+
     -webkit-transition: 0.2s;
     transition: 0.2s;
 }
 
-#input_list:focus{
-    border: solid #04aa57;
-    outline: none;
-}
+
 
 #input_list::placeholder{
     text-align:left;
@@ -344,7 +335,7 @@ ul.dropdown-menu{
 }
 
 #rodape{
-    background-color: #04aa57;
+    
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -359,7 +350,7 @@ ul.dropdown-menu{
 }
 
 #rodape a{
-    color: black;
+
     text-decoration: none;
     font-weight: normal;
     font-family: carnas_regular, Helvetica, Arial, sans-serif;
@@ -560,4 +551,217 @@ ul.dropdown-menu{
 
 #selecionarHorario{
     width: 60%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.fuction_buttons2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    margin: 0;
+    border-radius: 30px;
+    font-family: wavehaus_semibold, Arial, Helvetica, sans-serif;
+}
+
+.fuction_buttons2 button{
+    border-radius: 12px;
+    border: none;
+    
+    padding: 10px 15px;
+    margin: 10px 5px 0px 0px;
+    color:white;
+    font-style: bold;
+    font-size: 18px;
+    transition: all 500ms;
+    font-size: 15px;
+    position: relative;
+    overflow: hidden;
+    outline: 0px solid #046c38;
+}
+
+
+.fuction_buttons2 button:hover {
+    color: #ffffff;
+    transform: scale(1.02);
+    outline: 2px solid black;
+    box-shadow: 4px 5px 17px -4px #046c38;
+  }
+  
+.fuction_buttons2 button::before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 500ms;
+}
+
+.fuction_buttons2 button:hover::before {
+    width: 250%;
+}
+
+
+.fuction_buttons2 #detalhed_button1{
+    width: 50%;
+    margin-right: 0px;
+}
+
+.fuction_buttons2 #simple_button1{
+    width: 90%;
+    height: 100px;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    justify-items: center;
+    padding: 10px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.fuction_buttons2 #editList_matutino1{
+    width: 60%;
+    margin-left: 10px;
+    margin-right: 0px;
+}
+
+.fuction_buttons2 #editList_vespertino1{
+    width: 60%;
+    margin-left: 10px;
+    margin-right: 0px;
+}
+
+.fuction_buttons2 #editList_ida1{
+    width:95%;
+    margin-top: 5px;
+}
+
+.fuction_buttons2 .whatsappButton1{
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    margin-left: 0px;
+    width: 20%;
+}
+
+.secondary_background_light button{
+    background-color: #04aa57;
+    color: white;
+}
+
+.secondary_background_light h3{
+    color: #04aa57;   
+}
+
+.secondary_background_light.dropdown-toggle :hover{
+    color: #046c38;
+}
+
+
+.secondary_background_dark button{
+    background-color: purple;
+    
+}
+
+.secondary_background_dark h3{
+    color: purple;   
+}
+
+.secondary_background_dark.dropdown-toggle :hover{
+    color: white;
+}
+
+.navbar_background_font a{
+    font-family: oceanwide_semibold;
+    font-size: 1em;
+    
+    font-weight: 700;
+}
+
+
+nav.navbar_background_light{
+    background-color: #04aa57;
+    padding: 15px 0px 10px 0px;
+    width: 100%;
+    font-family: Helvetica,'Arial Narrow Bold', sans-serif;
+}
+
+nav.navbar_background_dark{
+    background-color: purple;
+    padding: 15px 0px 10px 0px;
+    width: 100%;
+    font-family: Helvetica,'Arial Narrow Bold', sans-serif;
+}
+
+
+.background_dark{
+    background: rgb(24, 24, 24);
+}
+
+.background_light{
+    background: white;
+}
+
+.blocos_sombra_light{
+    background: #ffffff;
+    box-shadow:  9px 9px 18px #a8a8a8,
+                -9px -9px 18px #ffffff;
+}
+
+.blocos_sombra_light:focus{
+    border: solid #04aa57;
+    outline: none;
+}
+
+.blocos_sombra_light p{
+    color: black;
+}
+
+
+.blocos_sombra_dark{
+    background: rgb(63, 62, 62);
+    box-shadow:  9px 9px 18px #181818,
+                -9px -9px 18px #2c2c2c;
+}
+
+.blocos_sombra_dark:focus{
+    border: solid purple;
+    outline: none;
+}
+
+.blocos_sombra_dark{
+    color: white;
+}
+
+.rodape_dark{
+    background-color: purple;
+    color:white;
+}
+
+.rodape_dark a{
+    color: white;
+}
+
+.rodape_light{
+    background-color: #04aa57;
+    color: black;
+}
+
+.rodape_light a {
+    color: black;
 }
