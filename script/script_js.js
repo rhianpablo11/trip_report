@@ -1,0 +1,460 @@
+get_year = function (){
+    let year = new Date;
+    if(document.getElementsByClassName("year").length == 1){
+        document.getElementsByClassName("year")[0].innerHTML = year.getFullYear()
+    } else{
+        for(let i=0; i<document.getElementsByClassName("year").length; i++){
+            document.getElementsByClassName("year")[i].innerHTML = year.getFullYear()
+        }
+    }
+
+}
+
+const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Altera o tema
+function changeTheme(event) {
+    
+    if(event.matches) {
+        // Se o tema for dark vai entrar nessa parte do codigo
+        //aqui faz as chamadas dos elementos para poder mudar de cor
+        document.body.style.backgroundColor = 'black'
+
+        for(let i=0; i<document.getElementsByClassName("navbar_style_light").length; i++){
+            let elemento = document.getElementsByClassName("navbar_style_light")[i]
+            elemento.classList.remove('navbar_style_light')
+            elemento.classList.add('navbar_style_dark'); 
+        }
+
+        for(let i=0; i<document.getElementsByClassName("section_info_result_light").length; i++){
+            let elemento = document.getElementsByClassName("section_info_result_light")[i]
+            elemento.classList.remove('section_info_result_light')
+            elemento.classList.add('section_info_result_dark'); 
+        }
+
+        for(let i=0; i<document.getElementsByClassName("block_text_light").length; i++){
+            let elemento = document.getElementsByClassName("block_text_light")[i]
+            elemento.classList.remove('block_text_light')
+            elemento.classList.add('block_text_dark'); 
+        }
+
+        for(let i=0; i<document.getElementsByClassName("buttons_style_light").length; i++){
+            let elemento = document.getElementsByClassName("buttons_style_light")[i]
+            elemento.classList.remove('buttons_style_light')
+            elemento.classList.add('buttons_style_dark'); 
+        }
+
+        for(let i=0; i<document.getElementsByClassName("toggle_button_light").length; i++){
+            let elemento = document.getElementsByClassName("toggle_button_light")[i]
+            elemento.classList.remove('toggle_button_light')
+            elemento.classList.add('toggle_button_dark'); 
+        }
+
+        for(let i=0; i<document.getElementsByClassName("footer_style_light").length; i++){
+            let elemento = document.getElementsByClassName("footer_style_light")[i]
+            elemento.classList.remove('footer_style_light')
+            elemento.classList.add('footer_style_dark'); 
+        }
+
+    } else {
+        // O tema é o light
+        //dentro dessa parte tem q fazer as chamadas para mudança de cor
+        document.body.style.backgroundColor = 'white'
+        for(let i=0; i<document.getElementsByClassName("navbar_style_dark").length; i++){
+            let elemento = document.getElementsByClassName("navbar_style_dark")[i]
+            elemento.classList.remove('navbar_style_dark')
+            elemento.classList.add('navbar_style_light'); 
+        }
+
+        for(let i=0; i<document.getElementsByClassName("section_info_result_dark").length; i++){
+            let elemento = document.getElementsByClassName("section_info_result_dark")[i]
+            elemento.classList.remove('section_info_result_dark')
+            elemento.classList.add('section_info_result_light'); 
+        }
+
+        for(let i=0; i<document.getElementsByClassName("block_text_dark").length; i++){
+            let elemento = document.getElementsByClassName("block_text_dark")[i]
+            elemento.classList.remove('block_text_dark')
+            elemento.classList.add('block_text_light'); 
+        }
+
+        for(let i=0; i<document.getElementsByClassName("buttons_style_dark").length; i++){
+            let elemento = document.getElementsByClassName("buttons_style_dark")[i]
+            
+            elemento.classList.remove('buttons_style_dark')
+            elemento.classList.add('buttons_style_light'); 
+        }
+
+        for(let i=0; i<document.getElementsByClassName("toggle_button_dark").length; i++){
+            let elemento = document.getElementsByClassName("toggle_button_dark")[i]
+            elemento.classList.remove('toggle_button_dark')
+            elemento.classList.add('toggle_button_light'); 
+        }
+
+        for(let i=0; i<document.getElementsByClassName("footer_style_dark").length; i++){
+            let elemento = document.getElementsByClassName("footer_style_dark")[i]
+            elemento.classList.remove('footer_style_dark')
+            elemento.classList.add('footer_style_light'); 
+        }
+    }
+}
+
+// Escuta a mudança de tema no sistema
+prefersColorScheme.addListener(changeTheme);
+
+// Altera o tema conforme o tema do usuário
+changeTheme(prefersColorScheme);
+
+
+/*PROTOTIPO DE SISTEMA PARA APERTAR O BOTAO E MUDAR COR 
+function toggle_theme(){
+    if(localStorage.getItem('theme') == 'light'){
+        localStorage.setItem('theme', "dark")
+        for(let i=0; i<document.getElementsByClassName("section_info_result_light").length; i++){
+            let elemento = document.getElementsByClassName("section_info_result_light")[i]
+            elemento.classList.remove('section_info_result_light')
+            elemento.classList.add('section_info_result_dark');
+        }
+    } else{
+        localStorage.setItem('theme', "light")
+        for(let i=0; i<document.getElementsByClassName("section_info_result_dark").length; i++){
+            let elemento = document.getElementsByClassName("section_info_result_dark")[i]
+            elemento.classList.remove('section_info_result_dark')
+            elemento.classList.add('section_info_result_light');
+        }
+    }
+    
+}
+*/
+
+
+/*
+PARTE LOGICA DO CODIGO
+*/
+
+function homePage(){
+    window.location.href = 'index.html'
+    Storage.clear()
+}
+
+function salvarLista(){
+    let listaTransporte = document.getElementById("input_list").value
+    sessionStorage.setItem('lista_completa', listaTransporte)
+    console.log(sessionStorage.getItem('lista_completa'))
+}
+
+function tratamentoLista(){
+    let listaBruta = sessionStorage.getItem('lista_completa').toLowerCase()
+    return listaTratada= listaBruta.replace(/[^\w\s]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
+}
+
+function quantidadePessoas(){
+    let ida = volta = vespertino = idaVoltaVespertinoAbsoluto = idaVoltaAbsoluto = 0;
+    let lista = tratamentoLista();
+    for(let i=0; i<lista.length; i++){
+        if(lista[i]=="ida" || lista[i] =="idaa" || lista[i] == "vai"){
+            ida++;
+        }
+        else if(lista[i]=="volta" || lista[i] == "voltando" || lista[i] == "volt"){
+            volta++;
+        }
+        else if(lista[i]=="vespertino" || lista[i] =="vesp"){
+            vespertino++;
+        }
+        if(lista[i]=="volta" && (lista[i-2]=="ida" || lista[i-1]=="ida" || lista[i-2]=="vai" || lista[i-1]=="vai") ){
+            if((i+1)<=lista.length && (lista[i+1]=="vespertino" || lista[i+1]=="vesp")){
+                idaVoltaVespertinoAbsoluto ++;
+            }
+            else if((i+1)<=lista.length && (lista[i+1]!="vespertino" || lista[i+1]!="vesp")){
+                idaVoltaAbsoluto ++;
+            }
+        }
+        
+    }
+    volta -= vespertino;
+    return [ida, volta, vespertino];
+}
+
+function preencherQuantidadeHome(){
+    let ida = volta = vespertino = 0;
+    let geral = [0,0,0];
+    geral = quantidadePessoas();
+    ida = geral[0]
+    volta = geral[1]
+    vespertino = geral[2]
+    document.getElementById("quantity_ida").innerHTML = "Ida: " + ida;
+    document.getElementById("quantity_volta").innerHTML = "Volta matutino: "+volta;
+    document.getElementById("quantity_vespertino").innerHTML = "Volta vespertino: "+vespertino;
+    let conteudo = "\nIdas: "+ ida + "\n"+"Volta: " + volta + "\n"+ "Volta Vespertino: "+ vespertino;
+    conteudo = window.encodeURIComponent(conteudo);
+    document.getElementById("share_list_whatsapp").href = "https://api.whatsapp.com/send?text=" +"Dados da lista: "+ conteudo;
+}
+
+function preencherQuantidadeMatutino(){
+    let ida = volta = 0;
+    let geral = [0,0,0];
+    geral = quantidadePessoas();
+    ida = geral[0]
+    volta = geral[1]
+    document.getElementById("ida_value").innerHTML = "Ida: " + ida;
+    document.getElementById("volta_value").innerHTML = "Volta: "+volta;
+    let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_matutino'));
+    document.getElementById("share_information_pg2").href = "https://api.whatsapp.com/send?text=" + conteudo;
+}
+
+function preencherQuantidadeVespertino(){
+    let ida = volta = 0;
+    let geral = [0,0,0];
+    geral = quantidadePessoas();
+    ida = geral[0]
+    volta = geral[2]
+    document.getElementById("ida_value").innerHTML = "Ida: " + ida;
+    document.getElementById("volta_value").innerHTML = "Volta: "+volta;
+    let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_vespertino'));
+    document.getElementById("share_information_pg2").href = "https://api.whatsapp.com/send?text=" + conteudo;
+}
+
+function editaListaMatutino(){
+    let lista = sessionStorage.getItem('lista_completa');
+    lista = lista.replace("   ", "\n").split("\n");
+    let cont =0;
+    let aux;
+    let aux2;
+    let listaFinal = "";
+    let conteudo;
+    listaFinal += lista[0];
+    for(let i=1; i<lista.length; i ++){
+        aux2 = lista[i].toLowerCase();
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
+            listaFinal += "\n\n"+lista[i];
+            cont =0;
+        }
+        else if(((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (!aux2.includes("vespertino") || !aux2.includes("vesp")))){
+            cont ++;
+            aux = lista[i]
+            if(!isNaN(aux[0])){
+                aux = cont + aux.substring(2, aux.length);
+            }
+            else{
+                aux = cont + " " + aux;
+            }
+            listaFinal += "\n"+aux
+        }    
+    }
+    sessionStorage.setItem('lista_matutino', listaFinal)
+}
+
+function editaListaVespertino(){
+    let lista = sessionStorage.getItem('lista_completa');
+    lista = lista.replace("   ", "\n").split("\n");
+    lista[lista.length] = " "
+    let listaFinal = " ";
+    listaFinal += lista[0];
+    let cont =0;
+    let aux;
+    let aux2;
+    for(let i=1; i<lista.length; i ++){
+        aux2 = lista[i].toLowerCase();
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
+                listaFinal += "\n\n"+lista[i];
+                console.log(lista[i])
+                cont =0;
+        }
+        else if((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (aux2.includes("vespertino") || aux2.includes("vesp"))){
+            cont ++;
+            aux = lista[i]
+            
+            if(!isNaN(aux[0]) ){
+                aux = cont + aux.substring(2, aux.length);   
+            }
+            else{
+                aux = cont + " " + aux;
+            }            
+            listaFinal += "\n"+aux
+        }        
+    }
+    sessionStorage.setItem('lista_vespertino', listaFinal)
+}
+
+function enviarListaMatutino(){
+    editaListaMatutino()
+    let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_matutino'));
+    let url = "https://api.whatsapp.com/send?text="+conteudo;
+    var win = window.open(url, '_blank');
+    win.focus();
+}
+
+function enviarListaVespertino(){
+    editaListaVespertino()
+    let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_vespertino'));
+    let url = "https://api.whatsapp.com/send?text="+conteudo;
+    var win = window.open(url, '_blank');
+    win.focus();
+}
+
+function verListaVespertino(){
+    editaListaVespertino()
+    window.location.href = 'edited_list.html?' + 'vespertino'
+}
+
+function verListaMatutino(){
+    editaListaMatutino()
+    window.location.href = 'edited_list.html?' + 'matutino'
+}
+
+function listaMatutino(){
+    document.getElementById("titulo_edit").innerHTML = "Lista matutino"
+    preencherQuantidadeMatutino()
+    editaListaMatutino()
+    document.getElementById("list_text").innerHTML = sessionStorage.getItem('lista_matutino')
+
+}
+
+function listaVespertino(){
+    document.getElementById("titulo_edit").innerHTML = "Lista Vespertino"
+    preencherQuantidadeVespertino()
+    editaListaVespertino()
+    document.getElementById("list_text").innerHTML = sessionStorage.getItem('lista_vespertino')
+}
+
+function sendListLikeBoss(){
+    const currentDate = new Date;
+    //erro nessa parte da data
+    let day = currentDate.getDate()+1;
+    let month = currentDate.getMonth() +1;
+    let nameToday = currentDate.toString().substring(0, 3).toLowerCase();
+    console.log(typeof currentDate.toString())
+    console.log(day)
+    console.log(month)
+    console.log(nameToday)
+    if(day<10){
+        day= "0"+day;
+    }
+    if(month<10){
+        month="0"+month;
+    }
+    let nameTodayPt = "";
+    if(nameToday.toLowerCase() == "mon"){
+        nameTodayPt ="Terça";
+    } else if(nameToday == "tue"){
+        nameTodayPt = "Quarta";
+    } else if(nameToday =="wed"){
+        nameTodayPt = "Quinta";
+    } else if(nameToday == "thu"){
+        nameTodayPt= "Sexta";
+    } else if(nameToday == "fri"){
+        nameTodayPt = "Sabado";
+    } else if(nameToday == "sat"){
+        nameTodayPt = "Domingo";
+    } else if(nameToday == "sun"){
+        nameTodayPt = "Segunda";
+    }
+
+     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. Rhian(ida e volta vespertino)\n2. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*NPJ - UNEX*\n1. \n\n*UNIFACS* *(santa mônica)*\n1. \n\n*UFRB*\n1. \n\n*ACESSO*\n1. \n\n*FAN*\n1. \n\n*UNEF*\n1. \n\n";
+     conteudo = window.encodeURIComponent(lista_format);
+     let url = "https://api.whatsapp.com/send?text="+conteudo;
+     var win = window.open(url, '_blank');
+     win.focus();
+    
+}
+
+function errorReport(){
+
+    let url = "https://wa.me/5575992658169?text=Erro encontrado em: ";
+     var win = window.open(url, '_blank');
+     win.focus();
+}
+
+function sendList(){
+    const currentDate = new Date;
+    let day = currentDate.getDate()+1;
+    let month = currentDate.getMonth() +1;
+    let nameToday = currentDate.toString().substring(0, 3).toLowerCase();
+    if(day<10){
+        day= "0"+day;
+    }
+    if(month<10){
+        month="0"+month;
+    }
+    let nameTodayPt = "";
+    if(nameToday.toLowerCase() == "mon"){
+        nameTodayPt ="Terça";
+    } else if(nameToday == "tue"){
+        nameTodayPt = "Quarta";
+    } else if(nameToday =="wed"){
+        nameTodayPt = "Quinta";
+    } else if(nameToday == "thu"){
+        nameTodayPt= "Sexta";
+    } else if(nameToday == "fri"){
+        nameTodayPt = "Sabado";
+    } else if(nameToday == "sat"){
+        nameTodayPt = "Domingo";
+    } else if(nameToday == "sun"){
+        nameTodayPt = "Segunda";
+    }
+
+     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*NPJ - UNEX*\n1. \n\n*UNIFACS* *(santa mônica)*\n1. \n\n*UFRB*\n1. \n\n*ACESSO*\n1. \n\n*FAN*\n1. \n\n*UNEF*\n1. \n\n*PITAGORAS*\n1. \n\n*ESTACIO* *(getúlio)*\n1. ";
+     conteudo = window.encodeURIComponent(lista_format);
+     let url = "https://api.whatsapp.com/send?text="+conteudo;
+     var win = window.open(url, '_blank');
+     win.focus();
+    
+}
+
+function edit_list_ida(){
+    let lista = document.getElementById("input_list").value;
+    lista = lista.replace("   ", "\n").split("\n");
+    let cont =0;
+    let aux;
+    let aux2;
+    let listaFinal = "";
+    let conteudo;
+    listaFinal += lista[0];
+    for(let i=1; i<lista.length; i ++){
+        aux2 = lista[i].toLowerCase();
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
+            listaFinal += "\n\n"+lista[i];
+            cont =0;
+        }
+        else if(((aux2.includes("ida") || aux2.includes("Ida") || aux2.includes("vai") || aux2.includes("Vai")))){
+            let aux3= ""
+            aux3 = aux2.replace(/[^\w\s]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
+            
+            for(let o=0; o<aux3.length; o++){
+                if(aux3[o] == "ida" || aux3[o] == "Ida" || aux3[o] == "vai"){
+                    cont ++;
+                    aux = lista[i]
+                    if(!isNaN(aux[0])){
+                        aux = cont + aux.substring(2, aux.length);
+                    }
+                    else{
+                        aux = cont + " " + aux;
+                    }
+                    console.log(aux)
+                    listaFinal += "\n"+aux
+                }
+            }
+            
+        }
+        //console.log();
+    }
+    var textArea = document.createElement("textarea")
+    textArea.value = listaFinal;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy")
+    document.body.removeChild(textArea);
+    console.log(listaFinal.length)
+    if(listaFinal.length >2){
+        conteudo = window.encodeURIComponent(listaFinal);
+        let url = "https://api.whatsapp.com/send?text="+conteudo;
+        var win = window.open(url, '_blank');
+        win.focus();
+    } else{
+        alert('por favor, insira uma lista primeiro')
+    }
+    
+
+    
+    //alert("Lista copiada com sucesso!")
+}
