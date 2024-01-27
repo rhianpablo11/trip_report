@@ -214,6 +214,59 @@ function preencherQuantidadeVespertino(){
     document.getElementById("share_information_pg2").href = "https://api.whatsapp.com/send?text=" + conteudo;
 }
 
+function editaListaIda(){
+    let lista = sessionStorage.getItem('lista_completa');
+    lista = lista.replace("   ", "\n").split("\n");
+    let cont =0;
+    let aux;
+    let aux2;
+    let listaFinal = "";
+    let conteudo;
+    listaFinal += lista[0];
+    for(let i=1; i<lista.length; i ++){
+        aux2 = lista[i].toLowerCase();
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
+            listaFinal += "\n\n"+lista[i];
+            cont =0;
+        }
+        else if(((aux2.includes("ida") || aux2.includes("Ida") || aux2.includes("vai") || aux2.includes("Vai")))){
+            let aux3= ""
+            aux3 = aux2.replace(/[^\w\s]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
+            
+            for(let o=0; o<aux3.length; o++){
+                if(aux3[o] == "ida" || aux3[o] == "Ida" || aux3[o] == "vai"){
+                    cont ++;
+                    aux = lista[i]
+                    if(!isNaN(aux[0])){
+                        aux = cont + aux.substring(2, aux.length);
+                    }
+                    else{
+                        aux = cont + " " + aux;
+                    }
+                    console.log(aux)
+                    listaFinal += "\n"+aux
+                }
+            }
+            
+        }
+    }
+    var textArea = document.createElement("textarea")
+    textArea.value = listaFinal;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy")
+    document.body.removeChild(textArea);
+    console.log(listaFinal.length)
+    if(listaFinal.length >2){
+        conteudo = window.encodeURIComponent(listaFinal);
+        let url = "https://api.whatsapp.com/send?text="+conteudo;
+        var win = window.open(url, '_blank');
+        win.focus();
+    } else{
+        alert('por favor, insira uma lista primeiro')
+    }
+}
+
 function editaListaMatutino(){
     let lista = sessionStorage.getItem('lista_completa');
     lista = lista.replace("   ", "\n").split("\n");
@@ -401,60 +454,3 @@ function sendList(){
     
 }
 
-function edit_list_ida(){
-    let lista = document.getElementById("input_list").value;
-    lista = lista.replace("   ", "\n").split("\n");
-    let cont =0;
-    let aux;
-    let aux2;
-    let listaFinal = "";
-    let conteudo;
-    listaFinal += lista[0];
-    for(let i=1; i<lista.length; i ++){
-        aux2 = lista[i].toLowerCase();
-        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
-            listaFinal += "\n\n"+lista[i];
-            cont =0;
-        }
-        else if(((aux2.includes("ida") || aux2.includes("Ida") || aux2.includes("vai") || aux2.includes("Vai")))){
-            let aux3= ""
-            aux3 = aux2.replace(/[^\w\s]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
-            
-            for(let o=0; o<aux3.length; o++){
-                if(aux3[o] == "ida" || aux3[o] == "Ida" || aux3[o] == "vai"){
-                    cont ++;
-                    aux = lista[i]
-                    if(!isNaN(aux[0])){
-                        aux = cont + aux.substring(2, aux.length);
-                    }
-                    else{
-                        aux = cont + " " + aux;
-                    }
-                    console.log(aux)
-                    listaFinal += "\n"+aux
-                }
-            }
-            
-        }
-        //console.log();
-    }
-    var textArea = document.createElement("textarea")
-    textArea.value = listaFinal;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand("copy")
-    document.body.removeChild(textArea);
-    console.log(listaFinal.length)
-    if(listaFinal.length >2){
-        conteudo = window.encodeURIComponent(listaFinal);
-        let url = "https://api.whatsapp.com/send?text="+conteudo;
-        var win = window.open(url, '_blank');
-        win.focus();
-    } else{
-        alert('por favor, insira uma lista primeiro')
-    }
-    
-
-    
-    //alert("Lista copiada com sucesso!")
-}
