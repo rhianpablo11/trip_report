@@ -190,6 +190,18 @@ function preencherQuantidadeHome(){
     document.getElementById("share_list_whatsapp").href = "https://api.whatsapp.com/send?text=" +"Dados da lista: "+ conteudo;
 }
 
+function preencherQuantidadeIda(){
+    let ida = volta = 0;
+    let geral = [0,0,0];
+    geral = quantidadePessoas();
+    ida = geral[0]
+    volta = geral[1]
+    document.getElementById("ida_value").innerHTML = "Ida: " + ida;
+    document.getElementById("volta_value").innerHTML = "Volta: "+volta;
+    let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_ida'));
+    document.getElementById("share_information_pg2").href = "https://api.whatsapp.com/send?text=" + conteudo;
+}
+
 function preencherQuantidadeMatutino(){
     let ida = volta = 0;
     let geral = [0,0,0];
@@ -265,6 +277,45 @@ function editaListaIda(){
     } else{
         alert('por favor, insira uma lista primeiro')
     }
+}
+
+function editaListaIda(){
+    let lista = sessionStorage.getItem('lista_completa');
+    lista = lista.replace("   ", "\n").split("\n");
+    let cont =0;
+    let aux;
+    let aux2;
+    let listaFinal = "";
+    let conteudo;
+    listaFinal += lista[0];
+    for(let i=1; i<lista.length; i ++){
+        aux2 = lista[i].toLowerCase();
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
+            listaFinal += "\n\n"+lista[i];
+            cont =0;
+        }
+        else if(((aux2.includes("ida") || aux2.includes("Ida") || aux2.includes("vai") || aux2.includes("Vai")))){
+            let aux3= ""
+            aux3 = aux2.replace(/[^\w\s]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
+            
+            for(let o=0; o<aux3.length; o++){
+                if(aux3[o] == "ida" || aux3[o] == "Ida" || aux3[o] == "vai"){
+                    cont ++;
+                    aux = lista[i]
+                    if(!isNaN(aux[0])){
+                        aux = cont + aux.substring(2, aux.length);
+                    }
+                    else{
+                        aux = cont + " " + aux;
+                    }
+                    console.log(aux)
+                    listaFinal += "\n"+aux
+                }
+            }
+            
+        }
+    }
+    sessionStorage.setItem('lista_ida', listaFinal);
 }
 
 function editaListaMatutino(){
@@ -354,6 +405,19 @@ function verListaMatutino(){
     editaListaMatutino()
     window.location.href = 'edited_list.html?' + 'matutino'
 }
+
+function verListaIda(){
+    editaListaIda();
+    window.location.href = 'edited_list.html?' + 'ida'
+}
+
+function listaIda(){
+    document.getElementById("titulo_edit").innerHTML = "Lista Ida"
+    preencherQuantidadeIda()
+    editaListaIda()
+    document.getElementById("list_text").innerHTML = sessionStorage.getItem('lista_ida')
+}
+
 
 function listaMatutino(){
     document.getElementById("titulo_edit").innerHTML = "Lista matutino"

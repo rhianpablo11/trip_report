@@ -123,8 +123,10 @@
             horario = horario.replace('?', '')
             if(horario =='matutino'){
                 listaMatutino()
-            } else{
+            } else if ( horario == 'vespertino'){
                 listaVespertino()
+            } else{
+                listaIda();
             }
             
         }
