@@ -11,7 +11,7 @@ get_year = function (){
 }
 
 const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
+listaFaculdades = ['uefs', 'unex', 'unef', 'ufrb', 'unifan', 'unifacs', 'acesso', 'pitagoras', 'pitágoras', 'fan', 'nais', 'npj', 'anhanguera', 'unopar', 'uniasselvi', 'estacio', 'facs', 'fat']
 // Altera o tema
 function changeTheme(event) {
     
@@ -152,7 +152,7 @@ function quantidadePessoas(){
     let ida = volta = vespertino = idaVoltaVespertinoAbsoluto = idaVoltaAbsoluto = 0;
     let lista = tratamentoLista();
     for(let i=0; i<lista.length; i++){
-        if(lista[i]=="ida" || lista[i] =="idaa" || lista[i] == "vai"){
+        if(lista[i]=="ida" || lista[i] =="idaa" || lista[i] == "vai" || lista[i] == "ide" || lista[i]=="lda"){
             ida++;
         }
         else if(lista[i]=="volta" || lista[i] == "voltando" || lista[i] == "volt"){
@@ -330,8 +330,16 @@ function editaListaMatutino(){
     for(let i=1; i<lista.length; i ++){
         aux2 = lista[i].toLowerCase();
         if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
-            listaFinal += "\n\n"+lista[i];
-            cont =0;
+            let aux3 = ''
+            aux3 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
+            console.log(aux3)
+            for(let h=0;h<aux3.length; h++){
+                if(listaFaculdades.indexOf(aux3[h])>-1){
+                    listaFinal += "\n\n"+lista[i];
+                    //console.log(lista[i])
+                    cont =0;
+                }
+            }  
         }
         else if(((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (!aux2.includes("vespertino") || !aux2.includes("vesp")))){
             cont ++;
@@ -360,9 +368,16 @@ function editaListaVespertino(){
     for(let i=1; i<lista.length; i ++){
         aux2 = lista[i].toLowerCase();
         if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
-                listaFinal += "\n\n"+lista[i];
-                console.log(lista[i])
-                cont =0;
+            let aux3 = ''
+            aux3 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
+            console.log(aux3)
+            for(let h=0;h<aux3.length; h++){
+                if(listaFaculdades.indexOf(aux3[h])>-1){
+                    listaFinal += "\n\n"+lista[i];
+                    //console.log(lista[i])
+                    cont =0;
+                }
+            }  
         }
         else if((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (aux2.includes("vespertino") || aux2.includes("vesp"))){
             cont ++;
@@ -417,7 +432,6 @@ function listaIda(){
     editaListaIda()
     document.getElementById("list_text").innerHTML = sessionStorage.getItem('lista_ida')
 }
-
 
 function listaMatutino(){
     document.getElementById("titulo_edit").innerHTML = "Lista matutino"
