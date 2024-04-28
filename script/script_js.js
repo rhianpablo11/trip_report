@@ -334,10 +334,23 @@ function editaListaMatutino(){
             aux3 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
             console.log(aux3)
             for(let h=0;h<aux3.length; h++){
+                
                 if(listaFaculdades.indexOf(aux3[h])>-1){
                     listaFinal += "\n\n"+lista[i];
                     //console.log(lista[i])
                     cont =0;
+                } 
+                if((aux3[h] == 'volta' || aux3[h] == 'voita' || aux3[h] == 'volt' ) && (!aux2.includes("vespertino") || !aux2.includes("vesp"))){
+                    cont ++;
+                    
+                    aux = lista[i]
+                    if(!isNaN(aux[0])){
+                        aux = cont + aux.substring(2, aux.length);
+                    }
+                    else{
+                        aux = cont + " " + aux;
+                    }
+                    listaFinal += "\n"+aux
                 }
             }  
         }
@@ -376,6 +389,18 @@ function editaListaVespertino(){
                     listaFinal += "\n\n"+lista[i];
                     //console.log(lista[i])
                     cont =0;
+                }
+                if((aux3[h] == 'vespertino' || aux3[h] == 'vesp')&& (aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt"))){
+                    cont ++;
+                    
+                    aux = lista[i]
+                    if(!isNaN(aux[0])){
+                        aux = cont + aux.substring(2, aux.length);
+                    }
+                    else{
+                        aux = cont + " " + aux;
+                    }
+                    listaFinal += "\n"+aux
                 }
             }  
         }
