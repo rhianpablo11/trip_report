@@ -291,15 +291,19 @@ function editaListaIda(){
     for(let i=1; i<lista.length; i ++){
         aux2 = lista[i].toLowerCase();
         if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
-            listaFinal += "\n\n"+lista[i];
-            cont =0;
+            
+                    listaFinal += "\n\n"+lista[i];
+                    //console.log(lista[i])
+                    cont =0;
+            
+            
         }
-        else if(((aux2.includes("ida") || aux2.includes("Ida") || aux2.includes("vai") || aux2.includes("Vai")))){
+        else if(((aux2.includes("ide")||aux2.includes("ida") || aux2.includes("Ida") || aux2.includes("vai") || aux2.includes("Vai")))){
             let aux3= ""
             aux3 = aux2.replace(/[^\w\s]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
             
             for(let o=0; o<aux3.length; o++){
-                if(aux3[o] == "ida" || aux3[o] == "Ida" || aux3[o] == "vai"){
+                if(aux3[o] == "ida" || aux3[o] == "Ida" || aux3[o] == "vai" || aux3[o] == "ide"){
                     cont ++;
                     aux = lista[i]
                     if(!isNaN(aux[0])){
@@ -321,6 +325,7 @@ function editaListaIda(){
 function editaListaMatutino(){
     let lista = sessionStorage.getItem('lista_completa');
     lista = lista.replace("   ", "\n").split("\n");
+    
     let cont =0;
     let aux;
     let aux2;
@@ -329,6 +334,7 @@ function editaListaMatutino(){
     listaFinal += lista[0];
     for(let i=1; i<lista.length; i ++){
         aux2 = lista[i].toLowerCase();
+        console.log(aux2)
         if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
             let aux3 = ''
             aux3 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
@@ -336,9 +342,10 @@ function editaListaMatutino(){
             for(let h=0;h<aux3.length; h++){
                 
                 if(listaFaculdades.indexOf(aux3[h])>-1){
+                    //verificar se tem texto de estudante depois 
                     listaFinal += "\n\n"+lista[i];
                     //console.log(lista[i])
-                    cont =0;
+                    cont =0;  
                 } 
                 if((aux3[h] == 'volta' || aux3[h] == 'voita' || aux3[h] == 'volt' ) && (!aux2.includes("vespertino") || !aux2.includes("vesp"))){
                     cont ++;
@@ -366,6 +373,41 @@ function editaListaMatutino(){
             listaFinal += "\n"+aux
         }    
     }
+    lista = listaFinal.replace("   ", "\n").split("\n");
+    listaFinal = ''
+    listaFinal+= lista[0].replace('\n', '')
+    console.log('lista -0', lista[0])
+    for(let i=1; i<lista.length; i ++){
+        let aux2 = lista[i].toLowerCase()
+        let aux3 = (lista[(lista.length)-1].toLowerCase()).trim()
+        console.log(aux2)
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
+            if(i+1<lista.length){
+                if(lista[i+1] == ""){
+                    console.log("verificando problema ",lista[i])
+                    if( ((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (!aux2.includes("vespertino") || !aux2.includes("vesp"))) ){
+                        listaFinal +="\n"+lista[i]
+                    }
+                }
+                else{
+                    let aux4 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
+                    for(let h=0; h<aux4.length; h++){
+                        if(listaFaculdades.indexOf(aux4[h])>-1){
+                            listaFinal += "\n\n"+lista[i]
+                        } else if((aux4[h] == 'volta' || aux4[h] == 'voita' || aux4[h] == 'volt' ) && (!aux2.includes("vespertino") || !aux2.includes("vesp"))){
+                            listaFinal +="\n"+lista[i]
+                        }
+                    }
+                   
+                }
+            } else if( ((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (!aux2.includes("vespertino") || !aux2.includes("vesp"))) ){
+                console.log('teste')
+                listaFinal +="\n"+lista[i]
+            }
+        }else if(aux2!=''){
+            listaFinal +="\n"+lista[i]
+        }
+    }
     sessionStorage.setItem('lista_matutino', listaFinal)
 }
 
@@ -387,7 +429,7 @@ function editaListaVespertino(){
             for(let h=0;h<aux3.length; h++){
                 if(listaFaculdades.indexOf(aux3[h])>-1){
                     listaFinal += "\n\n"+lista[i];
-                    //console.log(lista[i])
+                    console.log(lista[i])
                     cont =0;
                 }
                 if((aux3[h] == 'vespertino' || aux3[h] == 'vesp')&& (aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt"))){
@@ -417,6 +459,46 @@ function editaListaVespertino(){
             listaFinal += "\n"+aux
         }        
     }
+
+    lista = listaFinal.replace("   ", "\n").split("\n");
+    listaFinal = ''
+    listaFinal+= lista[0].replace('\n', '')
+    console.log('lista -0', lista[0])
+    for(let i=1; i<lista.length; i ++){
+        let aux2 = lista[i].toLowerCase()
+        let aux3 = (lista[(lista.length)-1].toLowerCase()).trim()
+        console.log(aux2)
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
+            if(i+1<lista.length){
+                if(lista[i+1] == ""){
+                    console.log("verificando problema ",lista[i])
+                    if( ((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (aux2.includes("vespertino") || aux2.includes("vesp"))) ){
+                        listaFinal +="\n"+lista[i]
+                    }
+                }
+                else{
+                    let aux4 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
+                    for(let h=0; h<aux4.length; h++){
+                        if(listaFaculdades.indexOf(aux4[h])>-1){
+                            listaFinal += "\n\n"+lista[i]
+                        } else if((aux4[h] == 'volta' || aux4[h] == 'voita' || aux4[h] == 'volt' ) && (aux2.includes("vespertino") || aux2.includes("vesp"))){
+                            listaFinal +="\n"+lista[i]
+                        }
+                    }
+                   
+                }
+            } else if( ((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (aux2.includes("vespertino") || aux2.includes("vesp"))) ){
+                console.log('teste')
+                listaFinal +="\n"+lista[i]
+            }
+        }else if(aux2!=''){
+            listaFinal +="\n"+lista[i]
+        }
+    }
+
+
+
+
     sessionStorage.setItem('lista_vespertino', listaFinal)
 }
 
