@@ -546,7 +546,8 @@ function listaMatutino(){
     preencherQuantidadeMatutino()
     editaListaMatutino()
     document.getElementById("list_text").innerHTML = sessionStorage.getItem('lista_matutino')
-    document.getElementById("share_information_pg2").href ="https://api.whatsapp.com/send?text="+sessionStorage.getItem('lista_matutino')
+    let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_matutino'));
+    document.getElementById("share_information_pg2").href ="https://api.whatsapp.com/send?text="+conteudo
 }
 
 function listaVespertino(){
@@ -554,7 +555,8 @@ function listaVespertino(){
     preencherQuantidadeVespertino()
     editaListaVespertino()
     document.getElementById("list_text").innerHTML = sessionStorage.getItem('lista_vespertino')
-    document.getElementById("share_information_pg2").href ="https://api.whatsapp.com/send?text="+sessionStorage.getItem('lista_vespertino')
+    let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_vespertino'));
+    document.getElementById("share_information_pg2").href ="https://api.whatsapp.com/send?text="+conteudo
 }
 
 function sendListLikeBoss(){
