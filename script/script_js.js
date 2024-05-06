@@ -538,6 +538,7 @@ function listaIda(){
     preencherQuantidadeIda()
     editaListaIda()
     document.getElementById("list_text").innerHTML = sessionStorage.getItem('lista_ida')
+    document.getElementById("share_information_pg2").href ="https://api.whatsapp.com/send?text="+sessionStorage.getItem('lista_ida')
 }
 
 function listaMatutino(){
@@ -545,7 +546,7 @@ function listaMatutino(){
     preencherQuantidadeMatutino()
     editaListaMatutino()
     document.getElementById("list_text").innerHTML = sessionStorage.getItem('lista_matutino')
-
+    document.getElementById("share_information_pg2").href ="https://api.whatsapp.com/send?text="+sessionStorage.getItem('lista_matutino')
 }
 
 function listaVespertino(){
@@ -553,6 +554,7 @@ function listaVespertino(){
     preencherQuantidadeVespertino()
     editaListaVespertino()
     document.getElementById("list_text").innerHTML = sessionStorage.getItem('lista_vespertino')
+    document.getElementById("share_information_pg2").href ="https://api.whatsapp.com/send?text="+sessionStorage.getItem('lista_vespertino')
 }
 
 function sendListLikeBoss(){
