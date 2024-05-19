@@ -303,7 +303,7 @@ function editaListaIda(){
 
     for (let i=1; i<lista.length; i++){
         aux2 = lista[i].toLowerCase();
-        if(((aux2.includes("volta") ||aux2.includes("volt") ||aux2.includes("voita") ) && (aux2.includes("vesp") || aux2.includes("vespertino"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat"))){
+        if(((aux2.includes("volta") ||aux2.includes("volt") ||aux2.includes("voita") ) || (aux2.includes("vesp") || aux2.includes("vespertino"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat"))){
             let aux3 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
             let aux4= '';
             
@@ -369,7 +369,7 @@ function editaListaMatutino(){
 
     for (let i=1; i<lista.length; i++){
         aux2 = lista[i].toLowerCase();
-        if(((aux2.includes("volta") ||aux2.includes("volt") ||aux2.includes("voita") ) && (aux2.includes("vesp") || aux2.includes("vespertino"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat"))){
+        if(((aux2.includes("volta") ||aux2.includes("volt") ||aux2.includes("voita") ) || (aux2.includes("vesp") || aux2.includes("vespertino"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat"))){
             let aux3 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
             let aux4= '';
             
@@ -479,7 +479,7 @@ function editaListaVespertino(){
     let aux2;
     for (let i=1; i<lista.length; i++){
         aux2 = lista[i].toLowerCase();
-        if(((aux2.includes("volta") ||aux2.includes("volt") ||aux2.includes("voita") ) && (aux2.includes("vesp") || aux2.includes("vespertino"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat"))){
+        if(((aux2.includes("volta") ||aux2.includes("volt") ||aux2.includes("voita") ) || (aux2.includes("vesp") || aux2.includes("vespertino"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat"))){
             let aux3 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
             let aux4= '';
             
@@ -727,7 +727,7 @@ function sendList(){
     
 }
 
-const versionCodeCurrent = "4.0.1"
+const versionCodeCurrent = "4.0.2"
 const keyVersionCode = 'siteVersion'
 function saveVersion(){
     localStorage.setItem(keyVersionCode, versionCodeCurrent)
