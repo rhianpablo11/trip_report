@@ -169,7 +169,7 @@
     border-radius: 18px;
     display: flex;
     resize: none;
-    overflow-y:hidden;
+    
     width: 95%;
     height: 200px;
     padding:15px;
@@ -204,7 +204,6 @@
     border-radius: 18px;
     display: flex;
     resize: none;
-    overflow-y:hidden;
     width: 95%;
     height: 200px;
     padding:15px;
@@ -465,4 +464,66 @@
 #buttons_area_two{
     width: 95%;
     margin: auto;
+}
+
+/*
+===============CAIXA DE DIALOGO
+*/
+
+.dialog_dark{
+    background: #2c2c2c;
+    border-radius: 10px;
+    border-style: none;
+    color:#ffffff;
+    box-shadow:  9px 9px 18px #2c2c2c,
+                -9px -9px 18px #181818;
+    width: 80%;
+    margin-top: 130px;
+}
+
+.dialog_dark p{
+    font-size: 0.8rem;
+}
+
+.dialog_dark button{
+    border-radius: 12px;
+    color:white;
+    font-style: bold;
+    background-color: purple;
+    border-style: none;
+    padding: 5px 15px;
+    text-align: center;
+}
+
+.dialog_dark button:hover{
+    border-style: none;
+}
+
+.dialog_light{
+    background: #ffffff;
+    border-radius: 10px;
+    border-style: none;
+    color: black;
+    box-shadow:  9px 9px 18px #a8a8a8,
+                -9px -9px 18px #ffffff;
+    width: 80%;
+    margin-top: 130px;
+}
+
+.dialog_light p{
+    font-size: 0.8rem;
+}
+
+.dialog_light button{
+    border-radius: 12px;
+    color:white;
+    font-style: bold;
+    background-color: #04aa57;
+    border-style: none;
+    padding: 5px 15px;
+    text-align: center;
+}
+
+.dialog_light button:hover{
+    border-style: none;
 }
