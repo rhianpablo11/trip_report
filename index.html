@@ -130,16 +130,28 @@
         </div>
     </body>
     <dialog id='updateLogs' class="dialog_dark">
-        <div >
+        <h3>Changelog:</h3>
+        <div class="dialog_text_tam">
             <h4>Atualizações da versão: <span id="version"></span></h4>
+            <p>1. Correção do nome da faculdade em minusculo quando o sistema corrige a falha de quebra de linha.<br>
+                &emsp;1.1 - Erro da quebra de linha corrigido na versão 4.0.2<br>
+                2. Correção e melhoria na apresentação do texto que apresenta as atualizações.<br>
+                &emsp;2.1 - Melhor visualização, e correção no comprimento para telas mais curtas<br>
+                3. Apresentação de quantidade unica de ida na tela da lista editada.<br>
+                &emsp;3.1 - Valor de ida corresponde apenas aquele turno. Ex: 20 pessoas para ir, sendo que 10 são no turno matutino, e outras 10 no turno vespertino
+                o sistema na tela da lista editada irá apresentar os valores de ida como 10, e o respectivo valor de volta para aquele turno.<br>
+                &emsp;3.2 - Função experimental
+            </p>
+            <hr >
+            <h4>Atualizações da versão: 4.0.2</h4>
             <p>1. Correção quando nome da faculdade fica na mesma linha que o nome do aluno.<br>
                 &emsp;1.1 - Situação acontece ao não quebrar a linha utilizando "enter", usando apenas espaços<br>
             2. Apresentação do "Changelog", apresentando a lista de alterações na nova versão.<br>
             &emsp; 2.2 - Esta caixa so aparece uma vez a cada atualização de versão.<br>
             3. Permissão para rolar o texto inserido na caixa de texto da tela principal.<br>
             4. Para fechar basta apertar o botão abaixo.</p>
-            <button id="closeModal">Ok</button>
         </div>
+        <button id="closeModal">Ok</button>
     </dialog>
 
     <footer>

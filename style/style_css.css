@@ -469,7 +469,19 @@
 /*
 ===============CAIXA DE DIALOGO
 */
-
+.dialog_text_tam{
+    height: 68%;
+    overflow-y: scroll;
+    border-color: #646264;
+    border-style: solid;
+    border-radius: 10px;
+    margin: 0px;
+    padding: 10px;
+    margin-top: 20px;
+}
+.dialog_dark::backdrop{
+    backdrop-filter: blur(2px);
+}
 .dialog_dark{
     background: #2c2c2c;
     border-radius: 10px;
@@ -477,10 +489,16 @@
     color:#ffffff;
     box-shadow:  9px 9px 18px #2c2c2c,
                 -9px -9px 18px #181818;
-    width: 80%;
+    width: 95%;
+    height: 50%;
     margin-top: 130px;
+    border-color: #222222;
+    border-style: solid;
 }
-
+.dialog_dark h3{
+    margin-top: 10px;
+    height: 20px;
+}
 
 
 .dialog_dark button{
@@ -490,13 +508,16 @@
     background-color: purple;
     border-style: none;
     padding: 5px 15px;
+    margin-top: 10px;
     text-align: center;
 }
 
 .dialog_dark button:hover{
     border-style: none;
 }
-
+.dialog_light::backdrop{
+    backdrop-filter: blur(2px);
+}
 .dialog_light{
     background: #ffffff;
     border-radius: 10px;

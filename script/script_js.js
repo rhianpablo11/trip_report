@@ -11,7 +11,7 @@ get_year = function (){
 }
 
 const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
-listaFaculdades = ['uefs', 'unex', 'unef', 'ufrb', 'unifan', 'unifacs', 'acesso', 'pitagoras', 'pitágoras', 'fan', 'nais', 'npj', 'anhanguera', 'unopar', 'uniasselvi', 'estacio', 'facs', 'fat']
+listaFaculdades = ['uefs', 'unex', 'unef', 'ufrb', 'unifan', 'unifacs', 'acesso', 'pitagoras', 'pitágoras', 'fan', 'nais', 'npj', 'anhanguera', 'unopar', 'uniasselvi', 'estacio', 'facs', 'fat', "unifacs(santa monica)" , "unifacs (santa monica)", "unifacs(santa mônica)" , "unifacs (santa mônica)"]
 // Altera o tema
 function changeTheme(event) {
     
@@ -173,7 +173,7 @@ function quantidadePessoas(){
         else if(lista[i]=="vespertino" || lista[i] =="vesp"){
             vespertino++;
         }
-        if(lista[i]=="volta" && (lista[i-2]=="ida" || lista[i-1]=="ida" || lista[i-2]=="vai" || lista[i-1]=="vai") ){
+        if((lista[i]=="volta" || lista[i]=="volt") && (lista[i-2]=="ida" || lista[i-1]=="ida" || lista[i-2]=="vai" || lista[i-1]=="vai") ){
             if((i+1)<=lista.length && (lista[i+1]=="vespertino" || lista[i+1]=="vesp")){
                 idaVoltaVespertinoAbsoluto ++;
             }
@@ -183,8 +183,10 @@ function quantidadePessoas(){
         }
         
     }
+    console.log("ida e volta"+idaVoltaAbsoluto)
+    console.log("ida e volta vesp"+idaVoltaVespertinoAbsoluto)
     volta -= vespertino;
-    return [ida, volta, vespertino];
+    return [ida, volta, vespertino, idaVoltaAbsoluto, idaVoltaVespertinoAbsoluto];
 }
 
 function preencherQuantidadeHome(){
@@ -204,21 +206,21 @@ function preencherQuantidadeHome(){
 
 function preencherQuantidadeIda(){
     let ida = volta = 0;
-    let geral = [0,0,0];
+    let geral = [0,0,0,0,0];
     geral = quantidadePessoas();
     ida = geral[0]
     volta = geral[1]
     document.getElementById("ida_value").innerHTML = "Ida: " + ida;
-    document.getElementById("volta_value").innerHTML = "Volta: "+volta;
+    document.getElementById("volta_value").innerHTML = "";
     let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_ida'));
     document.getElementById("share_information_pg2").href = "https://api.whatsapp.com/send?text=" + conteudo;
 }
 
 function preencherQuantidadeMatutino(){
     let ida = volta = 0;
-    let geral = [0,0,0];
+    let geral = [0,0,0,0,0];
     geral = quantidadePessoas();
-    ida = geral[0]
+    ida = geral[3]
     volta = geral[1]
     document.getElementById("ida_value").innerHTML = "Ida: " + ida;
     document.getElementById("volta_value").innerHTML = "Volta: "+volta;
@@ -228,9 +230,9 @@ function preencherQuantidadeMatutino(){
 
 function preencherQuantidadeVespertino(){
     let ida = volta = 0;
-    let geral = [0,0,0];
+    let geral = [0,0,0,0,0];
     geral = quantidadePessoas();
-    ida = geral[0]
+    ida = geral[4]
     volta = geral[2]
     document.getElementById("ida_value").innerHTML = "Ida: " + ida;
     document.getElementById("volta_value").innerHTML = "Volta: "+volta;
@@ -318,7 +320,7 @@ function editaListaIda(){
                 }
             }
             lista[i]=aux2
-            lista.splice(i+1, 0, aux4)
+            lista.splice(i+1, 0, aux4.toUpperCase())
         }
     }
 
@@ -384,7 +386,7 @@ function editaListaMatutino(){
                 }
             }
             lista[i]=aux2
-            lista.splice(i+1, 0, aux4)
+            lista.splice(i+1, 0, aux4.toUpperCase())
         }
     }
 
@@ -494,7 +496,7 @@ function editaListaVespertino(){
                 }
             }
             lista[i]=aux2
-            lista.splice(i+1, 0, aux4)
+            lista.splice(i+1, 0, aux4.toUpperCase())
         }
     }
     
@@ -727,7 +729,7 @@ function sendList(){
     
 }
 
-const versionCodeCurrent = "4.0.2"
+const versionCodeCurrent = "4.0.3"
 const keyVersionCode = 'siteVersion'
 function saveVersion(){
     localStorage.setItem(keyVersionCode, versionCodeCurrent)
