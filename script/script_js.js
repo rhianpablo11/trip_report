@@ -11,7 +11,7 @@ get_year = function (){
 }
 
 const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
-listaFaculdades = ['uefs', 'unex', 'unef', 'ufrb', 'unifan', 'unifacs', 'acesso', 'pitagoras', 'pitágoras', 'fan', 'nais', 'npj', 'anhanguera', 'unopar', 'uniasselvi', 'estacio', 'facs', 'fat', "unifacs(santa monica)" , "unifacs (santa monica)", "unifacs(santa mônica)" , "unifacs (santa mônica)"]
+listaFaculdades = ['uefs', 'unex', 'unef', 'ufrb', 'unifan', 'unifacs', 'acesso', 'pitagoras', 'pitágoras', 'fan', 'nais', 'npj', 'anhanguera', 'unopar', 'uniasselvi', 'estacio', 'facs', 'fat', "unifacs(santa monica)" , "unifacs (santa monica)", "unifacs(santa mônica)" , "unifacs (santa mônica)", "faculdade", "fael"]
 // Altera o tema
 function changeTheme(event) {
     
@@ -116,29 +116,6 @@ prefersColorScheme.addListener(changeTheme);
 
 // Altera o tema conforme o tema do usuário
 changeTheme(prefersColorScheme);
-
-
-/*PROTOTIPO DE SISTEMA PARA APERTAR O BOTAO E MUDAR COR 
-function toggle_theme(){
-    if(localStorage.getItem('theme') == 'light'){
-        localStorage.setItem('theme', "dark")
-        for(let i=0; i<document.getElementsByClassName("section_info_result_light").length; i++){
-            let elemento = document.getElementsByClassName("section_info_result_light")[i]
-            elemento.classList.remove('section_info_result_light')
-            elemento.classList.add('section_info_result_dark');
-        }
-    } else{
-        localStorage.setItem('theme', "light")
-        for(let i=0; i<document.getElementsByClassName("section_info_result_dark").length; i++){
-            let elemento = document.getElementsByClassName("section_info_result_dark")[i]
-            elemento.classList.remove('section_info_result_dark')
-            elemento.classList.add('section_info_result_light');
-        }
-    }
-    
-}
-*/
-
 
 /*
 PARTE LOGICA DO CODIGO
@@ -371,7 +348,7 @@ function editaListaMatutino(){
 
     for (let i=1; i<lista.length; i++){
         aux2 = lista[i].toLowerCase();
-        if(((aux2.includes("volta") ||aux2.includes("volt") ||aux2.includes("voita") ) || (aux2.includes("vesp") || aux2.includes("vespertino"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat"))){
+        if(((aux2.includes("volta") ||aux2.includes("volt") ||aux2.includes("voita")  || aux2.includes("vinda") ) || (aux2.includes("vesp") || aux2.includes("vespertino"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat"))){
             let aux3 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
             let aux4= '';
             
@@ -411,7 +388,7 @@ function editaListaMatutino(){
                     
                     aux = lista[i]
                     if(!isNaN(aux[0])){
-                        aux = cont + aux.substring(2, aux.length);
+                        aux = cont + aux.replace(/\d+/g, ''); 
                     }
                     else{
                         aux = cont + " " + aux;
@@ -424,7 +401,7 @@ function editaListaMatutino(){
             cont ++;
             aux = lista[i]
             if(!isNaN(aux[0])){
-                aux = cont + aux.substring(2, aux.length);
+                aux = cont + aux.replace(/\d+/g, ''); 
             }
             else{
                 aux = cont + " " + aux;
@@ -481,7 +458,7 @@ function editaListaVespertino(){
     let aux2;
     for (let i=1; i<lista.length; i++){
         aux2 = lista[i].toLowerCase();
-        if(((aux2.includes("volta") ||aux2.includes("volt") ||aux2.includes("voita") ) || (aux2.includes("vesp") || aux2.includes("vespertino"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat"))){
+        if(((aux2.includes("volta") ||aux2.includes("volt") ||aux2.includes("voita") || aux2.includes("vinda") ) || (aux2.includes("vesp") || aux2.includes("vespertino"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  || aux2.includes("fael"))){
             let aux3 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
             let aux4= '';
             
@@ -503,7 +480,7 @@ function editaListaVespertino(){
     console.log('lista depois de retratada: ' +lista)
     for(let i=1; i<lista.length; i ++){
         aux2 = lista[i].toLowerCase();
-        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat") || aux2.includes("fael")){
             let aux3 = ''
             aux3 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
             console.log(aux3)
@@ -513,12 +490,14 @@ function editaListaVespertino(){
                     console.log(lista[i])
                     cont =0;
                 }
-                if((aux3[h] == 'vespertino' || aux3[h] == 'vesp')&& (aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt"))){
+                if((aux3[h] == 'vespertino' || aux3[h] == 'vesp')&& (aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")  || aux2.includes("vinda") )){
                     cont ++;
                     
                     aux = lista[i]
+                    
                     if(!isNaN(aux[0])){
-                        aux = cont + aux.substring(2, aux.length);
+                        aux = cont + aux.replace(/\d+/g, ''); 
+
                     }
                     else{
                         aux = cont + " " + aux;
@@ -527,12 +506,15 @@ function editaListaVespertino(){
                 }
             }  
         }
-        else if((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (aux2.includes("vespertino") || aux2.includes("vesp"))){
+        else if((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")  || aux2.includes("vinda") ) && (aux2.includes("vespertino") || aux2.includes("vesp"))){
             cont ++;
             aux = lista[i]
-            
+            console.log("MOSTRANDO O NUMERO: "+aux)
+            console.log("MOSTRANDO O TIPO: "+typeof( aux[0]))
+            console.log(isNaN(aux[0]))
             if(!isNaN(aux[0]) ){
-                aux = cont + aux.substring(2, aux.length);   
+                
+                aux = cont + aux.replace(/\d+/g, '');   
             }
             else{
                 aux = cont + " " + aux;
@@ -549,11 +531,11 @@ function editaListaVespertino(){
         let aux2 = lista[i].toLowerCase()
         let aux3 = (lista[(lista.length)-1].toLowerCase()).trim()
         console.log(aux2)
-        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat") || aux2.includes("fael") ){
             if(i+1<lista.length){
                 if(lista[i+1] == ""){
                     console.log("verificando problema ",lista[i])
-                    if( ((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (aux2.includes("vespertino") || aux2.includes("vesp"))) ){
+                    if( ((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")  || aux2.includes("vinda") ) && (aux2.includes("vespertino") || aux2.includes("vesp"))) ){
                         listaFinal +="\n"+lista[i]
                     }
                 }
@@ -562,13 +544,13 @@ function editaListaVespertino(){
                     for(let h=0; h<aux4.length; h++){
                         if(listaFaculdades.indexOf(aux4[h])>-1){
                             listaFinal += "\n\n"+lista[i]
-                        } else if((aux4[h] == 'volta' || aux4[h] == 'voita' || aux4[h] == 'volt' ) && (aux2.includes("vespertino") || aux2.includes("vesp"))){
+                        } else if((aux4[h] == 'volta' || aux4[h] == 'voita' || aux4[h] == 'volt' || aux4[h] == 'vinda') && (aux2.includes("vespertino") || aux2.includes("vesp"))){
                             listaFinal +="\n"+lista[i]
                         }
                     }
                    
                 }
-            } else if( ((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (aux2.includes("vespertino") || aux2.includes("vesp"))) ){
+            } else if( ((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")  || aux2.includes("vinda") ) && (aux2.includes("vespertino") || aux2.includes("vesp"))) ){
                 console.log('teste')
                 listaFinal +="\n"+lista[i]
             }
@@ -729,7 +711,7 @@ function sendList(){
     
 }
 
-const versionCodeCurrent = "4.0.4"
+const versionCodeCurrent = "4.0.5"
 const keyVersionCode = 'siteVersion'
 function saveVersion(){
     localStorage.setItem(keyVersionCode, versionCodeCurrent)
