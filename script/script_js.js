@@ -657,7 +657,7 @@ function sendListLikeBoss(){
         nameTodayPt = "Segunda";
     }
 
-     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. Rhian(ida e volta vespertino)\n2. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*UNIFACS* *(santa mônica)*\n1. \n\n*FAN*\n1. \n\n*UNEF*\n1. \n\n";
+     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. Rhian(ida e volta vespertino)\n2. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*UNEF*\n1. \n\n";
      conteudo = window.encodeURIComponent(lista_format);
      let url = "https://api.whatsapp.com/send?text="+conteudo;
      var win = window.open(url, '_blank');
@@ -700,7 +700,7 @@ function sendList(){
         nameTodayPt = "Segunda";
     }
 
-     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*UNIFACS* *(santa mônica)*\n1. \n\n*UNEF*\n1. \n\n ";
+     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*UNEF*\n1. \n\n ";
      conteudo = window.encodeURIComponent(lista_format);
      let url = "https://api.whatsapp.com/send?text="+conteudo;
      var win = window.open(url, '_blank');
@@ -708,7 +708,7 @@ function sendList(){
     
 }
 
-const versionCodeCurrent = "4.0.6"
+const versionCodeCurrent = "4.0.7"
 const keyVersionCode = 'siteVersion'
 function saveVersion(){
     localStorage.setItem(keyVersionCode, versionCodeCurrent)
