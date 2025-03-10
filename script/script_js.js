@@ -129,7 +129,6 @@ function homePage(){
 function salvarLista(){
     let listaTransporte = document.getElementById("input_list").value
     sessionStorage.setItem('lista_completa', listaTransporte)
-    console.log(sessionStorage.getItem('lista_completa'))
 }
 
 function tratamentoLista(){
@@ -144,24 +143,22 @@ function quantidadePessoas(){
         if(lista[i]=="ida" || lista[i] =="idaa" || lista[i] == "vai" || lista[i] == "ide" || lista[i]=="lda"){
             ida++;
         }
-        else if(lista[i]=="volta" || lista[i] == "voltando" || lista[i] == "volt"){
+        else if(lista[i]=="volta" || lista[i] == "voltando" || lista[i] == "volt" || lista[i] == "voita" || lista[i] == "vinda"){
             volta++;
         }
-        else if(lista[i]=="vespertino" || lista[i] =="vesp"){
+        else if(lista[i]=="vespertino" || lista[i] =="vesp" || lista[i] =="vesper" || lista[i] =="vespertina"){
             vespertino++;
         }
-        if((lista[i]=="volta" || lista[i]=="volt") && (lista[i-2]=="ida" || lista[i-1]=="ida" || lista[i-2]=="vai" || lista[i-1]=="vai") ){
-            if((i+1)<=lista.length && (lista[i+1]=="vespertino" || lista[i+1]=="vesp")){
+        if((lista[i]=="volta" || lista[i]=="volt" || lista[i]=="voltando" || lista[i]=="vinda" || lista[i]=="voita") && (lista[i-2]=="ida" || lista[i-1]=="ida" || lista[i-2]=="vai" || lista[i-1]=="vai") ){
+            if((i+1)<=lista.length && (lista[i+1]=="vespertino" || lista[i+1]=="vesp" || lista[i+1] =="vesper" || lista[i+1] =="vespertina")){
                 idaVoltaVespertinoAbsoluto ++;
             }
-            else if((i+1)<=lista.length && (lista[i+1]!="vespertino" || lista[i+1]!="vesp")){
+            else if((i+1)<=lista.length && (lista[i+1]!="vespertino" || lista[i+1]!="vesp" || lista[i+1] =="vesper" || lista[i+1] =="vespertina")){
                 idaVoltaAbsoluto ++;
             }
         }
         
     }
-    console.log("ida e volta"+idaVoltaAbsoluto)
-    console.log("ida e volta vesp"+idaVoltaVespertinoAbsoluto)
     volta -= vespertino;
     return [ida, volta, vespertino, idaVoltaAbsoluto, idaVoltaVespertinoAbsoluto];
 }
@@ -232,12 +229,12 @@ function editaListaIda(){
             listaFinal += "\n\n"+lista[i];
             cont =0;
         }
-        else if(((aux2.includes("ida") || aux2.includes("Ida") || aux2.includes("vai") || aux2.includes("Vai")))){
+        else if(((aux2.includes("ida") || aux2.includes("Ida") || aux2.includes("lda") || aux2.includes("vai") || aux2.includes("Vai")))){
             let aux3= ""
             aux3 = aux2.replace(/[^\w\s]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
             
             for(let o=0; o<aux3.length; o++){
-                if(aux3[o] == "ida" || aux3[o] == "Ida" || aux3[o] == "vai"){
+                if(aux3[o] == "ida" || aux3[o] == "Ida" || aux3[o] == "vai" || aux3[o] == "lda"|| aux3[o] == "Vai"){
                     cont ++;
                     aux = lista[i]
                     if(!isNaN(aux[0])){
@@ -348,18 +345,18 @@ function editaListaMatutino(){
 
     for (let i=1; i<lista.length; i++){
         aux2 = lista[i].toLowerCase();
-        if(((aux2.includes("volta") ||aux2.includes("volt") ||aux2.includes("voita")  || aux2.includes("vinda") ) || (aux2.includes("vesp") || aux2.includes("vespertino"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat"))){
+       
+        //verificação para conferir se tem uma linha com o nome da faculdade junto com o nome de ida e volta 
+        if(((aux2.includes("volta") ||aux2.includes("volt") || aux2.includes("voita")  || aux2.includes("vinda") ) || (aux2.includes("vesp") || aux2.includes("vespertino") || aux2.includes("vesper") || aux2.includes("vespertina"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat"))){
             let aux3 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
             let aux4= '';
-            
+
             for(let j=0; j<aux3.length; j++){
                 
                 if(listaFaculdades.includes(aux3[j])){
                     
                     aux4 = aux3[j]
-                    console.log('oioi '+aux4)
                     aux2= aux2.replace(aux4, " ")
-                    console.log('oioi '+aux2)
                 }
             }
             lista[i]=aux2
@@ -374,7 +371,6 @@ function editaListaMatutino(){
         if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
             let aux3 = ''
             aux3 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
-            console.log(aux3)
             for(let h=0;h<aux3.length; h++){
                 
                 if(listaFaculdades.indexOf(aux3[h])>-1){
@@ -383,7 +379,7 @@ function editaListaMatutino(){
                     //console.log(lista[i])
                     cont =0;  
                 } 
-                if((aux3[h] == 'volta' || aux3[h] == 'voita' || aux3[h] == 'volt' ) && (!aux2.includes("vespertino") || !aux2.includes("vesp"))){
+                if((aux3[h] == 'volta' || aux3[h] == 'voita' || aux3[h] == 'volt' || aux3[h] == 'vinda' ) && (!aux2.includes("vespertino") && !aux2.includes("vesp"))){
                     cont ++;
                     
                     aux = lista[i]
@@ -397,7 +393,7 @@ function editaListaMatutino(){
                 }
             }  
         }
-        else if(((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (!aux2.includes("vespertino") || !aux2.includes("vesp")))){
+        else if(((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt") || aux2.includes("vinda")) && (!aux2.includes("vespertino") && !aux2.includes("vesp")))){
             cont ++;
             aux = lista[i]
             if(!isNaN(aux[0])){
@@ -412,7 +408,7 @@ function editaListaMatutino(){
     lista = listaFinal.replace("   ", "\n").split("\n");
     listaFinal = ''
     listaFinal+= lista[0].replace('\n', '')
-    console.log('lista -0', lista[0])
+
     for(let i=1; i<lista.length; i ++){
         let aux2 = lista[i].toLowerCase()
         let aux3 = (lista[(lista.length)-1].toLowerCase()).trim()
@@ -421,7 +417,7 @@ function editaListaMatutino(){
             if(i+1<lista.length){
                 if(lista[i+1] == ""){
                     console.log("verificando problema ",lista[i])
-                    if( ((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (!aux2.includes("vespertino") || !aux2.includes("vesp"))) ){
+                    if( ((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt") || aux2.includes("vinda")) && (!aux2.includes("vespertino") || !aux2.includes("vesp"))) ){
                         listaFinal +="\n"+lista[i]
                     }
                 }
@@ -430,14 +426,14 @@ function editaListaMatutino(){
                     for(let h=0; h<aux4.length; h++){
                         if(listaFaculdades.indexOf(aux4[h])>-1){
                             listaFinal += "\n\n"+lista[i]
-                        } else if((aux4[h] == 'volta' || aux4[h] == 'voita' || aux4[h] == 'volt' ) && (!aux2.includes("vespertino") || !aux2.includes("vesp"))){
+                        } else if((aux4[h] == 'volta' || aux4[h] == 'voita' || aux4[h] == 'volt' || aux4[h] == 'vinda' ) && (!aux2.includes("vespertino") || !aux2.includes("vesp"))){
                             listaFinal +="\n"+lista[i]
                         }
                     }
                    
                 }
-            } else if( ((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")) && (!aux2.includes("vespertino") || !aux2.includes("vesp"))) ){
-                console.log('teste')
+            } else if( ((aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt") || aux2.includes("vinda")) && (!aux2.includes("vespertino") || !aux2.includes("vesp"))) ){
+                
                 listaFinal +="\n"+lista[i]
             }
         }else if(aux2!=''){
@@ -447,10 +443,14 @@ function editaListaMatutino(){
     sessionStorage.setItem('lista_matutino', listaFinal)
 }
 
+
 function editaListaVespertino(){
     let lista = sessionStorage.getItem('lista_completa');
+    
     lista = lista.replace("  ", "\n").split("\n");
     lista[lista.length] = " "
+
+    console.log('AAAAAAAAAAAAAA ', lista)
     let listaFinal = " ";
     listaFinal += lista[0];
     let cont =0;
@@ -465,11 +465,8 @@ function editaListaVespertino(){
             for(let j=0; j<aux3.length; j++){
                 
                 if(listaFaculdades.includes(aux3[j])){
-                    
                     aux4 = aux3[j]
-                    console.log('oioi '+aux4)
                     aux2= aux2.replace(aux4, " ")
-                    console.log('oioi '+aux2)
                 }
             }
             lista[i]=aux2
@@ -490,7 +487,7 @@ function editaListaVespertino(){
                     console.log(lista[i])
                     cont =0;
                 }
-                if((aux3[h] == 'vespertino' || aux3[h] == 'vesp')&& (aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")  || aux2.includes("vinda") )){
+                if((aux3[h] == 'vespertino' || aux3[h] == 'vesp' || aux3[h] == 'vesper' || aux3[h] == 'vespertina')&& (aux2.includes("volta") || aux2.includes("voita") || aux2.includes("volt")  || aux2.includes("vinda") )){
                     cont ++;
                     
                     aux = lista[i]
@@ -660,7 +657,7 @@ function sendListLikeBoss(){
         nameTodayPt = "Segunda";
     }
 
-     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. Rhian(ida e volta vespertino)\n2. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*NPJ - UNEX*\n1. \n\n*UNIFACS* *(santa mônica)*\n1. \n\n*UFRB*\n1. \n\n*ACESSO*\n1. \n\n*FAN*\n1. \n\n*UNEF*\n1. \n\n";
+     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. Rhian(ida e volta vespertino)\n2. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*UNIFACS* *(santa mônica)*\n1. \n\n*FAN*\n1. \n\n*UNEF*\n1. \n\n";
      conteudo = window.encodeURIComponent(lista_format);
      let url = "https://api.whatsapp.com/send?text="+conteudo;
      var win = window.open(url, '_blank');
@@ -703,7 +700,7 @@ function sendList(){
         nameTodayPt = "Segunda";
     }
 
-     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*NPJ - UNEX*\n1. \n\n*UNIFACS* *(santa mônica)*\n1. \n\n*UFRB*\n1. \n\n*ACESSO*\n1. \n\n*FAN*\n1. \n\n*UNEF*\n1. \n\n*PITAGORAS*\n1. \n\n*ESTACIO* *(getúlio)*\n1. ";
+     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*UNIFACS* *(santa mônica)*\n1. \n\n*UNEF*\n1. \n\n ";
      conteudo = window.encodeURIComponent(lista_format);
      let url = "https://api.whatsapp.com/send?text="+conteudo;
      var win = window.open(url, '_blank');
@@ -711,7 +708,7 @@ function sendList(){
     
 }
 
-const versionCodeCurrent = "4.0.5"
+const versionCodeCurrent = "4.0.6"
 const keyVersionCode = 'siteVersion'
 function saveVersion(){
     localStorage.setItem(keyVersionCode, versionCodeCurrent)

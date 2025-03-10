@@ -1,0 +1,290 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    height: 100%;
+}
+
+
+a{
+    text-decoration-line: none;
+}
+
+/*
+bloco da tela inicial do site abaixo
+*/
+.primary{
+    background: url("img/site_em_obras.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    filter: blur(5px);
+    height: 100%;
+
+}
+
+#interna{
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.7); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}
+
+/*
+bloco da tela inicial do site acima
+*/
+
+@font-face {
+    font-family: "wavehaus_bold";
+    src: url(font/wavehaus/Wavehaus-128Bold.otf);
+}
+
+@font-face {
+    font-family: "wavehaus_light";
+    src: url(font/wavehaus/Wavehaus-42Light.otf);
+}
+
+@font-face {
+    font-family: "wavehaus_semibold";
+    src: url(font/wavehaus/Wavehaus-95SemiBold.otf);
+}
+
+@font-face {
+    font-family: "urw_extrabold";
+    src: url(font/urw_geometric/URWGeometricExtraBold.otf);
+}
+
+@font-face {
+    font-family: "carnas_regular";
+    src: url(font/carnas/CarnasRegular.otf);
+}
+
+@font-face {
+    font-family: "oceanwide_semibold";
+    src: url(font/oceanwide/oceanwide_semibold.otf);
+}
+
+
+.navbar_background{
+    background-color: #04aa57;
+    padding: 9px 0px 2px 0px;
+    width: 100%;
+    font-family: Helvetica,'Arial Narrow Bold', sans-serif;
+}
+
+.navbar_background a{
+    font-family: oceanwide_semibold;
+    font-size: 1em;
+    
+    font-weight: 700;
+}
+
+#botao_navbar{
+    background: none;
+    border: none;
+}
+#botao_navbar a:hover{
+    color: white;
+}
+
+#bloco_resultado{
+    padding: 20px 40px;
+    margin: auto;
+    
+}
+.Information_block{
+    padding: 20px 30px 20px 10px;
+    
+    border-radius: 25px;
+    background: #fffefe;
+    box-shadow:  17px 17px 45px #8f8f8f,
+                -17px -17px 45px #ffffff;
+}
+
+.Information_block h4{
+    margin-bottom: 5px;
+    font-family: wavehaus_bold ,Arial, Helvetica, sans-serif;
+    font-weight: 0;
+}
+
+.Information_block p{
+    text-indent: 30px;
+    padding: 0px;
+    margin: 0px;
+    font-size: 17px;
+    font-family: wavehaus_semibold, Arial, Helvetica, sans-serif;
+}
+
+#compartilhar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+#compartilhar h1{
+    font-size: 50px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#input_block{
+    margin: auto;
+}
+
+#input_list{
+    border-radius: 18px;
+    display: flex;
+    resize: none;
+    overflow-y:hidden;
+    width: 95%;
+    height: 200px;
+    padding:15px;
+    margin: auto;
+    border: none;
+    background: #ffffff;
+    box-shadow:  9px 9px 18px #a8a8a8,
+                -9px -9px 18px #ffffff;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+
+#input_list:focus{
+    border: solid #04aa57;
+    outline: none;
+
+    
+}
+
+#input_list::placeholder{
+    text-align:left;
+    padding:10px;
+    margin: 0px;
+}
+
+.fuction_buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    margin: 0;
+    border-radius: 30px;
+    font-family: wavehaus_semibold, Arial, Helvetica, sans-serif;
+}
+
+.fuction_buttons button{
+    border-radius: 12px;
+    border: none;
+    background-color: #04aa57;
+    padding: 10px 20px;
+    margin: 15px 20px 0px 15px;
+    color:white;
+    font-style: bold;
+    font-size: 18px;
+    transition: all 500ms;
+    font-size: 15px;
+    position: relative;
+    overflow: hidden;
+    outline: 0px solid #046c38;
+}
+
+
+.fuction_buttons button:hover {
+    color: #ffffff;
+    transform: scale(1.02);
+    outline: 2px solid #046c38;
+    box-shadow: 4px 5px 17px -4px #046c38;
+  }
+  
+.fuction_buttons button::before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #046c38;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 500ms;
+}
+
+.fuction_buttons button:hover::before {
+    width: 250%;
+}
+
+
+.fuction_buttons #detalhed_button{
+    width: 50%;
+    margin-right: 4px;
+}
+
+.fuction_buttons #simple_button{
+    width: 50%;
+    margin-left: 4px;
+}
+
+.fuction_buttons #editList_matutino{
+    width: 50%;
+    margin-left: 4px;
+    margin-top: 5px;
+}
+
+.fuction_buttons #editList_vespertino{
+    width: 50%;
+    margin-right: 4px;
+    margin-top: 5px;
+}
+
+.fuction_buttons #editList_ida{
+    width:95%;
+    
+    margin-top: 5px;
+}
+
+#rodape{
+    background-color: #04aa57;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    text-align: center;
+    padding: 15px 0px 10px 0px;
+    margin: 0px;
+    font-family: wavehaus_light, Arial, Helvetica, sans-serif;
+    font-weight: 650;
+
+
+}
+
+#rodape a{
+    color: black;
+    text-decoration: none;
+    font-weight: normal;
+    font-family: carnas_regular, Helvetica, Arial, sans-serif;
+}
+
+#rodape a:hover{
+    color:white;
+}
+#rodape p{
+    padding: 0px;
+    margin: 0px;
+}

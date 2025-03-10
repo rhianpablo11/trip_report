@@ -169,6 +169,7 @@
     border-radius: 18px;
     display: flex;
     resize: none;
+    color: black;
     
     width: 95%;
     height: 200px;
