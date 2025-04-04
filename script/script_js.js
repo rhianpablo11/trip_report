@@ -163,6 +163,38 @@ function quantidadePessoas(){
     return [ida, volta, vespertino, idaVoltaAbsoluto, idaVoltaVespertinoAbsoluto];
 }
 
+function quantidadePessoasPontos(){
+    let serraria = tapera = sossego = fluminense = terraNova = cocaCola = quadra = rodoviaria = vilatoide = 0;
+    let lista =  tratamentoLista();
+    for (let i=0; i<lista.length; i++){
+        if(lista[i] == 'serraria' || lista[i] == 'serrária' || lista[i] == '*serrária'){
+            serraria ++;
+        } else if( lista[i] == 'tapera'){
+            tapera ++;
+        } else if(lista[i] == 'sossego'){
+            sossego ++;
+        } else if(lista[i] == 'fluminense'){
+            fluminense ++;
+        } else if(lista[i] == 'terra nova' || (lista[i] == 'terra' && lista[i+1] == 'nova')){
+            terraNova ++;
+        } else if(lista[i] == 'coca' || lista[i] == 'coca cola' || lista[i] == 'coca-cola'){
+            cocaCola ++;
+        } else if(lista[i] == 'quadra'){
+            quadra ++;
+        } else if((lista[i] == 'rodovi' && lista[i+1] == 'ria') || lista[i] == 'rodoviária'){
+            rodoviaria ++;
+        } else if(lista[i] == 'vilatoide'){
+            vilatoide ++;
+        }
+    }
+    console.log(lista)
+    let total = serraria + terraNova + tapera + fluminense + sossego 
+    console.log('RODOVIARIA: ', rodoviaria)
+    return [cocaCola, quadra, rodoviaria, vilatoide, serraria, tapera, sossego, fluminense, terraNova, total]
+}
+
+
+
 function preencherQuantidadeHome(){
     let ida = volta = vespertino = 0;
     let geral = [0,0,0];
@@ -182,10 +214,22 @@ function preencherQuantidadeIda(){
     let ida = volta = 0;
     let geral = [0,0,0,0,0];
     geral = quantidadePessoas();
+    pontos_geral = quantidadePessoasPontos();
     ida = geral[0]
     volta = geral[1]
+    alert('Presença de funcionalidade em teste, erros com os valores de pessoas em cada um dos pontos podem ocorrer, por favor realizar conferencia!')
     document.getElementById("ida_value").innerHTML = "Ida: " + ida;
     document.getElementById("volta_value").innerHTML = "";
+    document.getElementById("coca_cola_value").innerHTML = 'Coca Cola: ' + pontos_geral[0];
+    document.getElementById("quadra_value").innerHTML = 'Quadra: ' + pontos_geral[1];
+    document.getElementById("rodoviaria_value").innerHTML = 'Rodoviaria: '+ pontos_geral[2];
+    document.getElementById("vilatoide_value").innerHTML = 'Vilatoide: '+ pontos_geral[3];
+    document.getElementById("serraria_value").innerHTML = "Serraria: " + pontos_geral[4];
+    document.getElementById("fluminense_value").innerHTML = "Fluminense: " + pontos_geral[7];
+    document.getElementById("terra_nova_value").innerHTML = "Terra Nova: " + pontos_geral[8];
+    document.getElementById("sossego_value").innerHTML = "Sossego: " + pontos_geral[6];
+    document.getElementById("tapera_value").innerHTML = "Tapera: " + pontos_geral[5];
+    document.getElementById("total_pontos_superiores").innerHTML = "Total la em cima: " + pontos_geral[9];
     let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_ida'));
     document.getElementById("share_information_pg2").href = "https://api.whatsapp.com/send?text=" + conteudo;
 }
@@ -198,6 +242,16 @@ function preencherQuantidadeMatutino(){
     volta = geral[1]
     document.getElementById("ida_value").innerHTML = "Ida: " + ida;
     document.getElementById("volta_value").innerHTML = "Volta: "+volta;
+    document.getElementById("coca_cola_value").innerHTML = '';
+    document.getElementById("quadra_value").innerHTML = '';
+    document.getElementById("rodoviaria_value").innerHTML = '';
+    document.getElementById("vilatoide_value").innerHTML = '';
+    document.getElementById("serraria_value").innerHTML = '';
+    document.getElementById("fluminense_value").innerHTML = ''
+    document.getElementById("terra_nova_value").innerHTML = ''
+    document.getElementById("sossego_value").innerHTML = ''
+    document.getElementById("tapera_value").innerHTML = ''
+    document.getElementById("total_pontos_superiores").innerHTML = ''
     let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_matutino'));
     document.getElementById("share_information_pg2").href = "https://api.whatsapp.com/send?text=" + conteudo;
 }
@@ -210,6 +264,17 @@ function preencherQuantidadeVespertino(){
     volta = geral[2]
     document.getElementById("ida_value").innerHTML = "Ida: " + ida;
     document.getElementById("volta_value").innerHTML = "Volta: "+volta;
+    document.getElementById("coca_cola_value").innerHTML = '';
+    document.getElementById("quadra_value").innerHTML = '';
+    document.getElementById("rodoviaria_value").innerHTML = '';
+    document.getElementById("vilatoide_value").innerHTML = '';
+    document.getElementById("serraria_value").innerHTML = '';
+    document.getElementById("fluminense_value").innerHTML = ''
+    document.getElementById("terra_nova_value").innerHTML = ''
+    document.getElementById("sossego_value").innerHTML = ''
+    document.getElementById("tapera_value").innerHTML = ''
+    document.getElementById("total_pontos_superiores").innerHTML = ''
+
     let conteudo = window.encodeURIComponent(sessionStorage.getItem('lista_vespertino'));
     document.getElementById("share_information_pg2").href = "https://api.whatsapp.com/send?text=" + conteudo;
 }
@@ -446,11 +511,11 @@ function editaListaMatutino(){
 
 function editaListaVespertino(){
     let lista = sessionStorage.getItem('lista_completa');
-    
-    lista = lista.replace("  ", "\n").split("\n");
+    console.log(lista)
+    lista = lista.replace("   ", "\n").split("\n");
     lista[lista.length] = " "
-
-    console.log('AAAAAAAAAAAAAA ', lista)
+    console.log("LISTAA:   "+lista)
+    
     let listaFinal = " ";
     listaFinal += lista[0];
     let cont =0;
@@ -708,7 +773,7 @@ function sendList(){
     
 }
 
-const versionCodeCurrent = "4.0.7"
+const versionCodeCurrent = "4.2.0"
 const keyVersionCode = 'siteVersion'
 function saveVersion(){
     localStorage.setItem(keyVersionCode, versionCodeCurrent)
