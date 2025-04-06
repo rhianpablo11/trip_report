@@ -177,19 +177,17 @@ function quantidadePessoasPontos(){
             fluminense ++;
         } else if(lista[i] == 'terra nova' || (lista[i] == 'terra' && lista[i+1] == 'nova')){
             terraNova ++;
-        } else if(lista[i] == 'coca' || lista[i] == 'coca cola' || lista[i] == 'coca-cola'){
+        } else if(lista[i] == 'coca' || lista[i] == 'coca cola' || lista[i] == 'coca-cola' || (lista[i] == 'coca' && lista[i+1] == 'cola')){
             cocaCola ++;
         } else if(lista[i] == 'quadra'){
             quadra ++;
-        } else if((lista[i] == 'rodovi' && lista[i+1] == 'ria') || lista[i] == 'rodoviária'){
+        } else if((lista[i] == 'rodovi' && lista[i+1] == 'ria') || lista[i] == 'rodoviária' || lista[i] == 'rodoviaria'){
             rodoviaria ++;
         } else if(lista[i] == 'vilatoide'){
             vilatoide ++;
         }
     }
-    console.log(lista)
     let total = serraria + terraNova + tapera + fluminense + sossego 
-    console.log('RODOVIARIA: ', rodoviaria)
     return [cocaCola, quadra, rodoviaria, vilatoide, serraria, tapera, sossego, fluminense, terraNova, total]
 }
 
@@ -217,7 +215,7 @@ function preencherQuantidadeIda(){
     pontos_geral = quantidadePessoasPontos();
     ida = geral[0]
     volta = geral[1]
-    alert('Presença de funcionalidade em teste, erros com os valores de pessoas em cada um dos pontos podem ocorrer, por favor realizar conferencia!')
+    //alert('Presença de funcionalidade em teste, erros com os valores de pessoas em cada um dos pontos podem ocorrer, por favor realizar conferencia!')
     document.getElementById("ida_value").innerHTML = "Ida: " + ida;
     document.getElementById("volta_value").innerHTML = "";
     document.getElementById("coca_cola_value").innerHTML = 'Coca Cola: ' + pontos_geral[0];
@@ -508,7 +506,6 @@ function editaListaMatutino(){
     sessionStorage.setItem('lista_matutino', listaFinal)
 }
 
-
 function editaListaVespertino(){
     let lista = sessionStorage.getItem('lista_completa');
     console.log(lista)
@@ -722,7 +719,7 @@ function sendListLikeBoss(){
         nameTodayPt = "Segunda";
     }
 
-     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. Rhian(ida e volta vespertino)\n2. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*UNEF*\n1. \n\n";
+     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. Rhian(ida e volta vespertino) *quadra* \n2. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*UNEF*\n1. \n\n";
      conteudo = window.encodeURIComponent(lista_format);
      let url = "https://api.whatsapp.com/send?text="+conteudo;
      var win = window.open(url, '_blank');
@@ -773,7 +770,7 @@ function sendList(){
     
 }
 
-const versionCodeCurrent = "4.2.0"
+const versionCodeCurrent = "4.2.1"
 const keyVersionCode = 'siteVersion'
 function saveVersion(){
     localStorage.setItem(keyVersionCode, versionCodeCurrent)
