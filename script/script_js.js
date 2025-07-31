@@ -770,7 +770,7 @@ function sendList(){
     
 }
 
-const versionCodeCurrent = "4.2.1"
+const versionCodeCurrent = "4.2.2"
 const keyVersionCode = 'siteVersion'
 function saveVersion(){
     localStorage.setItem(keyVersionCode, versionCodeCurrent)
