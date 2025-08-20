@@ -7,15 +7,28 @@ import Edited from "./Edited"
 import { clearSessionStorage, getList, getLocalVersion, saveVersion } from "../functions/utils"
 import ListNull from "./ListNull"
 import Changelog from "../components/Changelog"
+import SideBar from "../components/SideBar"
 
 
 
 function App(){
     const [pageSelected, setPageSelected] = useState('home')
     const [showChangelog, setShowChangelog] = useState(false)
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+
+    const closeSidebar = () => setIsSidebarOpen(false)
+
+    
+
     const getListInserted = () => {
         setPageSelected('insights')
         
+    }
+
+    const handleSideBar = (buttonClicked: string) =>{
+        console.log('corrigir', buttonClicked)
+        setIsSidebarOpen(true)
     }
 
     const handlePageSelected = (PageClicked: string) =>{
@@ -36,7 +49,8 @@ function App(){
 
     return(
         <>
-            <div className="bg-no-repeat bg-cover bg-[url(./assets/bg.png)] w-full h-dvh">
+            <div className="bg-no-repeat flex bg-cover bg-[url(./assets/bg.png)] w-full h-dvh">
+                <SideBar isOpen={isSidebarOpen} onClose={closeSidebar} />
                 <div className="w-full h-dvh max-h-dvh bg-white/35 backdrop-blur-[2px] flex flex-col">
                     {showChangelog ? (
                         <>
@@ -48,7 +62,7 @@ function App(){
                     
                     
                     <div className="flex-shrink-0">
-                        <Title />
+                        <Title onClickButton={handleSideBar}/>
                     </div>
                     {pageSelected == 'home' ? (
                         <>

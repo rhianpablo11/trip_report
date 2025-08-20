@@ -2,7 +2,7 @@ import { useState } from "react"
 import Button from "../components/ui/Button"
 import Input from "../components/ui/Input"
 import type { HomeProps } from "../interfaces/interfaces"
-import { saveList } from "../functions/utils"
+import { saveList, saveListData } from "../functions/utils"
 
 
 function Home(props: HomeProps){
@@ -11,7 +11,12 @@ function Home(props: HomeProps){
 
     const onClickFather = (buttonClicked:string) => {
         onClickButton(buttonClicked)
-        saveList(listTyped)
+        
+        if(listTyped != ''){
+            saveList(listTyped)
+            saveListData(listTyped)
+        }
+        
     }
     
     const onChangeInputFather = (value:string) => {

@@ -57,17 +57,17 @@ function NavBar(props: NavBarProps){
                 <ul className="flex flex-row bg-white/25 justify-between items-center w-full h-full">
                     <li>
                         <div>
+                            <Button isActive={isSelectedHome} onClickChildren={onClickFather}  buttonShow="home"/>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
                             <Button isActive={isSelectedInsights} onClickChildren={onClickFather} buttonShow="insights"/>
                         </div>
                     </li>
                     <li>
                         <div>
                             <Button isActive={isSelected05h} onClickChildren={onClickFather}  buttonShow="05h"/>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <Button isActive={isSelectedHome} onClickChildren={onClickFather}  buttonShow="home"/>
                         </div>
                     </li>
                     <li>

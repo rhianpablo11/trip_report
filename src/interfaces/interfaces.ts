@@ -33,3 +33,7 @@ export interface InputProps {
     onChangeInput: (value: string) => void
 }
 
+export interface SidebarProps {
+    isOpen: boolean;
+    onClose: () => void
+}

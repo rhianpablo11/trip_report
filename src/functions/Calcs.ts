@@ -1,4 +1,4 @@
-import { tratamentoLista } from "./Edits";
+import { editaListaIda, tratamentoLista } from "./Edits";
 
 
 function quantidadePessoas(){
@@ -46,10 +46,16 @@ function quantidadePessoasPontos(){
     let quadra = 0
     let rodoviaria = 0
     let vilatoide = 0;
-    let lista =  tratamentoLista();
-    if(lista == null){
-        return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    let postoAvenida = 0;
+    let bandiacu = 0;
+    let cidadeJardim = 0;
+    let listaPreTratada =  editaListaIda();
+    let lista = ['']
+    if(listaPreTratada == null){
+        return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     }
+
+    lista = listaPreTratada.toLowerCase().replace(/[^\w\s]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
     for (let i=0; i<lista.length; i++){
         if(lista[i] == 'serraria' || lista[i] == 'serrária' || lista[i] == '*serrária'){
             serraria ++;
@@ -69,10 +75,16 @@ function quantidadePessoasPontos(){
             rodoviaria ++;
         } else if(lista[i] == 'vilatoide'){
             vilatoide ++;
+        } else if((lista[i] == 'avenida' && (lista[i-1]== 'vespertino' || lista[i-1]== 'volta' || lista[i-1]== 'ida' )) || (lista[i] == 'posto' && lista[i+1] == 'avenida')){
+            postoAvenida ++
+        } else if(lista[i] == "bandiaçu" || (lista[i] == 'bandia' && lista[i + 1] == 'u') || lista[i] == 'bandiacu' || lista[i] == 'bandarrinha'){
+            bandiacu ++
+        } else if(lista[i] == 'cidade' &&  lista[i+1] == 'jardim'){
+            cidadeJardim ++;
         }
     }
-    let total = serraria + terraNova + tapera + fluminense + sossego 
-    return [cocaCola, quadra, rodoviaria, vilatoide, serraria, tapera, sossego, fluminense, terraNova, total]
+    let total = serraria + terraNova + tapera + fluminense + sossego + cidadeJardim + postoAvenida + bandiacu
+    return [cocaCola, quadra, rodoviaria, vilatoide, serraria, tapera, sossego, fluminense, terraNova, postoAvenida, cidadeJardim, bandiacu, total]
 }
 
 

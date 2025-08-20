@@ -12,7 +12,10 @@ function PointsGo(){
     const [quantSossego, setQuantSossego] = useState(0);
     const [quantFluminense, setQuantFluminense] = useState(0);
     const [quantTerraNova, setQuantTerraNova] = useState(0);
-    const [quantTotalPosCorreios, setQuantTotalPosCorreios] = useState(0);
+    const [quantPostoAvenida, setQuantPostoAvenida] = useState(0)
+    const [quantCidadeJardim, setQuantCidadeJardim] = useState(0)
+    const [quantBandiacu, setQuantBandiacu] = useState(0)
+    //const [quantTotalPosCorreios, setQuantTotalPosCorreios] = useState(0);
 
     useEffect(()=>{
         const quants = quantidadePessoasPontos()
@@ -25,8 +28,10 @@ function PointsGo(){
         setQuantSossego(quants[6])
         setQuantFluminense(quants[7])
         setQuantTerraNova(quants[8])
-        setQuantTotalPosCorreios(quants[9])
-
+        setQuantPostoAvenida(quants[9])
+        setQuantCidadeJardim(quants[10])
+        setQuantBandiacu(quants[11])
+        //setQuantTotalPosCorreios(quants[12])
     }, [])
 
 
@@ -115,14 +120,41 @@ function PointsGo(){
                     </>
                 ) : null}
 
-                {quantTotalPosCorreios != 0 ? (
+                {quantPostoAvenida != 0 ? (
+                    <>
+                        <div className="pl-3.5 flex items-baseline">
+                            <h3 className="font-formal leading-tight text-base">Posto Avenida: </h3>
+                            <p className="pl-1 font-light text-base">{quantPostoAvenida} {quantPostoAvenida > 1 ? "pessoas" : "pessoa"}</p>
+                        </div>
+                    </>
+                ) : null}
+
+                {quantCidadeJardim != 0 ? (
+                    <>
+                        <div className="pl-3.5 flex items-baseline">
+                            <h3 className="font-formal leading-tight text-base">Cidade Jardim: </h3>
+                            <p className="pl-1 font-light text-base">{quantCidadeJardim} {quantCidadeJardim > 1 ? "pessoas" : "pessoa"}</p>
+                        </div>
+                    </>
+                ) : null}
+
+                {quantBandiacu != 0 ? (
+                    <>
+                        <div className="pl-3.5 flex items-baseline">
+                            <h3 className="font-formal leading-tight text-base">Bandiaçu: </h3>
+                            <p className="pl-1 font-light text-base">{quantBandiacu} {quantBandiacu > 1 ? "pessoas" : "pessoa"}</p>
+                        </div>
+                    </>
+                ) : null}
+
+                {/* {quantTotalPosCorreios != 0 ? (
                     <>
                         <div className="pl-3.5 flex items-baseline">
                             <h3 className="font-formal leading-tight text-base">Total pós Correios: </h3>
                             <p className="pl-1 font-light text-base">{quantTotalPosCorreios} {quantTotalPosCorreios > 1 ? "pessoas" : "pessoa"}</p>
                         </div>
                     </>
-                ) : null}
+                ) : null} */}
                 
             </div>
         </>

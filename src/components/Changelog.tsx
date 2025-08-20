@@ -60,8 +60,76 @@ function Changelog(props: HomeProps) {
 export default Changelog;
 
 
-// Array de objetos completo, com as versões de 4.0.2 a 4.2.1 atualizadas conforme o último texto fornecido.
+
 const updatesData = [
+    {
+        version: '5.2.3',
+        notes: [
+            {
+                title: 'Correção no calculo dos pontos',
+                details: ['A lista considerada agora, é a lista já editada de Ida, e não a lista bruta sem nenhum tratamento']
+            },
+            {
+                title: 'Retirado a apresentação do "Total pós Correios"',
+                details: ['Esse somatorio apresentado pode ficar confuso a depender da rota e como ela pode ser feita. A depender alguns pontos podem ser antes dos correios e outros após e vice-versa']
+            }
+        ]
+    },
+    {
+        version: '5.2.2',
+        notes: [
+            {
+                title: 'Melhorias na edição da lista e adição de pontos',
+                details: ['Adicionados o reconhecimento dos pontos "Cidade Jardim", "Posto Avenida" e "Bandiaçu"',
+                          'Melhoria para o reconhecimento quando se é utilizado espaços para quebrar uma linha, em vez do uso do enter'
+                ]
+            },
+            {
+                title: 'Retirado a apresentação do "Total pós Correios"',
+                details: ['Esse somatorio apresentado pode ficar confuso a depender da rota e como ela pode ser feita. A depender alguns pontos podem ser antes dos correios e outros após e vice-versa']
+            }
+        ]
+    },
+    {
+        version: '5.2.1',
+        notes: [
+            {
+                title: 'Adição de 2 faculdades ao vocabulario',
+                details: ['Adicionadas as faculdades "PRO SABER" e "SENAI"']
+            }
+        ]
+    },
+    {
+        version: '5.2.0',
+        notes: [
+            {
+                title: 'Adição da barra lateral',
+                details: ['Ao clicar nas reticências/3 pontos, localizados no canto superior esquerdo, é aberto a "SideBar" em que novas funções são encontradas.',
+                          'É possível verificar também a versão do aplicativo, e informações do desenvolvedor'
+                ]
+            },
+            {
+                title: 'Adição da funcionalidade de iniciar a lista',
+                details: ['Adicionada opção de enviar a lista, do proximo dia, já formatada.',
+                          'Adicionada a opção de enviar a lista, do proximo dia, já com um nome de exemplo pré-definido.']
+            },
+            {
+                title: 'Adição a funcionalidade de reportar um erro',
+                details: ['Ao verificar um erro no aplicativo é possível informar esse erro ao desenvolvedor.',
+                          'Ao informar o erro, é registrado o horário em que se verificou esse erro, a lista em questão, caso o erro esteja nela, e o espaço para informar o erro.'
+                ]
+            }
+        ]
+    },
+    {
+        version: '5.1.1',
+        notes: [
+            {
+                title: 'Alteração na ordem dos icones da NavBar',
+                details: ['Icone de "Home" foi trocado de local dentro da barra de navegação(NavBar)']
+            }
+        ]
+    },
     {
         version: '5.1.0',
         notes: [
