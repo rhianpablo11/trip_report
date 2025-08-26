@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Panorama from "../components/Panorama"
 import { quantidadePessoas } from "../functions/Calcs"
+import Comparison from "../components/Comparison"
 
 
 function Insights(){
@@ -21,6 +22,9 @@ function Insights(){
             <div className="h-dvh w-full flex flex-col pt-16 px-3">
                 <div>
                     <Panorama type='insights' ida={quantIda} volta={quantVolta} vespertino={quantVoltaVespertino} />
+                </div>
+                <div className="mt-2">
+                    <Comparison ida={quantIda} volta={quantVolta} vespertino={quantVoltaVespertino} />
                 </div>
 
             </div>

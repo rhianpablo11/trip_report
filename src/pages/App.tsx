@@ -8,6 +8,7 @@ import { clearSessionStorage, getList, getLocalVersion, saveVersion } from "../f
 import ListNull from "./ListNull"
 import Changelog from "../components/Changelog"
 import SideBar from "../components/SideBar"
+import Comparison from "../components/Comparison"
 
 
 
@@ -73,7 +74,9 @@ function App(){
                         <>
                             <Insights />
                         </> : <>
-                                <ListNull />
+                                <div className="flex pt-20 px-3">
+                                    <Comparison ida={0} volta={0} vespertino={0} />
+                                </div>
                             </>
                     ) : pageSelected == '05h' || pageSelected == '12h' || pageSelected == '17h' ? (
                         getList() !=null ?

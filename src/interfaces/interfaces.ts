@@ -37,3 +37,16 @@ export interface SidebarProps {
     isOpen: boolean;
     onClose: () => void
 }
+
+export interface ComparisonProps {
+    ida: number;
+    volta: number;
+    vespertino: number;
+}
+
+export interface GraphicProps {
+    quantsIda: number[]
+    quantsVolta: number[]
+    quantsVespertino: number[]
+    dates: string[]
+}

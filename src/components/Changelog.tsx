@@ -63,6 +63,57 @@ export default Changelog;
 
 const updatesData = [
     {
+        version: '5.3.2',
+        notes: [
+            {
+                title: 'Correção do título da comparação entre as listas',
+                details: [
+                            'Alterado o título para que possa ficar mais entendivel a comparação realizada.',
+                            'Adicionadas datas para facilitar entendimento sobre o dia em que está se lidando']
+            }
+        ]
+    },
+    {
+        version: '5.3.1',
+        notes: [
+            {
+                title: 'Correção da pagina de inicio',
+                details: [
+                            'Corrigido a pagina inicial que o programa realiza a abertura'
+                        ]
+            },
+            {
+                title: 'Grafico com o resumo dos ultimos dias é possível ver na pagina de "insights" ',
+                details: [
+                            'Agora mesmo sem inserir uma lista é possível verificar o histórico das quantidades de até 10 listas anteriores.'
+                        ]
+
+            }
+        ]
+    },
+    {
+        version: '5.3.0',
+        notes: [
+            {
+                title: 'Gráfico com histórico das quantidades das últimas listas inseridas',
+                details: [
+                            'Conforme o uso do app, as listas inseridas serão salvas a cada dia, mantendo um máximo de 10 listas. Com isso, é possível verificar as quantidades de pessoas que houve naquele determinado dia a partir do gráfico.',
+                            'Para ter acesso a esse gráfico, basta inicializar o app e inserir uma lista (funcionamento em testes, sujeito a alterações nas próximas versões).',
+                            'Para que o recurso funcione, é necessário ter ao menos uma lista salva, além da atual, ou seja, ele fica disponível após o primeiro dia de uso.'
+                        ]
+            },
+            {
+                title: 'Comparativo da lista atual com a última lista',
+                details: [
+                            'É possível acompanhar as diferenças nas quantidades de pessoas da lista atual com relação à lista do dia anterior, ou a última lista salva antes da atual.',
+                            'Para ter acesso a esse gráfico, basta inicializar o app e inserir uma lista.',
+                            'Para que o recurso funcione, é necessário ter ao menos uma lista salva, além da atual, ou seja, ele fica disponível após o primeiro dia de uso.'
+                        ]
+
+            }
+        ]
+    },
+    {
         version: '5.2.3',
         notes: [
             {
