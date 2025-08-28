@@ -449,7 +449,7 @@ function seedLocalStorage() {
 }
 
 
-const versionCodeCurrent = "5.3.2"
+const versionCodeCurrent = "5.3.3"
 const keyVersionCode = 'siteVersion'
 
 export {saveList,

@@ -141,7 +141,7 @@ function PointsGo(){
                 {quantBandiacu != 0 ? (
                     <>
                         <div className="pl-3.5 flex items-baseline">
-                            <h3 className="font-formal leading-tight text-base">Bandiaçu: </h3>
+                            <h3 className="font-formal leading-tight text-base">Bandarrinha (Bandiaçu): </h3>
                             <p className="pl-1 font-light text-base">{quantBandiacu} {quantBandiacu > 1 ? "pessoas" : "pessoa"}</p>
                         </div>
                     </>

@@ -63,6 +63,21 @@ export default Changelog;
 
 const updatesData = [
     {
+        version: '5.3.3',
+        notes: [
+            {
+                title: 'Ajuste no nome do ponto',
+                details: [
+                            'Atualização para o ponto de Bandarrinha(Bandiaçu), agora aparece os 2 nomes citando a localidade.']
+            },
+            {
+                title: 'Correção de alinhamento do gráfico da tela de insights',
+                details: [
+                            'O gráfico agora ocupa o espaço desejado quando aparece sozinho na tela de insights, este recurso está disponível mesmo sem inserir uma lista.']
+            }
+        ]
+    },
+    {
         version: '5.3.2',
         notes: [
             {

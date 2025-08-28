@@ -63,7 +63,7 @@ function Comparison(props: ComparisonProps){
     }, [ida, volta, vespertino])
 
     return isShowComparison ? (<>
-            <div className='flex flex-col justify-start items-center shadow bg-white/25 backdrop-blur-2xl inset-shadow-2xs  inset-shadow-white rounded-3xl'>
+            <div className='flex flex-col justify-start w-full items-center shadow bg-white/25 backdrop-blur-2xl inset-shadow-2xs  inset-shadow-white rounded-3xl'>
                 <div className="flex py-4 flex-col justify-start w-full h-64">
                     <div className="px-3.5">
                         <h4 className="font-medium text-lg">Resumo últimos {daysWithHistorical} {daysWithHistorical > 1 ? "dias" : "dia"}</h4>
