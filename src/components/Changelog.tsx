@@ -63,6 +63,16 @@ export default Changelog;
 
 const updatesData = [
     {
+        version: '5.4.0',
+        notes: [
+            {
+                title: 'Adição de ponto - Posto Cajueiro',
+                details: [
+                            'Adição de mais um ponto, referente ao Posto Cajueiro, referencias na lista como apenas "Cajueiro" ou "Ponto do Cajueiro" também serão reconhecidos como esse ponto.']
+            }
+        ]
+    },
+    {
         version: '5.3.3',
         notes: [
             {
