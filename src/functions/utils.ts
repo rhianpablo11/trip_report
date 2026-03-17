@@ -169,9 +169,9 @@ function sendListLikeBoss(){
     let conteudo: string
     let rpName: string
     if(nameTodayPt == 'Terça' || nameTodayPt == 'Quinta'){
-        rpName = 'Rhian(ida e volta) *quadra*'
-    } else if(nameTodayPt == 'Quarta' || nameTodayPt == 'Sexta'){
         rpName = 'Rhian(ida e volta vespertino) *quadra*'
+    } else if(nameTodayPt == 'Quarta'){
+        rpName = 'Rhian(ida e volta) *quadra*'
     } else{
         rpName = ' '
     }
@@ -449,7 +449,7 @@ function seedLocalStorage() {
 }
 
 
-const versionCodeCurrent = "5.4.0"
+const versionCodeCurrent = "5.5.0"
 const keyVersionCode = 'siteVersion'
 
 export {saveList,

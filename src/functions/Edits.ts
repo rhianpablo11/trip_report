@@ -1,4 +1,4 @@
-const listaFaculdades = ['uefs', 'unex', 'unef', 'ufrb', 'unifan', 'unifacs', 'acesso', 'pitagoras', 'pitágoras', 'fan', 'nais', 'npj', 'anhanguera', 'unopar', 'uniasselvi', 'estacio', 'facs', 'fat', "unifacs(santa monica)" , "unifacs (santa monica)", "unifacs(santa mônica)" , "unifacs (santa mônica)", "faculdade", "fael", "senai", "pro saber", "pró saber", "senaii"]
+const listaFaculdades = ['uefs', 'unex', 'unef', 'ufrb', 'unifan', 'unifacs', 'acesso', 'pitagoras', 'pitágoras', 'fan', 'nais', 'npj', 'anhanguera', 'unopar', 'uniasselvi', 'estacio', 'facs', 'fat', 'unifat', "unifacs(santa monica)" , "unifacs (santa monica)", "unifacs(santa mônica)" , "unifacs (santa mônica)", "faculdade", "fael", "senai", "pro saber", "pró saber", "senaii", 'coude', 'avance', 'cns']
 
 
 function tratamentoLista(){
@@ -26,7 +26,7 @@ function editaListaIda(){
 
     for (let i=1; i<lista.length; i++){
         aux2 = lista[i].toLowerCase();
-        if(((aux2.includes("volta") ||aux2.includes("volt") ||aux2.includes("voita") ) || (aux2.includes("vesp") || aux2.includes("vespertino"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat"))){
+        if(((aux2.includes("volta") ||aux2.includes("volt") ||aux2.includes("voita") ) || (aux2.includes("vesp") || aux2.includes("vespertino"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat") || aux2.includes("unifat") || aux2.includes("coude") || aux2.includes("avance") || aux2.includes("cns"))){
             let aux3 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
             let aux4= '';
             
@@ -47,7 +47,7 @@ function editaListaIda(){
 
     for(let i=1; i<lista.length; i ++){
         aux2 = lista[i].toLowerCase();
-        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  ){
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat")  || aux2.includes("unifat") || aux2.includes("coude") || aux2.includes("avance") || aux2.includes("cns") ){
             
                     listaFinal += "\n\n"+lista[i];
                     cont =0;
@@ -107,7 +107,7 @@ function editaListaMatutino(){
     for (let i=1; i<lista.length; i++){
         aux2 = lista[i].toLowerCase();
         //verificação para conferir se tem uma linha com o nome da faculdade junto com o nome de ida e volta 
-        if(((aux2.includes("volta") ||aux2.includes("volt") || aux2.includes("voita")  || aux2.includes("vinda") ) || (aux2.includes("vesp") || aux2.includes("vespertino") || aux2.includes("vesper") || aux2.includes("vespertina"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("senai") || aux2.includes("senaii") || aux2.includes("pro saber") || aux2.includes("pró saber") || aux2.includes("fat"))){
+        if(((aux2.includes("volta") ||aux2.includes("volt") || aux2.includes("voita")  || aux2.includes("vinda") ) || (aux2.includes("vesp") || aux2.includes("vespertino") || aux2.includes("vesper") || aux2.includes("vespertina"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("senai") || aux2.includes("senaii") || aux2.includes("pro saber") || aux2.includes("pró saber") || aux2.includes("fat") || aux2.includes("unifat") || aux2.includes("coude") || aux2.includes("avance") || aux2.includes("cns"))){
             let aux3 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
             let aux4= '';
 
@@ -128,7 +128,7 @@ function editaListaMatutino(){
 
     for(let i=1; i<lista.length; i ++){
         aux2 = lista[i].toLowerCase();
-        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("senai") || aux2.includes("senaii") || aux2.includes("pro saber") || aux2.includes("pró saber") || aux2.includes("fat")  ){
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("senai") || aux2.includes("senaii") || aux2.includes("pro saber") || aux2.includes("pró saber") || aux2.includes("fat")  || aux2.includes("unifat") || aux2.includes("coude") || aux2.includes("avance") || aux2.includes("cns") ){
             
             let aux3:string | number | string[]
             aux3 = ''
@@ -182,7 +182,7 @@ function editaListaMatutino(){
         let aux2 = lista[i].toLowerCase()
         //let aux3 = (lista[(lista.length)-1].toLowerCase()).trim()
 
-        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("senai") || aux2.includes("senaii") || aux2.includes("pro saber") || aux2.includes("pró saber") || aux2.includes("fat")  ){
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("senai") || aux2.includes("senaii") || aux2.includes("pro saber") || aux2.includes("pró saber") || aux2.includes("fat")  || aux2.includes("unifat") || aux2.includes("coude") || aux2.includes("avance") || aux2.includes("cns") ){
 
             if(i+1<lista.length){
                 if(lista[i+1] == ""){
@@ -240,7 +240,7 @@ function editaListaVespertino(){
     let aux2;
     for (let i=1; i<lista.length; i++){
         aux2 = lista[i].toLowerCase();
-        if(((aux2.includes("volta") ||aux2.includes("volt") ||aux2.includes("voita") || aux2.includes("vinda") ) || (aux2.includes("vesp") || aux2.includes("vespertino"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat") || aux2.includes("senai") || aux2.includes("senaii") || aux2.includes("pro saber") || aux2.includes("pró saber")  || aux2.includes("fael"))){
+        if(((aux2.includes("volta") ||aux2.includes("volt") ||aux2.includes("voita") || aux2.includes("vinda") ) || (aux2.includes("vesp") || aux2.includes("vespertino"))) && (aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat") || aux2.includes("senai") || aux2.includes("senaii") || aux2.includes("pro saber") || aux2.includes("pró saber")  || aux2.includes("fael") || aux2.includes("unifat") || aux2.includes("coude") || aux2.includes("avance") || aux2.includes("cns"))){
             let aux3 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
             let aux4= '';
             
@@ -259,7 +259,7 @@ function editaListaVespertino(){
     console.log('lista depois de retratada: ' +lista)
     for(let i=1; i<lista.length; i ++){
         aux2 = lista[i].toLowerCase();
-        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat") || aux2.includes("senai") || aux2.includes("senaii") || aux2.includes("pro saber") || aux2.includes("pró saber") || aux2.includes("fael")){
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat") || aux2.includes("senai") || aux2.includes("senaii") || aux2.includes("pro saber") || aux2.includes("pró saber") || aux2.includes("fael") || aux2.includes("unifat") || aux2.includes("coude") || aux2.includes("avance") || aux2.includes("cns")){
             let aux3:string | number | string[]
             aux3 = ''
             aux3 = aux2.replace(/[^\w\sÀ-ÿ]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
@@ -314,7 +314,7 @@ function editaListaVespertino(){
         let aux2 = lista[i].toLowerCase()
         //let aux3 = (lista[(lista.length)-1].toLowerCase()).trim()
         console.log(aux2)
-        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat") || aux2.includes("senai") || aux2.includes("senaii") || aux2.includes("pro saber") || aux2.includes("pró saber") || aux2.includes("fael") ){
+        if(aux2.includes("uefs") || aux2.includes("unex") || aux2.includes("unef") || aux2.includes("ufrb") || aux2.includes("unifan") || aux2.includes("acesso") || aux2.includes("unifacs") || aux2.includes("pitagoras") || aux2.includes("pitágoras") || aux2.includes("fan") || aux2.includes("nais") || aux2.includes("npj") || aux2.includes("anhanguera") || aux2.includes("unopar") || aux2.includes("uniasselvi") || aux2.includes("estacio") || aux2.includes("estácio")  || aux2.includes("facs") || aux2.includes("fat") || aux2.includes("senai") || aux2.includes("senaii") || aux2.includes("pro saber") || aux2.includes("pró saber") || aux2.includes("fael") || aux2.includes("unifat") || aux2.includes("coude") || aux2.includes("avance") || aux2.includes("cns") ){
             if(i+1<lista.length){
                 if(lista[i+1] == ""){
                     console.log("verificando problema ",lista[i])

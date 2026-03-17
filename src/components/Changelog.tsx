@@ -63,6 +63,22 @@ export default Changelog;
 
 const updatesData = [
     {
+        version: '5.5.0',
+        notes: [
+            {
+                title: 'Adição de novas faculdades reconhecidas na edição',
+                details: [
+                            'Adição das faculdades: CNS, Coude, avance',
+                            'Atualização para aceitar Unifat como fat (já previamente reconhecida)']
+            },
+            {
+                title: 'Adição de novo ponto',
+                details: [
+                            "Adicionado o ponto do Olhos D'agua"]
+            }
+        ]
+    },
+    {
         version: '5.4.0',
         notes: [
             {

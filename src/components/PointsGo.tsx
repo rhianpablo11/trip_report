@@ -16,6 +16,7 @@ function PointsGo(){
     const [quantCidadeJardim, setQuantCidadeJardim] = useState(0)
     const [quantBandiacu, setQuantBandiacu] = useState(0)
     const [quantCajueiro, setQuantCajueiro] = useState(0)
+    const [quantOlhosDagua, setQuantOlhosDagua] = useState(0)
     //const [quantTotalPosCorreios, setQuantTotalPosCorreios] = useState(0);
 
     useEffect(()=>{
@@ -33,6 +34,7 @@ function PointsGo(){
         setQuantCidadeJardim(quants[10])
         setQuantBandiacu(quants[11])
         setQuantCajueiro(quants[12])
+        setQuantOlhosDagua(quants[13])
         //setQuantTotalPosCorreios(quants[13])
     }, [])
 
@@ -154,6 +156,15 @@ function PointsGo(){
                         <div className="pl-3.5 flex items-baseline">
                             <h3 className="font-formal leading-tight text-base">Bandarrinha (Bandiaçu): </h3>
                             <p className="pl-1 font-light text-base">{quantBandiacu} {quantBandiacu > 1 ? "pessoas" : "pessoa"}</p>
+                        </div>
+                    </>
+                ) : null}
+
+                {quantOlhosDagua != 0 ? (
+                    <>
+                        <div className="pl-3.5 flex items-baseline">
+                            <h3 className="font-formal leading-tight text-base">Olhos D'Agua: </h3>
+                            <p className="pl-1 font-light text-base">{quantOlhosDagua} {quantOlhosDagua > 1 ? "pessoas" : "pessoa"}</p>
                         </div>
                     </>
                 ) : null}

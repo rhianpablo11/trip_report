@@ -50,10 +50,11 @@ function quantidadePessoasPontos(){
     let bandiacu = 0;
     let cidadeJardim = 0;
     let cajueiro = 0;
+    let olhosDagua = 0;
     let listaPreTratada =  editaListaIda();
     let lista = ['']
     if(listaPreTratada == null){
-        return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     }
 
     lista = listaPreTratada.toLowerCase().replace(/[^\w\s]+/gu, ' ').split(/\s*\.\s*|\s+/).filter(Boolean);
@@ -84,10 +85,12 @@ function quantidadePessoasPontos(){
             cidadeJardim ++;
         } else if(lista[i] == 'cajueiro'){
             cajueiro ++
+        } else if(lista[i] == "olhos d'agua" || (lista[i] == 'olhos')){
+            olhosDagua ++
         }
     }
-    let total = serraria + terraNova + tapera + fluminense + sossego + cidadeJardim + postoAvenida + bandiacu
-    return [cocaCola, quadra, rodoviaria, vilatoide, serraria, tapera, sossego, fluminense, terraNova, postoAvenida, cidadeJardim, bandiacu, cajueiro, total]
+    let total = serraria + terraNova + tapera + fluminense + sossego + cidadeJardim + postoAvenida + bandiacu + olhosDagua
+    return [cocaCola, quadra, rodoviaria, vilatoide, serraria, tapera, sossego, fluminense, terraNova, postoAvenida, cidadeJardim, bandiacu, cajueiro, olhosDagua, total]
 }
 
 
