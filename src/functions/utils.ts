@@ -108,7 +108,7 @@ function sendList(){
         nameTodayPt = "Segunda";
     } 
 
-     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*UNEF*\n1. \n\n ";
+     let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*UNEF*\n1. \n\n *FAN*\n1. \n\n ";
      let conteudo: string
      conteudo = window.encodeURIComponent(lista_format);
      let url = "https://api.whatsapp.com/send?text="+conteudo;
@@ -168,15 +168,15 @@ function sendListLikeBoss(){
 
     let conteudo: string
     let rpName: string
-    if(nameTodayPt == 'Terça' || nameTodayPt == 'Quinta'){
+    if(nameTodayPt == 'Segunda' || nameTodayPt == 'Quarta'){
         rpName = 'Rhian(ida e volta vespertino) *quadra*'
-    } else if(nameTodayPt == 'Quarta'){
+    } else if(nameTodayPt == 'Terça' || nameTodayPt == 'Quinta'){
         rpName = 'Rhian(ida e volta) *quadra*'
     } else{
         rpName = ' '
     }
 
-    let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. "+rpName+" \n2. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*UNEF*\n1. \n\n";
+    let  lista_format = "*Lista* - *"+ nameTodayPt+" - Feira* "+day+"/"+month+"\n\n*UEFS*\n1. "+rpName+" \n2. \n\n*UNEX*\n1. \n\n*CLÍNICA UNEX*\n1.\n\n*UNEF*\n1. \n\n *FAN*\n1. \n\n ";
     conteudo = window.encodeURIComponent(lista_format);
     let url = "https://api.whatsapp.com/send?text="+conteudo;
     var win = window.open(url, '_blank');
@@ -449,7 +449,7 @@ function seedLocalStorage() {
 }
 
 
-const versionCodeCurrent = "5.5.0"
+const versionCodeCurrent = "5.5.1"
 const keyVersionCode = 'siteVersion'
 
 export {saveList,
